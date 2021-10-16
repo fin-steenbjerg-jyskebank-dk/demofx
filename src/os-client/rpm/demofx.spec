@@ -1,8 +1,8 @@
-Summary: Jyske Bank Cluster Configurator
-Name: jb-cluster-configurator
+Summary: JavaFX demonstration
+Name: demofx
 Version:  %{_version}
 Release: %{_release}
-URL:     http://jyskebank.dk	
+URL:     https://stonemountain.dk	
 License: GPL
 Group: Development/Tools
 BuildRoot: %{_tmppath}/%{name}-root
@@ -11,21 +11,21 @@ Requires: libGL
 Requires: gtk3
 Requires: alsa-lib
 Requires: ffmpeg-libs
-Packager: henrik lund <henriklund@jyskebank.dk>
+Packager: Fin Steenbjerg <fin.steenbjerg@gmail.com>
 
 %define _build_id_links none
 
 %description
-Jyske Bank Cluster Configurator. Allows cluster configuration on OpenShift platform.
+JavaFX demonstration application.
 
 %pre
 
 %install
 /bin/rm -rf ${RPM_BUILD_ROOT}
 
-/usr/bin/install -D /github/home/rpmbuild/SOURCES/cluster-configurator ${RPM_BUILD_ROOT}/usr/bin/cluster-configurator
-/usr/bin/install -D /github/home/rpmbuild/SOURCES/cluster-configurator.desktop ${RPM_BUILD_ROOT}/usr/share/applications/cluster-configurator.desktop
-/usr/bin/install -D /github/home/rpmbuild/SOURCES/cluster-configurator.png ${RPM_BUILD_ROOT}/usr/share/jb/icons/cluster-configurator.png
+/usr/bin/install -D /github/home/rpmbuild/SOURCES/demofx ${RPM_BUILD_ROOT}/usr/bin/demofx
+/usr/bin/install -D /github/home/rpmbuild/SOURCES/demofx.desktop ${RPM_BUILD_ROOT}/usr/share/applications/demofx.desktop
+/usr/bin/install -D /github/home/rpmbuild/SOURCES/demofx.png ${RPM_BUILD_ROOT}/usr/share/stonemountain/icons/demofx.png
 
 exit 0
 
@@ -41,11 +41,10 @@ exit 0
 
 %files
 %defattr(644,root,root)
-%attr(755, root, root) /usr/bin/cluster-configurator
-/usr/share/applications/cluster-configurator.desktop
-/usr/share/jb/icons/cluster-configurator.png
+%attr(755, root, root) /usr/bin/demofx
+/usr/share/applications/demofx.desktop
+/usr/share/stonemountain/icons/demofx.png
 
 
 %changelog
-* Tue May 11 2021 Henrik Lund <henriklund@jyskebank.dk> - 1.0-0
 - New package.

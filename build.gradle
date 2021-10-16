@@ -153,19 +153,5 @@ tasks.nativeCompile.doFirst {
 	}
 }
 
-//task buildFedora(type: Exec) {
-//    commandLine = ["podman", "build", "-f", "src/os-client/Containerfile-fedora", "--build-arg", "version=${rpmVersion}", "-t", "fedora_build", "."]
-//}
-
-//task exportFedora(type: Exec, dependsOn: buildFedora) {
-//   commandLine = ["podman", "run", "--entrypoint", "cat", "fedora_build", "/root/rpmbuild/RPMS/x86_64/jb-cluster-configurator-${rpmVersion}-0.x86_64.rpm"]
-//    setStandardOutput(makeOs("jb-cluster-configurator.f32-${rpmVersion}.rpm"))
-//}
-
-//OutputStream makeOs(String name) {
-//	project.mkdir("dist")
-//  	return new FileOutputStream("dist/$name")
-//}
-
 task eclipsePropertiesFolderChanged()
 task eclipseGradlePropertiesChanged(dependsOn: "eclipse")

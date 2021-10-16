@@ -10,13 +10,13 @@
 	</appender>
 
 	<appender name="FILE-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${java.io.tmpdir}/logs/cluster-configurator/application.log</file>
+		<file>${java.io.tmpdir}/logs/demofx/application.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</Pattern>
 		</encoder>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>${java.io.tmpdir}/logs/cluster-configurator/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<fileNamePattern>${java.io.tmpdir}/logs/demofx/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<cleanHistoryOnStart>true</cleanHistoryOnStart>
             <maxHistory>5</maxHistory>
             <totalSizeCap>50MB</totalSizeCap>

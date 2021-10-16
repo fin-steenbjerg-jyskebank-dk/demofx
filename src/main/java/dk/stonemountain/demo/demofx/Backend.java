@@ -13,8 +13,8 @@ import javax.net.ssl.TrustManagerFactory;
 
 public enum Backend {
 	LOCAL("Developer Workstation", "http://localhost:8180", true, false),
-	TEST("Test", "https://cluster-configurator-bff-infrastructure-tooling-t.corp.jyskebank.net", true, true),
-	PRODUCTION("Production", "https://cluster-configurator-bff-infrastructure-tooling.corp.jyskebank.net", true, true);
+	TEST("Test", "https://stonemountain.dk/test", true, true),
+	PRODUCTION("Production", "https://stonemountain.dk", true, true);
 	
 	private final String name;
 	private final String bffServiceUrl;
