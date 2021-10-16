@@ -2,7 +2,7 @@ plugins {
   id 'application'
   id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
-  id 'com.gluonhq.client-gradle-plugin' version '0.1.42'
+  id 'com.gluonhq.client-gradle-plugin' version '0.1.31'
 }
 
 ext {
@@ -31,7 +31,7 @@ sourceSets {
 group "dk.stonemountain.demo"
 
 javafx {
-    version = "17.0.0.1"
+    version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
@@ -45,6 +45,9 @@ dependencies {
 	implementation "javax.json.bind:javax.json.bind-api:1.0"
 	implementation "org.apache.geronimo.specs:geronimo-json_1.1_spec:1.4"
 	implementation "org.apache.johnzon:johnzon-jsonb:1.2.9"
+	
+	implementation "org.openjfx:javafx-controls:{javafx.version}"
+	implementation "org.openjfx:javafx-fxml:{javafx.version}"
 }
 
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
@@ -95,95 +98,13 @@ gluonClient {
 		"javafx.scene.paint.Color",
 		"javafx.scene.text.Font",
 		
-        "dk.jyskebank.ocp.cluster.configurator.ConfiguratorApplication",
-        "dk.jyskebank.ocp.cluster.configurator.ConfiguratorController",
-        "dk.jyskebank.ocp.cluster.configurator.authentication.LoginDialog",
-        "dk.jyskebank.ocp.cluster.configurator.authentication.UserInfoDialog",
-        "dk.jyskebank.ocp.cluster.configurator.util.gui.ValidationDialog",
-        "dk.jyskebank.ocp.cluster.configurator.cluster.ClusterOverviewPane",
-        "dk.jyskebank.ocp.cluster.configurator.cluster.ClusterInfoPane",
-        "dk.jyskebank.ocp.cluster.configurator.cluster.ClustersPane",
-        "dk.jyskebank.ocp.cluster.configurator.operation.AbortDialog",
-        "dk.jyskebank.ocp.cluster.configurator.operation.ApprovalDialog",
-        "dk.jyskebank.ocp.cluster.configurator.project.ProjectDialog",
-        "dk.jyskebank.ocp.cluster.configurator.project.ProjectsPane",
-        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ServiceaccountsPane",
-        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ServiceaccountDialog",
-        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ViewRoleYamlDialog",
-        "dk.jyskebank.ocp.cluster.configurator.secret.SecretsPane",
-        "dk.jyskebank.ocp.cluster.configurator.secret.SecretDialog",
-        "dk.jyskebank.ocp.cluster.configurator.secret.SecretDataDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.HelmReleaseRequestDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.RiskAssessmentDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.GitReferenceDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.SelectorDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseContentDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseRequestDetailsDialog",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleasesPane",
-        "dk.jyskebank.ocp.cluster.configurator.helmrelease.GitRepositoriesHelmReleasesPane",
+        "dk.stonemountain.demo.demofx.DemoApplication",
+        "dk.stonemountain.demo.demofx.DemoController",
 
 		// --- JSON DTOs
 		        
         // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
         // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'
-        "dk.jyskebank.outbound.bff.dto.AlreadyExists",
-        "dk.jyskebank.outbound.bff.dto.ApprovalInformationDTO",
-        "dk.jyskebank.outbound.bff.dto.ApprovalInformation",
-        "dk.jyskebank.outbound.bff.dto.ClusterInformation",
-        "dk.jyskebank.outbound.bff.dto.Cluster",
-        "dk.jyskebank.outbound.bff.dto.ClusterVersion",
-        "dk.jyskebank.outbound.bff.dto.EditableRoleDTO",
-        "dk.jyskebank.outbound.bff.dto.EditableServiceaccountDTO",
-        "dk.jyskebank.outbound.bff.dto.EnvironmentAdapter",
-        "dk.jyskebank.outbound.bff.dto.Environment",
-        "dk.jyskebank.outbound.bff.dto.GitReferenceDTO",
-        "dk.jyskebank.outbound.bff.dto.GitRepositoryDTO",
-        "dk.jyskebank.outbound.bff.dto.InternalError",
-        "dk.jyskebank.outbound.bff.dto.PasswordCredentialsAuthenticationData",
-        "dk.jyskebank.outbound.bff.dto.ProjectRequestDTO",
-        "dk.jyskebank.outbound.bff.dto.ReceiverType",
-        "dk.jyskebank.outbound.bff.dto.RefreshTokenAuthenticationData",
-        "dk.jyskebank.outbound.bff.dto.ServiceaccountRequestDTO",
-        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.KindDTO",
-        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.RoleDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretRequestDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ViolationConstraintDTO",
-        "dk.jyskebank.outbound.bff.dto.StatusAdapter",
-        "dk.jyskebank.outbound.bff.dto.Status",
-        "dk.jyskebank.outbound.bff.dto.TokenDTO",
-        "dk.jyskebank.outbound.bff.dto.UserDTO",
-        "dk.jyskebank.outbound.bff.dto.ValidationResultDTO",
-        "dk.jyskebank.outbound.bff.dto.ViolationConstraintDTO",
-        "dk.jyskebank.outbound.bff.dto.ViolationConstraint",
-        "dk.jyskebank.outbound.bff.dto.Violation",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ApprovalInformationDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataValueDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$SecretDataState",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$Type",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$Provider",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretEnteringDataDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretRequestDTO",
-        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ViolationConstraintDTO",
-        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.KindDTO",
-        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.RoleDTO",
-        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectDTO",
-        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectTypeDTOAdapter",
-        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectTypeDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ApprovalInformationDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO\$Type",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO\$AssessmentResult",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceDetailsDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceStateDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceVariableDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ValidationResultDTO",
-        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ViolationConstraintDTO",
         
         // From enums - by hand
 
@@ -207,8 +128,6 @@ gluonClient {
     ]
 
     resourcesList = [
-//    	"jb.properties",
-		"jb.jks",
     	"logback.xml",
     ]
 
