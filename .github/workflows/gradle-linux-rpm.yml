@@ -11,7 +11,7 @@ env:
   APP_NAME: demofx
   PACKAGE_NAME: demofx
   PACKAGE_VERSION: 0.0.1
-  PACKAGE_MAINTAINER: Fin Steenbjerg (fin.steenbjerg@gmail.com)
+  PACKAGE_MAINTAINER: Fin Steenbjerg <fin.steenbjerg@gmail.com>
 
 jobs:
   build:
