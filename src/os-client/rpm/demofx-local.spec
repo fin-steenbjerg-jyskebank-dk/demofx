@@ -2,7 +2,7 @@ Summary: Stonemountain DemoFX
 Name: demofx
 Version: 50
 Release: 0
-URL:     http://jyskebank.dk	
+URL:     https://stonemountain.dk	
 License: GPL
 Group: Development/Tools
 BuildRoot: %{_tmppath}/%{name}-root
@@ -47,4 +47,5 @@ exit 0
 
 
 %changelog
+* Sat Oct 16 2021 Fin Steenbjerg <fin.steenbjerg@gmail.com> - 1.0-0
 - New package.
