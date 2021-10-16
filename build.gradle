@@ -1,0 +1,252 @@
+plugins {
+  id 'application'
+  id 'eclipse'
+  id 'org.openjfx.javafxplugin' version '0.0.10'
+  id 'com.gluonhq.client-gradle-plugin' version '0.1.42'
+}
+
+ext {
+	libraryVersions = [
+		slf4j: "1.7.25",
+		logback: "1.2.3",
+	]
+	rpmVersion = version.replaceAll("_.*", "").replace("-", ".").replaceAll("^[TV]", "").replaceAll("0(\\d)", '$1')
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url "https://maven.repository.redhat.com/earlyaccess/all"
+	}
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir "src/main/gen-src-wizard"
+		}
+	}
+}
+
+group "dk.stonemountain.demo"
+
+javafx {
+    version = "17.0.0.1"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+	implementation "org.slf4j:slf4j-api:${libraryVersions.slf4j}"
+	implementation "org.slf4j:jul-to-slf4j:${libraryVersions.slf4j}"
+	implementation "ch.qos.logback:logback-core:${libraryVersions.logback}"
+	implementation "ch.qos.logback:logback-classic:${libraryVersions.logback}"
+
+	implementation "javax.json:javax.json-api:1.1.4"
+	implementation "javax.json.bind:javax.json.bind-api:1.0"
+	implementation "org.apache.geronimo.specs:geronimo-json_1.1_spec:1.4"
+	implementation "org.apache.johnzon:johnzon-jsonb:1.2.9"
+}
+
+mainClassName =  "dk.stonemountain.demo.demofx.Main"
+
+gluonClient {
+    // target = "ios" // uncomment to deploy on iOS
+
+    bundlesList = [] //"hellofx.hello"]
+
+    reflectionList = [
+    	// --- Types referenced from .fxml files
+        "javafx.geometry.Side",
+    	"javafx.fxml.FXMLLoader", 
+		"javafx.geometry.Insets",
+        "javafx.scene.control.Button",
+        "javafx.scene.control.CheckBox",
+        "javafx.scene.control.ChoiceBox",
+        "javafx.scene.control.DatePicker",
+        "javafx.scene.control.ContextMenu",
+		"javafx.scene.control.Hyperlink",
+        "javafx.scene.control.Label",
+        "javafx.scene.control.ListView",
+        "javafx.scene.control.Menu",
+        "javafx.scene.control.MenuBar",
+        "javafx.scene.control.MenuItem",
+		"javafx.scene.control.PasswordField",
+		"javafx.scene.control.RadioButton",
+		"javafx.scene.control.RadioMenuItem",
+		"javafx.scene.control.Separator",
+		"javafx.scene.control.SeparatorMenuItem",
+		"javafx.scene.control.SplitPane",
+		"javafx.scene.control.Tab",
+		"javafx.scene.control.TableColumn",
+		"javafx.scene.control.TableColumnBase",
+		"javafx.scene.control.TableView",
+		"javafx.scene.control.TabPane",
+		"javafx.scene.control.TextField",
+		"javafx.scene.control.TitledPane",
+		"javafx.scene.control.ToggleGroup",
+		"javafx.scene.layout.AnchorPane",
+		"javafx.scene.layout.BorderPane",
+		"javafx.scene.layout.ColumnConstraints",
+		"javafx.scene.layout.GridPane",
+		"javafx.scene.layout.HBox",
+		"javafx.scene.layout.Pane",
+		"javafx.scene.layout.Region",
+		"javafx.scene.layout.RowConstraints",
+		"javafx.scene.paint.Color",
+		"javafx.scene.text.Font",
+		
+        "dk.jyskebank.ocp.cluster.configurator.ConfiguratorApplication",
+        "dk.jyskebank.ocp.cluster.configurator.ConfiguratorController",
+        "dk.jyskebank.ocp.cluster.configurator.authentication.LoginDialog",
+        "dk.jyskebank.ocp.cluster.configurator.authentication.UserInfoDialog",
+        "dk.jyskebank.ocp.cluster.configurator.util.gui.ValidationDialog",
+        "dk.jyskebank.ocp.cluster.configurator.cluster.ClusterOverviewPane",
+        "dk.jyskebank.ocp.cluster.configurator.cluster.ClusterInfoPane",
+        "dk.jyskebank.ocp.cluster.configurator.cluster.ClustersPane",
+        "dk.jyskebank.ocp.cluster.configurator.operation.AbortDialog",
+        "dk.jyskebank.ocp.cluster.configurator.operation.ApprovalDialog",
+        "dk.jyskebank.ocp.cluster.configurator.project.ProjectDialog",
+        "dk.jyskebank.ocp.cluster.configurator.project.ProjectsPane",
+        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ServiceaccountsPane",
+        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ServiceaccountDialog",
+        "dk.jyskebank.ocp.cluster.configurator.serviceaccount.ViewRoleYamlDialog",
+        "dk.jyskebank.ocp.cluster.configurator.secret.SecretsPane",
+        "dk.jyskebank.ocp.cluster.configurator.secret.SecretDialog",
+        "dk.jyskebank.ocp.cluster.configurator.secret.SecretDataDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.HelmReleaseRequestDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.RiskAssessmentDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.GitReferenceDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.requests.SelectorDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseContentDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleaseRequestDetailsDialog",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.HelmReleasesPane",
+        "dk.jyskebank.ocp.cluster.configurator.helmrelease.GitRepositoriesHelmReleasesPane",
+
+		// --- JSON DTOs
+		        
+        // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
+        // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'
+        "dk.jyskebank.outbound.bff.dto.AlreadyExists",
+        "dk.jyskebank.outbound.bff.dto.ApprovalInformationDTO",
+        "dk.jyskebank.outbound.bff.dto.ApprovalInformation",
+        "dk.jyskebank.outbound.bff.dto.ClusterInformation",
+        "dk.jyskebank.outbound.bff.dto.Cluster",
+        "dk.jyskebank.outbound.bff.dto.ClusterVersion",
+        "dk.jyskebank.outbound.bff.dto.EditableRoleDTO",
+        "dk.jyskebank.outbound.bff.dto.EditableServiceaccountDTO",
+        "dk.jyskebank.outbound.bff.dto.EnvironmentAdapter",
+        "dk.jyskebank.outbound.bff.dto.Environment",
+        "dk.jyskebank.outbound.bff.dto.GitReferenceDTO",
+        "dk.jyskebank.outbound.bff.dto.GitRepositoryDTO",
+        "dk.jyskebank.outbound.bff.dto.InternalError",
+        "dk.jyskebank.outbound.bff.dto.PasswordCredentialsAuthenticationData",
+        "dk.jyskebank.outbound.bff.dto.ProjectRequestDTO",
+        "dk.jyskebank.outbound.bff.dto.ReceiverType",
+        "dk.jyskebank.outbound.bff.dto.RefreshTokenAuthenticationData",
+        "dk.jyskebank.outbound.bff.dto.ServiceaccountRequestDTO",
+        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.KindDTO",
+        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.RoleDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretRequestDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ViolationConstraintDTO",
+        "dk.jyskebank.outbound.bff.dto.StatusAdapter",
+        "dk.jyskebank.outbound.bff.dto.Status",
+        "dk.jyskebank.outbound.bff.dto.TokenDTO",
+        "dk.jyskebank.outbound.bff.dto.UserDTO",
+        "dk.jyskebank.outbound.bff.dto.ValidationResultDTO",
+        "dk.jyskebank.outbound.bff.dto.ViolationConstraintDTO",
+        "dk.jyskebank.outbound.bff.dto.ViolationConstraint",
+        "dk.jyskebank.outbound.bff.dto.Violation",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ApprovalInformationDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataValueDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$SecretDataState",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$Type",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretDataDTO\$Provider",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretEnteringDataDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.SecretRequestDTO",
+        "dk.jyskebank.outbound.bff.dto.secretorchestratorservice.ViolationConstraintDTO",
+        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.KindDTO",
+        "dk.jyskebank.outbound.bff.dto.serviceaccountservice.RoleDTO",
+        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectDTO",
+        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectTypeDTOAdapter",
+        "dk.jyskebank.outbound.bff.dto.projectservice.ProjectTypeDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ApprovalInformationDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO\$Type",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.HelmReleaseRequestDTO\$AssessmentResult",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceDetailsDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceStateDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ProcessInstanceVariableDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ValidationResultDTO",
+        "dk.jyskebank.outbound.bff.dto.helmreleaseorchestratorservice.ViolationConstraintDTO",
+        
+        // From enums - by hand
+
+		// --- Logger classes (referenced in logback configuration, prolly)
+        "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+        "ch.qos.logback.classic.pattern.DateConverter",
+        "ch.qos.logback.classic.pattern.LevelConverter",
+        "ch.qos.logback.classic.pattern.LineSeparatorConverter",
+        "ch.qos.logback.classic.pattern.LoggerConverter",
+        "ch.qos.logback.classic.pattern.MessageConverter",
+        "ch.qos.logback.classic.pattern.ThreadConverter",
+        "ch.qos.logback.classic.filter.ThresholdFilter",
+        "ch.qos.logback.core.ConsoleAppender",
+        "ch.qos.logback.core.rolling.helper.DateTokenConverter",
+        "ch.qos.logback.core.rolling.helper.IntegerTokenConverter",
+        "ch.qos.logback.core.rolling.RollingFileAppender",
+        "ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy",
+        "ch.qos.logback.core.util.FileSize",
+        
+        "java.util.ArrayList",
+    ]
+
+    resourcesList = [
+//    	"jb.properties",
+		"jb.jks",
+    	"logback.xml",
+    ]
+
+    compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
+}
+
+// 1. Goto https://rpmfusion.org/Configuration, click on "RPM Fusion free for Fedora 32"
+// 2. sudo dnf install alsa-lib-devel ffmpeg-devel freetype-devel glib2-devel gtk3-devel libX11-devel libXtst-devel mesa-libGL-devel pango-devel libstdc++-devel libstdc++-static
+
+// 3. ./gradlew --no-daemon nativeBuild
+
+tasks.nativeCompile.doFirst {
+	def javaHome = System.getenv("JAVA_HOME")
+	def graalvmHome = System.getenv("GRAALVM_HOME")
+	if (!javaHome.equals(graalvmHome)) {
+		println "========================================================"
+		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.3.0/graalvm-ce-java11-linux-amd64-20.3.0.tar.gz"
+		println "=== (or newer)"
+		println "=== And run ./bin/gu install native-image"
+		println "=== Finally make sure GRAALVM_HOME and JAVA_HOME points to the unpacked folder."
+		println "========================================================"
+		throw new Exception("Bad VM");
+	}
+}
+
+//task buildFedora(type: Exec) {
+//    commandLine = ["podman", "build", "-f", "src/os-client/Containerfile-fedora", "--build-arg", "version=${rpmVersion}", "-t", "fedora_build", "."]
+//}
+
+//task exportFedora(type: Exec, dependsOn: buildFedora) {
+//   commandLine = ["podman", "run", "--entrypoint", "cat", "fedora_build", "/root/rpmbuild/RPMS/x86_64/jb-cluster-configurator-${rpmVersion}-0.x86_64.rpm"]
+//    setStandardOutput(makeOs("jb-cluster-configurator.f32-${rpmVersion}.rpm"))
+//}
+
+//OutputStream makeOs(String name) {
+//	project.mkdir("dist")
+//  	return new FileOutputStream("dist/$name")
+//}
+
+task eclipsePropertiesFolderChanged()
+task eclipseGradlePropertiesChanged(dependsOn: "eclipse")

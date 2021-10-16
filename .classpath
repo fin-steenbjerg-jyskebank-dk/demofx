@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/15.0.1/1d2a8b3cff48cb8d83deb8aeb00226776146ebc4/javafx-fxml-15.0.1-linux.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/15.0.1/7d424e313435f4db2a2063cbffd48ca5912526b2/javafx-fxml-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/15.0.1/11efce24b8ac1a119ec355fd7302dd1e373eb7dd/javafx-controls-15.0.1-linux.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/15.0.1/bc13403cf76feeed6f6080483e0afa115038847c/javafx-controls-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/15.0.1/7e951231ff36d704e8cc8b112b71951c9ccbc15d/javafx-controls-15.0.1.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/15.0.1/bc13403cf76feeed6f6080483e0afa115038847c/javafx-controls-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/15.0.1/6ab161d111b173da74d3754fd4017cf17d491d58/javafx-graphics-15.0.1-linux.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/15.0.1/75b21dc9c7d2309036e9a3ffa1dbedf501a3f260/javafx-graphics-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/15.0.1/55565f47d9d4e295f8bdeb8a6577e29b8bc29267/javafx-graphics-15.0.1.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-graphics/15.0.1/75b21dc9c7d2309036e9a3ffa1dbedf501a3f260/javafx-graphics-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/15.0.1/181dfd960832b85c67764d229c8c6fdba5cd5a35/javafx-base-15.0.1-linux.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/15.0.1/63104fedbcf9cd52b1059587aed77d421bb66183/javafx-base-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/15.0.1/88d5d4ad546e17904516fd05be69243e54144af4/javafx-base-15.0.1.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-base/15.0.1/63104fedbcf9cd52b1059587aed77d421bb66183/javafx-base-15.0.1-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/af5364cd6679bfffb114f0dec8a157aaa283b76/jul-to-slf4j-1.7.25.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.25/bcea1530927f59b5128841d3571f879ce3af2e86/jul-to-slf4j-1.7.25-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.3/7c4f3c474fb2c041d8028740440937705ebb473a/logback-classic-1.2.3.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.2.3/cfd5385e0c5ed1c8a5dce57d86e79cf357153a64/logback-classic-1.2.3-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/da76ca59f6a57ee3102f8f9bd9cee742973efa8a/slf4j-api-1.7.25.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.25/962153db4a9ea71b79d047dfd1b2a0d80d8f4739/slf4j-api-1.7.25-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.3/864344400c3d4d92dfeb0a305dc87d953677c03c/logback-core-1.2.3.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.2.3/3ebabe69eba0196af9ad3a814f723fb720b9101e/logback-core-1.2.3-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/javax.json/javax.json-api/1.1.4/c8efa3cfaeee2b05c2dfd54cba21548a081b1746/javax.json-api-1.1.4.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/javax.json/javax.json-api/1.1.4/eb81279e894e71bf034681c5494c60001775bb0/javax.json-api-1.1.4-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/javax.json.bind/javax.json.bind-api/1.0/10332203cb05f4ab2e8bf058bfd7d99648c5ca68/javax.json.bind-api-1.0.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/javax.json.bind/javax.json.bind-api/1.0/54aa0ac77fb55ff1bad3e4134e344bf65cc2d199/javax.json.bind-api-1.0-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.geronimo.specs/geronimo-json_1.1_spec/1.4/4fea4d7be1378f93c5562b01be7c4b4f877e4582/geronimo-json_1.1_spec-1.4.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.geronimo.specs/geronimo-json_1.1_spec/1.4/43bdbdc109c447e1477518048831e02bf803e5f7/geronimo-json_1.1_spec-1.4-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-jsonb/1.2.9/6afb1019ab2b15805d74063cee4c89d4e4bbde8d/johnzon-jsonb-1.2.9.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-jsonb/1.2.9/f93ca6e84e0bd8f8fb327b137f52834e84b04bc9/johnzon-jsonb-1.2.9-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-mapper/1.2.9/12cd040d42077e6319160ca0b79edea21ea61d26/johnzon-mapper-1.2.9.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-mapper/1.2.9/a7bdc278e86f6fec2dcffe1b5dd9b5ef4d9ea59e/johnzon-mapper-1.2.9-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-core/1.2.9/80f9951f5037df1be633b6860c2caff52752ec78/johnzon-core-1.2.9.jar" sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.apache.johnzon/johnzon-core/1.2.9/d91cffb02a761a266b891e7ce11f3d0062c318e9/johnzon-core-1.2.9-sources.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin/default"/>
+</classpath>
