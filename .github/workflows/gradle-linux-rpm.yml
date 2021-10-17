@@ -23,7 +23,7 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
     - name: Transfer file
-      uses: actions/transfer-file-action
+      uses: actions/transfer-file-action@v1
       id: transfer
       with:
         file-to-transfer: 'README.md'
