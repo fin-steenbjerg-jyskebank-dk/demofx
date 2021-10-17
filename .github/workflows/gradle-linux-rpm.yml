@@ -17,7 +17,20 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
+    - name: Access secrets
+      env:
+        UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
+      run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
+    - name: Transfer file
+      uses: actions/transfer-file-action
+      id: transfer
+      with:
+        file-to-transfer: 'README.md'
+        url-to-transfer-to: 'https://installables.stonemountain.dk/installables/{instId}/downloadables/{downId}'
+        query-param-with-size: 'size'
+    - name: Get the output time
+        run: echo "The time was ${{ steps.transfer.outputs.time }}"
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
