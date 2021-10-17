@@ -30,7 +30,7 @@ jobs:
         url-to-transfer-to: 'https://installables.stonemountain.dk/installables/{instId}/downloadables/{downId}'
         query-param-with-size: 'size'
     - name: Get the output time
-        run: echo "The time was ${{ steps.transfer.outputs.time }}"
+      run: echo "The time was ${{ steps.transfer.outputs.time }}"
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
