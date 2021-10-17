@@ -23,7 +23,7 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
     - name: Transfer file
-      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1
+      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.1
       id: transfer
       with:
         file-to-transfer: 'README.md'
