@@ -48,7 +48,7 @@ public class DemoApplication extends Application {
         log.debug("Primary screen: {}", Screen.getPrimary());
         // DEBUG - end
 
-        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/icons/demo.png")));
+        stage.getIcons().add(new Image(this.getClass().getResourceAsStream("/icons/java_64.png")));
         stage.setTitle("Stonemountain Demo FX applications");
         stage.setScene(scene);
         stage.show();

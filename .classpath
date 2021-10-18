@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry output="bin/main" kind="src" path="src/main/java">
 		<attributes>
 			<attribute name="gradle_scope" value="main"/>
@@ -15,6 +14,7 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="output" path="bin/default"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11/"/>
 	<classpathentry sourcepath="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/17/a732c3f060069942ea4269d8c929ab32f57b3569/javafx-fxml-17-sources.jar" kind="lib" path="/home/steenbjerg/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/17/a6f029f4fab0f01f00a838de1e65e20c6a92f02/javafx-fxml-17-linux.jar">
 		<attributes>

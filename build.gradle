@@ -129,6 +129,8 @@ gluonClient {
 
     resourcesList = [
     	"logback.xml",
+		"icons/.*",
+    	"fxml/.*",    	
     ]
 
     compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
