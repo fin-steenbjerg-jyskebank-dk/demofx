@@ -22,5 +22,20 @@ public class IconHelper {
 			}		
 		}
 	}
+	
+	public static ImageView patchIconPath(ImageView v) {
+		if (v.getImage() != null) {
+			logger.debug("Image Url: {}, {}, {}", v.getImage().getUrl(), v.getFitWidth(), v.getFitHeight());
+			String resourceUrl = "/icons" + v.getImage().getUrl().substring(v.getImage().getUrl().lastIndexOf("/"));
+			logger.debug("Now using: {}", resourceUrl);
+			ImageView v2 = new ImageView(IconHelper.class.getResource(resourceUrl).toString());
+			v2.setFitWidth(v.getFitWidth());
+			v2.setFitHeight(v.getFitHeight());
+			v2.setPreserveRatio(v.isPreserveRatio());
+			return v2;
+		} else {
+			return null;
+		}
+	}
 
 }

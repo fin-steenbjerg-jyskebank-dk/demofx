@@ -5,16 +5,20 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
+import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 
 public class DemoController {
 	private static final String SYSTEM_FAILURE_TITLE = "System Failure";
 	private static final Logger log = LoggerFactory.getLogger(DemoController.class);
 
 	@FXML private Label time;
+	@FXML private BorderPane applicationPane;
 
 	@FXML 
 	void doQuit(ActionEvent event) {
@@ -33,6 +37,11 @@ public class DemoController {
 	@FXML
 	void initialize() {
 		log.debug("initializing");
+		
+		log.trace("Application Pane: {}", applicationPane);
+		log.trace("Application Pane center content: {}", applicationPane.getCenter());
+		ImageView imgView = (ImageView) applicationPane.getCenter();
+		applicationPane.setCenter(IconHelper.patchIconPath(imgView));
 	}
 
 	public void failureOccurred(Throwable e) {
