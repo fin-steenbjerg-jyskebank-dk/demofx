@@ -7,9 +7,12 @@ public class ClientRuntime {
 		// preventing instantiation
 	}
 	
-	public static String getApplicationVersion() {
-		
+	public static String getApplicationVersion() {	
 		return Version.APP_VERSION;
+	}
+	
+	public static String getApplicationBuildTime() {	
+		return Version.APP_BUILD_TIME;
 	}
 	
 	public static String getApplicationLogFolder() {
@@ -23,5 +26,9 @@ public class ClientRuntime {
 			}
 			return tempDir + "logs/demofx";
 		}
+	}
+
+	public static String getApplicationLog() {
+		return getApplicationLogFolder() + "/application.log";
 	}
 }

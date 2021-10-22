@@ -3,7 +3,8 @@ package dk.stonemountain.demo.demofx;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
+import dk.stonemountain.demo.demofx.about.AboutDialog;
+import dk.stonemountain.demo.demofx.about.IssueDialog;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
 import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.application.Platform;
@@ -27,13 +28,14 @@ public class DemoController {
 
 	@FXML
 	void doAbout(ActionEvent event) {
-		StringBuilder contentText = new StringBuilder()
-				.append("You are currently using the Cluster Configurator application for tailoring your use of the Jyske Bank OCP Clusters.")
-				.append("Application log folder: " + ClientRuntime.getApplicationLogFolder() + "\n\n")
-				.append("Fill free to contact fin.steenbjerg@jyskebank.dk or vagt56@jyskebank.dk");
-		DialogHelper.showInformationDialog(time.getScene().getWindow(), "About Cluster Configurator", "You are using version: " + ClientRuntime.getApplicationVersion(), contentText.toString(), "Failed to show about dialog");
+		new AboutDialog(applicationPane.getScene().getWindow()).showAndWait();
 	}
 
+	@FXML
+	void doReportIssue(ActionEvent event) {
+		new IssueDialog(applicationPane.getScene().getWindow()).showAndWait();
+	}
+	
 	@FXML
 	void initialize() {
 		log.debug("initializing");

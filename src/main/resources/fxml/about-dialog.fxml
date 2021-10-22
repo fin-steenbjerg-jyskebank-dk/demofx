@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane accessibleHelp="Open Folder" hgap="5.0" layoutX="147.0" layoutY="110.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+          <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <TextArea prefHeight="260.0" prefWidth="500.0" text="You are currently using the DemoFX application focusing on these features:&#10;* Use of GitHub actions for building the application&#10;* How to develop my own GitHub actions&#10;* How to native compile the application by means og Gluon features&#10;* Showing some JavaFX features - how to implement:&#10;** Dialogs (the about dialog)&#10;** Using host services like opening the system browser and file explorer&#10;&#10;Take a look at the these two projects: &#10;* https://github.com/fin-steenbjerg-jyskebank-dk/demofx&#10;* https://github.com/fin-steenbjerg-jyskebank-dk/transfer-file-action&#10;&#10;Fill free to contact fin.steenbjerg@gmail.com" wrapText="true" GridPane.columnSpan="2147483647" />
+            <Label text="Application Log:" GridPane.rowIndex="3" />
+            <TextField fx:id="log" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <HBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <Button accessibleHelp="Open Log Folder" accessibleText="Open Log Folder" mnemonicParsing="false" onAction="#doShowLogFolder">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/view_16.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <Label text="Application Version:" GridPane.rowIndex="1" />
+            <TextField fx:id="version" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Application Build Time:" GridPane.rowIndex="2" />
+            <TextField fx:id="buildTime" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#doReportIssue" text="Report Issue" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
