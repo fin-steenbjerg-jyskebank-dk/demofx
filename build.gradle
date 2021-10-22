@@ -92,6 +92,7 @@ gluonClient {
 		"javafx.scene.layout.ColumnConstraints",
 		"javafx.scene.layout.GridPane",
 		"javafx.scene.layout.HBox",
+		"javafx.scene.layout.VBox",
 		"javafx.scene.layout.Pane",
 		"javafx.scene.layout.Region",
 		"javafx.scene.layout.RowConstraints",
@@ -100,6 +101,9 @@ gluonClient {
 		
         "dk.stonemountain.demo.demofx.DemoApplication",
         "dk.stonemountain.demo.demofx.DemoController",
+        "dk.stonemountain.demo.demofx.about.AboutDialog",
+        "dk.stonemountain.demo.demofx.about.IssueDialog",
+        "dk.stonemountain.demo.demofx.about.ShowDataDialog",
 
 		// --- JSON DTOs
 		        

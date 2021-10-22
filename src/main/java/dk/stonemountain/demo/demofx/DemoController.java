@@ -28,11 +28,13 @@ public class DemoController {
 
 	@FXML
 	void doAbout(ActionEvent event) {
+		log.trace("Showing about dialog");
 		new AboutDialog(applicationPane.getScene().getWindow()).showAndWait();
 	}
 
 	@FXML
 	void doReportIssue(ActionEvent event) {
+		log.trace("Showing issue dialog");
 		new IssueDialog(applicationPane.getScene().getWindow()).showAndWait();
 	}
 	
