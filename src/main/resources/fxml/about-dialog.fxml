@@ -33,7 +33,7 @@
             <TextField fx:id="log" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <HBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <Button accessibleHelp="Open Log Folder" accessibleText="Open Log Folder" mnemonicParsing="false" onAction="#doShowLogFolder">
+                  <Button fx:id="viewLogButton" accessibleHelp="Open Log Folder" accessibleText="Open Log Folder" mnemonicParsing="false" onAction="#doShowLogFolder">
                      <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                            <image>
