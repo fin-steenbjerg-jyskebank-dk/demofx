@@ -24,14 +24,15 @@
           <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
           <RowConstraints minHeight="10.0" vgrow="NEVER" />
             <RowConstraints minHeight="10.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
             <TextArea prefHeight="260.0" prefWidth="500.0" text="You are currently using the DemoFX application focusing on these features:&#10;* Use of GitHub actions for building the application&#10;* How to develop my own GitHub actions&#10;* How to native compile the application by means og Gluon features&#10;* Showing some JavaFX features - how to implement:&#10;** Dialogs (the about dialog)&#10;** Using host services like opening the system browser and file explorer&#10;&#10;Take a look at the these two projects: &#10;* https://github.com/fin-steenbjerg-jyskebank-dk/demofx&#10;* https://github.com/fin-steenbjerg-jyskebank-dk/transfer-file-action&#10;&#10;Fill free to contact fin.steenbjerg@gmail.com" wrapText="true" GridPane.columnSpan="2147483647" />
-            <Label text="Application Log:" GridPane.rowIndex="3" />
-            <TextField fx:id="log" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <HBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label text="Application Log:" GridPane.rowIndex="4" />
+            <TextField fx:id="log" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <HBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
                   <Button fx:id="viewLogButton" accessibleHelp="Open Log Folder" accessibleText="Open Log Folder" mnemonicParsing="false" onAction="#doShowLogFolder">
                      <graphic>
@@ -46,9 +47,11 @@
             </HBox>
             <Label text="Application Version:" GridPane.rowIndex="1" />
             <TextField fx:id="version" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Application Build Time:" GridPane.rowIndex="2" />
-            <TextField fx:id="buildTime" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#doReportIssue" text="Report Issue" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Application Build Time:" GridPane.rowIndex="3" />
+            <TextField fx:id="buildTime" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#doReportIssue" text="Report Issue" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Application Git SHA:" GridPane.rowIndex="2" />
+            <TextField fx:id="gitSha" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

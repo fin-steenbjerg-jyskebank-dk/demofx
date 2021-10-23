@@ -27,6 +27,7 @@ public class AboutDialog extends Dialog<Void> {
 
 	@FXML TextField log;
 	@FXML TextField version;
+	@FXML TextField gitSha;
 	@FXML TextField buildTime;
 	@FXML private Button viewLogButton;
 
@@ -65,6 +66,7 @@ public class AboutDialog extends Dialog<Void> {
 		
 		log.setText(ClientRuntime.getApplicationLog());
 		version.setText(ClientRuntime.getApplicationVersion());
+		gitSha.setText(ClientRuntime.getApplicationGitSha());
 		buildTime.setText(ClientRuntime.getApplicationBuildTime());
 
 		IconHelper.patchIconPath(viewLogButton);

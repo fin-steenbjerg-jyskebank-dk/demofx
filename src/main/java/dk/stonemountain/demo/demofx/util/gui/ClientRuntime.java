@@ -11,6 +11,10 @@ public class ClientRuntime {
 		return Version.APP_VERSION;
 	}
 	
+	public static String getApplicationGitSha() {	
+		return Version.APP_GIT_SHA;
+	}
+	
 	public static String getApplicationBuildTime() {	
 		return Version.APP_BUILD_TIME;
 	}

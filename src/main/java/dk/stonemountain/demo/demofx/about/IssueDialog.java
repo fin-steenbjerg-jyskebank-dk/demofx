@@ -41,6 +41,7 @@ public class IssueDialog extends Dialog<Void> {
     @FXML private TextField log;
     @FXML private TextField user;
     @FXML private TextField version;
+    @FXML private TextField gitSha;
 	@FXML private Button attachButton;
 	@FXML private Button viewEnvironmentButton;
 	@FXML private Button viewLogButton;
@@ -90,6 +91,7 @@ public class IssueDialog extends Dialog<Void> {
 		
 		log.setText(ClientRuntime.getApplicationLog());
 		version.setText(ClientRuntime.getApplicationVersion());
+		gitSha.setText(ClientRuntime.getApplicationGitSha());
 		buildTime.setText(ClientRuntime.getApplicationBuildTime());
 
 		IconHelper.patchIconPath(attachButton);
