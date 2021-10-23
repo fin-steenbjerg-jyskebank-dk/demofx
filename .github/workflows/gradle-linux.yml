@@ -21,6 +21,9 @@ jobs:
       env:
         UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
       run: echo "Content of secret - $UPLOAD_SECRET"
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF)
     - uses: actions/checkout@v2
     - name: create version
       uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.1
