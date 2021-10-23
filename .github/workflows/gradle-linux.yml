@@ -22,13 +22,12 @@ jobs:
         UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
-    - name: Transfer file
-      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.1
-      id: transfer
+    - name: create version
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.0
+      id: version-imprint
       with:
-        file-to-transfer: 'README.md'
-        url-to-transfer-to: 'https://installables.stonemountain.dk/installables/{instId}/downloadables/{downId}'
-        query-param-with-size: 'size'
+        version: 'README.md'
+        file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: Get the output time
       run: echo "The time was ${{ steps.transfer.outputs.time }}"
     - name: Setup GraalVM environment
@@ -47,6 +46,13 @@ jobs:
         GRAALVM_HOME: ${{ env.JAVA_HOME }} 
     - name: Copy native client to dist
       run: cp build/client/x86_64-linux/${{ env.APP_NAME }} dist
+    - name: Transfer file
+      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.1
+      id: transfer
+      with:
+        file-to-transfer: 'README.md'
+        url-to-transfer-to: 'https://installables.stonemountain.dk/installables/{instId}/downloadables/{downId}'
+        query-param-with-size: 'size'
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
