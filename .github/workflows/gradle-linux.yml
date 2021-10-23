@@ -6,6 +6,7 @@ name: Linux
 on:
   push:
     branches: [ main ]
+    tags:
 
 env:
   APP_NAME: demofx
@@ -21,18 +22,11 @@ jobs:
       env:
         UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
       run: echo "Content of secret - $UPLOAD_SECRET"
-    - name: Test the version
-      id: print_version
-      run: echo $GITHUB_REF
-    - name: Setup the version
-      id: get_version
-      run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
     - uses: actions/checkout@v2
     - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.1
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.2S
       id: version-imprint
       with:
-        version: 'README.md'
         file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: Get the output time
       run: echo "The time was ${{ steps.transfer.outputs.time }}"
