@@ -28,7 +28,7 @@
       </MenuBar>
    </top>
    <bottom>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="time" text="time" HBox.hgrow="ALWAYS" />
          </children>
