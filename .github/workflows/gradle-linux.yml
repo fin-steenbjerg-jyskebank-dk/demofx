@@ -23,7 +23,7 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
     - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.0
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.1
       id: version-imprint
       with:
         version: 'README.md'
