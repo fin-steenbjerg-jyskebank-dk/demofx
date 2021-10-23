@@ -22,9 +22,9 @@ jobs:
         UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
       run: echo "Content of secret - $UPLOAD_SECRET"
     - name: Test the version
-      id: get_version
+      id: print_version
       run: echo $$GITHUB_REF
-    - name: Get the version
+    - name: Setup the version
       id: get_version
       run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
     - uses: actions/checkout@v2
