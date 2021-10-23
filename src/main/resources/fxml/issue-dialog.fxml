@@ -51,7 +51,7 @@
             <TextField fx:id="user" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <ListView fx:id="attachments" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9" GridPane.rowSpan="3" />
             <Label text="Attach Files (screendumps):" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-            <Button mnemonicParsing="false" onAction="#doViewLog" GridPane.columnIndex="3" GridPane.rowIndex="6">
+            <Button fx:id="viewLogButton" mnemonicParsing="false" onAction="#doViewLog" GridPane.columnIndex="3" GridPane.rowIndex="6">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +60,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#doAttach" GridPane.columnIndex="3" GridPane.rowIndex="9">
+            <Button fx:id="attachButton" mnemonicParsing="false" onAction="#doAttach" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,10 +70,10 @@
                </graphic>
             </Button>
             <Label text="Select data to include:" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
-            <CheckBox fx:id="includeLog" mnemonicParsing="false" GridPane.rowIndex="6" />
-            <CheckBox fx:id="includeEnvironment" mnemonicParsing="false" GridPane.rowIndex="7" />
-            <CheckBox fx:id="includeSystemProperties" mnemonicParsing="false" GridPane.rowIndex="8" />
-            <Button mnemonicParsing="false" onAction="#doViewEnvironment" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <CheckBox fx:id="includeLog" mnemonicParsing="false" selected="true" GridPane.rowIndex="6" />
+            <CheckBox fx:id="includeEnvironment" mnemonicParsing="false" selected="true" GridPane.rowIndex="7" />
+            <CheckBox fx:id="includeSystemProperties" mnemonicParsing="false" selected="true" GridPane.rowIndex="8" />
+            <Button fx:id="viewEnvironmentButton" mnemonicParsing="false" onAction="#doViewEnvironment" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -82,7 +82,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" onAction="#doViewSystemProperties" GridPane.columnIndex="3" GridPane.rowIndex="8">
+            <Button fx:id="viewPropertiesButton" mnemonicParsing="false" onAction="#doViewSystemProperties" GridPane.columnIndex="3" GridPane.rowIndex="8">
                <graphic>
                   <ImageView pickOnBounds="true" preserveRatio="true">
                      <image>

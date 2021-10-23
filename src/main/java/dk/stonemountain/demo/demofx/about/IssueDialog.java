@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import dk.stonemountain.demo.demofx.DemoApplication;
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
+import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +41,11 @@ public class IssueDialog extends Dialog<Void> {
     @FXML private TextField log;
     @FXML private TextField user;
     @FXML private TextField version;
-    
+	@FXML private Button attachButton;
+	@FXML private Button viewEnvironmentButton;
+	@FXML private Button viewLogButton;
+	@FXML private Button viewPropertiesButton;
+
     private final Map<String, String> env;
     private final Map<String, String> props = new HashMap<>();
     
@@ -86,7 +91,12 @@ public class IssueDialog extends Dialog<Void> {
 		log.setText(ClientRuntime.getApplicationLog());
 		version.setText(ClientRuntime.getApplicationVersion());
 		buildTime.setText(ClientRuntime.getApplicationBuildTime());
-		 
+
+		IconHelper.patchIconPath(attachButton);
+		IconHelper.patchIconPath(viewEnvironmentButton);
+		IconHelper.patchIconPath(viewLogButton);
+		IconHelper.patchIconPath(viewPropertiesButton);
+
 		setWidth(800);
 		Platform.runLater(() -> okButton.requestFocus());
 	}

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.DemoApplication;
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
+import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +28,7 @@ public class AboutDialog extends Dialog<Void> {
 	@FXML TextField log;
 	@FXML TextField version;
 	@FXML TextField buildTime;
+	@FXML private Button viewLogButton;
 
 	public AboutDialog(Window owner) {
 		Node node;
@@ -64,6 +66,8 @@ public class AboutDialog extends Dialog<Void> {
 		log.setText(ClientRuntime.getApplicationLog());
 		version.setText(ClientRuntime.getApplicationVersion());
 		buildTime.setText(ClientRuntime.getApplicationBuildTime());
+
+		IconHelper.patchIconPath(viewLogButton);
 		 
 		Platform.runLater(() -> okButton.requestFocus());
 	}
