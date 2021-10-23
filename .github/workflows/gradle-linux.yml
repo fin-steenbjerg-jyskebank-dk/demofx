@@ -23,7 +23,7 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - name: Test the version
       id: print_version
-      run: echo $$GITHUB_REF
+      run: echo $GITHUB_REF
     - name: Setup the version
       id: get_version
       run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
