@@ -53,7 +53,7 @@ jobs:
       id: transfer
       with:
         name: ${{ env.PACKAGE_NAME }}
-        file-path: dist/$${{ env.PACKAGE_NAME }}
+        file-path: dist/${{ env.PACKAGE_NAME }}
         version: "${{ steps.version-imprint.output.version }}"
     - name: Upload
       uses: actions/upload-artifact@v2
