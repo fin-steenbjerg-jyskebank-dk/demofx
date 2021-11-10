@@ -53,11 +53,10 @@ jobs:
       id: transfer
       with:
         name: ${{ env.APP_NAME }}
-        file-path: build/${{ env.APP_NAME }}-${{ steps.version-imprint.outputs.version }}-runner.jar
+        file-path: dist/${{ env.APP_NAME }}
         version: "${{ steps.version-imprint.outputs.version }}"
         client: ${{ secrets.ARTIFACT_CLIENT }}
         client-secret: ${{ secrets.ARTIFACT_CLIENT_SECRET }}
-        file-path: dist/${{ env.APP_NAME }}
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
