@@ -24,12 +24,12 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
     - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.3
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.6
       id: version-imprint
       with:
         file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
-    - name: Get the output time
-      run: echo "The time was ${{ steps.transfer.outputs.time }}"
+    - name: Check version output
+      run: echo ${{ steps.version-imprint.outputs.version }}
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
@@ -49,12 +49,15 @@ jobs:
     - name: Copy native client to dist
       run: ls -la dist
     - name: Transfer file
-      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.3
+      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.18
       id: transfer
       with:
-        name: ${{ env.PACKAGE_NAME }}
-        file-path: dist/${{ env.PACKAGE_NAME }}
-        version: "${{ steps.version-imprint.output.version }}"
+        name: ${{ env.APP_NAME }}
+        file-path: build/${{ env.APP_NAME }}-${{ steps.version-imprint.outputs.version }}-runner.jar
+        version: "${{ steps.version-imprint.outputs.version }}"
+        client: ${{ secrets.ARTIFACT_CLIENT }}
+        client-secret: ${{ secrets.ARTIFACT_CLIENT_SECRET }}
+        file-path: dist/${{ env.APP_NAME }}
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
