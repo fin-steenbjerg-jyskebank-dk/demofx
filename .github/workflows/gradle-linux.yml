@@ -46,7 +46,7 @@ jobs:
         GRAALVM_HOME: ${{ env.JAVA_HOME }} 
     - name: Copy native client to dist
       run: cp build/client/x86_64-linux/${{ env.APP_NAME }} dist
-    - name: Copy native client to dist
+    - name: Show content of dist folder
       run: ls -la dist
     - name: Transfer file
       uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.19
