@@ -103,4 +103,3 @@ jobs:
       with:
         name: ${{ steps.build_rpm.outputs.rpm_package_name }}
         path: ${{ steps.build_rpm.outputs.rpm_package_path }}
-        
