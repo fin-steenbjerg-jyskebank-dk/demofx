@@ -55,7 +55,7 @@ mainClassName =  "dk.stonemountain.demo.demofx.Main"
 gluonClient {
     // target = "ios" // uncomment to deploy on iOS
 
-	enableSwRendering = true
+	// enableSwRendering = true
 
     bundlesList = [] //"hellofx.hello"]
 
