@@ -2,7 +2,7 @@ plugins {
   id 'application'
   id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
-  id 'com.gluonhq.client-gradle-plugin' version '0.1.31'
+  id 'com.gluonhq.client-gradle-plugin' version '0.1.42'
 }
 
 ext {
@@ -55,6 +55,8 @@ mainClassName =  "dk.stonemountain.demo.demofx.Main"
 gluonClient {
     // target = "ios" // uncomment to deploy on iOS
 
+	enableSwRendering = false
+	
     bundlesList = [] //"hellofx.hello"]
 
     reflectionList = [
