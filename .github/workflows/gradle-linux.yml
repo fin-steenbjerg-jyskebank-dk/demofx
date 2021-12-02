@@ -16,7 +16,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Access secrets
       env:
@@ -33,7 +33,9 @@ jobs:
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
-        graalvm-version: 21.3.0.java17
+        graalvm: 21.3.0
+        java: java17
+        arch: amd64
     - name: Update apt cache
       run: sudo apt update
     - name: Install libraries
