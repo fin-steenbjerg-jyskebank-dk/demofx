@@ -33,7 +33,7 @@ jobs:
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
-        graalvm-version: 20.3.0.java11
+        graalvm-version: 21.3.0.java17
     - name: Update apt cache
       run: sudo apt update
     - name: Install libraries
