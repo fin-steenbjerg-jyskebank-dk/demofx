@@ -2,7 +2,8 @@ plugins {
   id 'application'
   id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
-  id 'com.gluonhq.client-gradle-plugin' version '0.1.42'
+//  id 'com.gluonhq.client-gradle-plugin' version '1.0.9'
+  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.9'
 }
 
 ext {
@@ -52,10 +53,10 @@ dependencies {
 
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
-gluonClient {
+gluonfx {
     // target = "ios" // uncomment to deploy on iOS
 
-	// enableSwRendering = true
+	enableSwRendering = true
 
     bundlesList = [] //"hellofx.hello"]
 
@@ -142,24 +143,14 @@ gluonClient {
     compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
 }
 
-// 1. Goto https://rpmfusion.org/Configuration, click on "RPM Fusion free for Fedora 32"
-// 2. sudo dnf install alsa-lib-devel ffmpeg-devel freetype-devel glib2-devel gtk3-devel libX11-devel libXtst-devel mesa-libGL-devel pango-devel libstdc++-devel libstdc++-static
-
-// 3. ./gradlew --no-daemon nativeBuild
-
 tasks.nativeCompile.doFirst {
 	def javaHome = System.getenv("JAVA_HOME")
 	def graalvmHome = System.getenv("GRAALVM_HOME")
 	if (!javaHome.equals(graalvmHome)) {
 		println "========================================================"
-		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.3.0/graalvm-ce-java11-linux-amd64-20.3.0.tar.gz"
-		println "=== (or newer)"
-		println "=== And run ./bin/gu install native-image"
+		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.3.0/graalvm-ce-java11-linux-amd64-21.3.0.tar.gz"
 		println "=== Finally make sure GRAALVM_HOME and JAVA_HOME points to the unpacked folder."
 		println "========================================================"
 		throw new Exception("Bad VM");
 	}
 }
-
-task eclipsePropertiesFolderChanged()
-task eclipseGradlePropertiesChanged(dependsOn: "eclipse")
