@@ -43,6 +43,7 @@ jobs:
 #        graalvm: 21.3.0
 #        java: java17
 #        arch: amd64
+    - run: java -version
     - name: Update apt cache
       run: sudo apt update
     - name: Install libraries
