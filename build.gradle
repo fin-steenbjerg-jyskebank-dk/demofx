@@ -33,7 +33,7 @@ group "dk.stonemountain.demo"
 
 javafx {
     version = "17"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.web']
 }
 
 dependencies {
@@ -47,6 +47,7 @@ dependencies {
 	implementation "org.apache.geronimo.specs:geronimo-json_1.1_spec:1.4"
 	implementation "org.apache.johnzon:johnzon-jsonb:1.2.9"
 	
+	implementation "org.openjfx:javafx-base:{javafx.version}"
 	implementation "org.openjfx:javafx-controls:{javafx.version}"
 	implementation "org.openjfx:javafx-fxml:{javafx.version}"
 }

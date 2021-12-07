@@ -8,14 +8,17 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.about.AboutDialog;
 import dk.stonemountain.demo.demofx.about.IssueDialog;
+import dk.stonemountain.demo.demofx.installer.UpdateDialog;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
 import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -28,6 +31,7 @@ public class DemoController {
 
 	@FXML private Label time;
 	@FXML private BorderPane applicationPane;
+	@FXML private Button updateButton;
 
 	final Timeline timeline = new Timeline();
 
@@ -49,6 +53,12 @@ public class DemoController {
 	}
 	
 	@FXML
+    void installNewVersion(ActionEvent event) {
+		log.info("Installing new version: {}", ApplicationContainer.getInstance().getVersion());
+		new UpdateDialog(updateButton.getScene().getWindow()).showAndWait();
+    }
+
+	@FXML
 	void initialize() {
 		log.debug("initializing");
 		
@@ -57,6 +67,16 @@ public class DemoController {
 		ImageView imgView = (ImageView) applicationPane.getCenter();
 		applicationPane.setCenter(IconHelper.patchIconPath(imgView));
 		
+		// Installer stuff
+		updateButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue(), ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty()));
+		updateButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue() ? "New Update Available" : "Newest Version Installed", ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty()));
+		ApplicationContainer.getInstance().getVersion().mustBeUpdatedProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null && newValue.booleanValue()) {
+				// Show dialog
+			}
+		});
+
+		// Start the update of the time field
 		setTime();
 		timeline.setCycleCount(Animation.INDEFINITE);
 //		timeline.setAutoReverse(true);

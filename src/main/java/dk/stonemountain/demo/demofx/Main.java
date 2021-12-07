@@ -7,6 +7,7 @@ public class Main {
 	private static Logger log = LoggerFactory.getLogger(Main.class);
 	
 	public static void main(String[] args) {
+		log.info("Starting up");
 		DemoApplication.main(new String[0]);
 	}
 }
