@@ -5,6 +5,10 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -22,9 +26,10 @@ public class PackageInstaller {
 	private static final Logger log = LoggerFactory.getLogger(PackageInstaller.class);
 
 	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+	private Optional<String> versionDownloaded = Optional.empty();
 
   	public void startInstaller() {
-		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 20, 60, TimeUnit.SECONDS);
+		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 30, 300, TimeUnit.SECONDS);
 		log.info("Installer has started");
 	}
 	
@@ -45,11 +50,20 @@ public class PackageInstaller {
 				VersionInformation info = JsonbHelper.fromJson(body, VersionInformation.class);
 				log.trace("Installer has fetch version nummer: {}", info);
 				Platform.runLater(() -> ApplicationContainer.getInstance().updateVersion(info));
+				
+				if (info.mustBeUpdated && (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
+					try(InputStream is = getNewVersion(info.recommendedSha)) {
+						Path file = Files.createTempFile("demofx-" + info.recommendedSha + "-", "");
+						Files.copy(is, file, StandardCopyOption.REPLACE_EXISTING);
+					}
+					versionDownloaded = Optional.of(info.recommendedVersion);
+					Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(info));
+				}
 			} else {
 				log.error("Failed to get version. Status code {}", statusCode);
 			}
 		} catch (Exception e) {
-			log.error("Communication failure", e);
+			log.error("Version check failed", e);
 		}
 	}
 

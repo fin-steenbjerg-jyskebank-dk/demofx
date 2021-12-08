@@ -5,8 +5,11 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dk.stonemountain.demo.demofx.ApplicationContainer;
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
+import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,9 +61,12 @@ public class UpdateDialog extends Dialog<Void> {
 		Button okButton = (Button) pane.lookupButton(ButtonType.OK);
 		okButton.setGraphic(new ImageView(this.getClass().getResource("/icons/tick_32.png").toString()));
 		okButton.setText("Close");
-
-//		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? authenticationData : null);
 		
+//		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? authenticationData : null);
+
+		installVersionButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().updatedVersionReadyProperty().getValue(), ApplicationContainer.getInstance().updatedVersionReadyProperty()));
+		installVersionButton.textProperty().bind(Bindings.createStringBinding(() -> "Install Version " + ApplicationContainer.getInstance().updatedVersionProperty().getValue(), ApplicationContainer.getInstance().updatedVersionProperty()));
+
 		version.setText(ClientRuntime.getApplicationLog());
 		releaseTime.setText(ClientRuntime.getApplicationVersion());
 		// releaseNote.setcon(ClientRuntime.getApplicationGitSha());
