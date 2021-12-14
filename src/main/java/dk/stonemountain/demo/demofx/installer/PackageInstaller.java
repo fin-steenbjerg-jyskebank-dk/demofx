@@ -25,7 +25,11 @@ import javafx.application.Platform;
 public class PackageInstaller {
 	private static final Logger log = LoggerFactory.getLogger(PackageInstaller.class);
 
-	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1, r -> {
+		Thread t = Executors.defaultThreadFactory().newThread(r);
+		t.setDaemon(true);
+		return t;
+	});
 	private Optional<String> versionDownloaded = Optional.empty();
 
   	public void startInstaller() {

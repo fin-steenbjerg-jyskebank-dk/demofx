@@ -2,8 +2,8 @@ plugins {
   id 'application'
   id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
+  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.10'
 //  id 'com.gluonhq.client-gradle-plugin' version '1.0.9'
-  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.9'
 }
 
 ext {
@@ -11,7 +11,6 @@ ext {
 		slf4j: "1.7.25",
 		logback: "1.2.3",
 	]
-	rpmVersion = version.replaceAll("_.*", "").replace("-", ".").replaceAll("^[TV]", "").replaceAll("0(\\d)", '$1')
 }
 
 repositories {
@@ -32,7 +31,7 @@ sourceSets {
 group "dk.stonemountain.demo"
 
 javafx {
-    version = "17"
+    version = "15.0.1"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.web']
 }
 
@@ -55,11 +54,11 @@ dependencies {
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
 gluonfx {
-    // target = "ios" // uncomment to deploy on iOS
-
-	enableSwRendering = true
-
-    bundlesList = [] //"hellofx.hello"]
+	// enableSwRendering = true
+	javaStaticSdkVersion = "11.0.9"
+	javafxStaticSdkVersion = "15.0.1"
+    
+	bundlesList = [] //"hellofx.hello"]
 
     reflectionList = [
     	// --- Types referenced from .fxml files
@@ -133,6 +132,8 @@ gluonfx {
         "ch.qos.logback.core.util.FileSize",
         
         "java.util.ArrayList",
+		"java.lang.String",
+		"com.sun.glass.ui.CommonDialogs",
     ]
 
     resourcesList = [
@@ -144,14 +145,14 @@ gluonfx {
     compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
 }
 
-tasks.nativeCompile.doFirst {
-	def javaHome = System.getenv("JAVA_HOME")
-	def graalvmHome = System.getenv("GRAALVM_HOME")
-	if (!javaHome.equals(graalvmHome)) {
-		println "========================================================"
-		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.3.0/graalvm-ce-java11-linux-amd64-21.3.0.tar.gz"
-		println "=== Finally make sure GRAALVM_HOME and JAVA_HOME points to the unpacked folder."
-		println "========================================================"
-		throw new Exception("Bad VM");
-	}
-}
+// tasks.nativeCompile.doFirst {
+// 	def javaHome = System.getenv("JAVA_HOME")
+// 	def graalvmHome = System.getenv("GRAALVM_HOME")
+// 	if (!javaHome.equals(graalvmHome)) {
+// 		println "========================================================"
+// 		println "=== You need to download and unpack https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-21.3.0/graalvm-ce-java11-linux-amd64-21.3.0.tar.gz"
+// 		println "=== Finally make sure GRAALVM_HOME and JAVA_HOME points to the unpacked folder."
+// 		println "========================================================"
+// 		throw new Exception("Bad VM");
+// 	}
+// }
