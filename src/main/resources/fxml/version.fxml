@@ -28,6 +28,6 @@
       <Label text="Release Notes:" GridPane.rowIndex="2" />
       <TextField fx:id="version" GridPane.columnIndex="1" />
       <TextField fx:id="releaseTime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" onAction="#installVersion" text="Install new version" GridPane.rowIndex="4" />
+      <Button fx:id="installVersionButton" mnemonicParsing="false" onAction="#installVersion" text="Install new version" GridPane.rowIndex="4" />
    </children>
 </GridPane>

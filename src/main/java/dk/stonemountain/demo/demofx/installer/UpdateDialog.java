@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.ApplicationContainer;
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -20,8 +19,8 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.stage.Window;
 import javafx.scene.web.WebView;
+import javafx.stage.Window;
 
 public class UpdateDialog extends Dialog<Void> {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateDialog.class);
