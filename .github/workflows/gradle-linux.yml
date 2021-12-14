@@ -30,7 +30,10 @@ jobs:
     - name: Setup GraalVM environment
       uses: DeLaGuardo/setup-graalvm@master
       with:
-        graalvm-version: 20.3.0.java11
+        graalvm: 20.3.0
+        java: java11
+        arch: amd64
+    - run: $GRAALVM_HOME/bin/gu --jvm install native-image    
     # - name: Setup Gluon's GraalVM
     #   uses: gluonhq/setup-graalvm@master
     #   env:
