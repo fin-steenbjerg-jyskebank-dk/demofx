@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.web.WebView?>
 
-<GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vgap="5.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" vgap="5.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -18,16 +17,14 @@
     <RowConstraints minHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="10.0" vgrow="NEVER" />
       <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <Label text="New Version Release:" />
+      <Label text="New Version:" />
       <Label GridPane.columnIndex="1" />
       <Label text="Time of Release:" GridPane.rowIndex="1" />
       <WebView fx:id="releaseNote" prefHeight="-1.0" prefWidth="-1.0" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
       <Label text="Release Notes:" GridPane.rowIndex="2" />
       <TextField fx:id="version" GridPane.columnIndex="1" />
       <TextField fx:id="releaseTime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Button fx:id="installVersionButton" mnemonicParsing="false" onAction="#installVersion" text="Install new version" GridPane.rowIndex="4" />
    </children>
 </GridPane>

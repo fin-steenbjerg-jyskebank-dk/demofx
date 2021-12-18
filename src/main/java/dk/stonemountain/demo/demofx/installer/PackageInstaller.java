@@ -1,5 +1,6 @@
 package dk.stonemountain.demo.demofx.installer;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -18,8 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.ApplicationContainer;
 import dk.stonemountain.demo.demofx.Backend;
-import dk.stonemountain.demo.demofx.installer.backend.VersionInformation;
-import dk.stonemountain.demo.demofx.util.jaxrs.JsonbHelper;
+import dk.stonemountain.demo.demofx.util.time.TimeConverter;
 import javafx.application.Platform;
 
 public class PackageInstaller {
@@ -33,42 +33,43 @@ public class PackageInstaller {
 	private Optional<String> versionDownloaded = Optional.empty();
 
   	public void startInstaller() {
-		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 30, 300, TimeUnit.SECONDS);
+		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 10, 300, TimeUnit.SECONDS);
 		log.info("Installer has started");
 	}
 	
 	public void checkInstalledVersion() {
 		Backend backend = ApplicationContainer.getInstance().getCurrentBackend();
+		Downloader downloader = new Downloader(backend.getInstallationPackagesUrl());
 
-		HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(backend.getBffServiceUrl()))
-                .GET()
-                .build();
-
-		try {
-			HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-			var statusCode = response.statusCode();
-			if (statusCode == 200) {
-				var body = response.body();
-				VersionInformation info = JsonbHelper.fromJson(body, VersionInformation.class);
-				log.trace("Installer has fetch version nummer: {}", info);
-				Platform.runLater(() -> ApplicationContainer.getInstance().updateVersion(info));
+		downloader.checkInstalledVersion().ifPresent(info -> {
+			VersionInformation swInfo = map(info);
+			Platform.runLater(() -> ApplicationContainer.getInstance().updateVersion(swInfo));
 				
-				if (info.mustBeUpdated && (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
-					try(InputStream is = getNewVersion(info.recommendedSha)) {
-						Path file = Files.createTempFile("demofx-" + info.recommendedSha + "-", "");
+			if (info.mustBeUpdated && (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
+				downloader.getNewVersion(info.recommendedSha).ifPresent(sw -> {
+					try(InputStream is = sw) {
+						Path file = Files.createTempFile("demofx-", "");
 						Files.copy(is, file, StandardCopyOption.REPLACE_EXISTING);
+						log.debug("File {} ready for installation", file);
+						versionDownloaded = Optional.of(info.recommendedVersion);
+						Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(file));
+					} catch (IOException e) {
+						log.error("Failed to retrieve new sw version", e);
 					}
-					versionDownloaded = Optional.of(info.recommendedVersion);
-					Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(info));
-				}
-			} else {
-				log.error("Failed to get version. Status code {}", statusCode);
+				});
 			}
-		} catch (Exception e) {
-			log.error("Version check failed", e);
-		}
+		});
+	}
+
+	private VersionInformation map(dk.stonemountain.demo.demofx.installer.backend.VersionInformation info) {
+		VersionInformation v = new VersionInformation();
+		v.setMustBeUpdated(info.currentIsWorking);
+		v.setNewSha(info.recommendedSha);
+		v.setNewVersion(info.recommendedVersion);
+		v.setNewerVersionAvailable(info.mustBeUpdated);
+		v.setNewReleaseNote(info.recommendedReleaseNote);
+		v.setNewReleaseTime(TimeConverter.toLocalDateTime(info.recommendedReleaseTime));
+		return v;
 	}
 
 	public InputStream getNewVersion(String sha) {
@@ -93,4 +94,10 @@ public class PackageInstaller {
 		}
 	}
 
+	public void install(Path path) {
+		// find this running instance location
+		// cp this instance to demofx_old
+		// mv newVersion to demofx
+		// restarts
+	}
 }

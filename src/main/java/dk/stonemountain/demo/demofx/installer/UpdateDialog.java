@@ -5,10 +5,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dk.stonemountain.demo.demofx.ApplicationContainer;
 import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
 import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,13 +20,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
 import javafx.stage.Window;
 
-public class UpdateDialog extends Dialog<Void> {
+public class UpdateDialog extends Dialog<Boolean> {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateDialog.class);
 
     @FXML WebView releaseNote;
     @FXML TextField releaseTime;
     @FXML TextField version;
-	@FXML Button installVersionButton;
 
 	public UpdateDialog(Window owner) {
 		Node node;
@@ -48,23 +45,20 @@ public class UpdateDialog extends Dialog<Void> {
 	public void initialize() {
 		logger.trace("Dialog initialize");
 		final DialogPane pane = getDialogPane();
-		pane.getButtonTypes().addAll(ButtonType.OK);
+		pane.getButtonTypes().addAll(ButtonType.CANCEL, ButtonType.OK);
 		pane.setHeaderText("Update DemoFX");
 
 		setResizable(false);
-		setTitle("DemoFX Version Information");
+		setTitle("DemoFX: New version ready");
 		setGraphic(new ImageView(this.getClass().getResource("/icons/install_64.png").toString()));
 		setHeaderText("DemoFX Update");
 		setDialogPane(pane);
 
 		Button okButton = (Button) pane.lookupButton(ButtonType.OK);
-		okButton.setGraphic(new ImageView(this.getClass().getResource("/icons/tick_32.png").toString()));
-		okButton.setText("Close");
+		okButton.setGraphic(new ImageView(this.getClass().getResource("/icons/install_16.png").toString()));
+		okButton.setText("Install");
 		
-//		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? authenticationData : null);
-
-		installVersionButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().updatedVersionReadyProperty().getValue(), ApplicationContainer.getInstance().updatedVersionReadyProperty()));
-		installVersionButton.textProperty().bind(Bindings.createStringBinding(() -> "Install Version " + ApplicationContainer.getInstance().updatedVersionProperty().getValue(), ApplicationContainer.getInstance().updatedVersionProperty()));
+		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? Boolean.TRUE : null);
 
 		version.setText(ClientRuntime.getApplicationLog());
 		releaseTime.setText(ClientRuntime.getApplicationVersion());
