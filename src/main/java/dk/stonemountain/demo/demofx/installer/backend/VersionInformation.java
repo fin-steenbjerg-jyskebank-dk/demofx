@@ -17,4 +17,14 @@ public class VersionInformation {
     public String recommendedReleaseNote;
     @JsonbProperty("recommended-release-time")
     public ZonedDateTime recommendedReleaseTime;
+
+    @Override
+    public String toString() {
+        return "VersionInformation [currentIsWorking=" + currentIsWorking + ", mustBeUpdated=" + mustBeUpdated
+                + ", recommendedReleaseNote=" + recommendedReleaseNote + ", recommendedReleaseTime="
+                + recommendedReleaseTime + ", recommendedSha=" + recommendedSha + ", recommendedVersion="
+                + recommendedVersion + "]";
+    }
+
+
 }

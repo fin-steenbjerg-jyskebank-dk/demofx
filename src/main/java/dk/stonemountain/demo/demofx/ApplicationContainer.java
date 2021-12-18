@@ -19,9 +19,8 @@ public class ApplicationContainer {
 	private static ApplicationContainer instance = new ApplicationContainer();
 
 	private final UserPreferences userPreferences = new UserPreferences();
-	private final VersionInformation version = new VersionInformation();
 	private final BooleanProperty updatedVersionReady = new SimpleBooleanProperty(); 
-	private final StringProperty updatedVersion = new SimpleStringProperty(); 
+	private final VersionInformation version = new VersionInformation();
 	private final ObjectProperty<Path> newSwVersion = new SimpleObjectProperty<>(); 
 	private final PackageInstaller installer = new PackageInstaller();
 	private final Backend currentBackend = Backend.PRODUCTION;
@@ -56,26 +55,19 @@ public class ApplicationContainer {
 		return newSwVersion;
 	}
 	
-	public StringProperty updatedVersionProperty() {
-		return updatedVersion;
-	}
-
 	public BooleanProperty updatedVersionReadyProperty() {
 		return updatedVersionReady;
 	}
 
-	public void updateVersion(VersionInformation info) {
+	public void updatedVersionReady(VersionInformation info, Path file) {
 		version.setMustBeUpdated(info.getMustBeUpdated());
 		version.setNewSha(info.getNewSha());
 		version.setNewVersion(info.getNewVersion());
 		version.setNewerVersionAvailable(info.getNewerVersionAvailable());
 		version.setNewReleaseNote(info.getNewReleaseNote());
 		version.setNewReleaseTime(info.getNewReleaseTime());
-	}
 
-	public void updatedVersionReady(Path file) {
 		updatedVersionReady.set(true);
-		updatedVersion.set(version.getNewVersion());
 		newSwVersion.set(file);
 	}
 }

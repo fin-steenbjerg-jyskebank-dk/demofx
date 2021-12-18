@@ -42,17 +42,19 @@ public class PackageInstaller {
 		Downloader downloader = new Downloader(backend.getInstallationPackagesUrl());
 
 		downloader.checkInstalledVersion().ifPresent(info -> {
+			log.trace("New version info fetched:{}", info);
 			VersionInformation swInfo = map(info);
-			Platform.runLater(() -> ApplicationContainer.getInstance().updateVersion(swInfo));
 				
 			if (info.mustBeUpdated && (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
 				downloader.getNewVersion(info.recommendedSha).ifPresent(sw -> {
+					log.trace("New software ready for download");
 					try(InputStream is = sw) {
 						Path file = Files.createTempFile("demofx-", "");
 						Files.copy(is, file, StandardCopyOption.REPLACE_EXISTING);
 						log.debug("File {} ready for installation", file);
 						versionDownloaded = Optional.of(info.recommendedVersion);
-						Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(file));
+						log.trace("New software downloaded: {}", file);
+						Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(swInfo, file));
 					} catch (IOException e) {
 						log.error("Failed to retrieve new sw version", e);
 					}
@@ -63,10 +65,10 @@ public class PackageInstaller {
 
 	private VersionInformation map(dk.stonemountain.demo.demofx.installer.backend.VersionInformation info) {
 		VersionInformation v = new VersionInformation();
-		v.setMustBeUpdated(info.currentIsWorking);
+		v.setMustBeUpdated(!info.currentIsWorking);
+		v.setNewerVersionAvailable(info.mustBeUpdated);
 		v.setNewSha(info.recommendedSha);
 		v.setNewVersion(info.recommendedVersion);
-		v.setNewerVersionAvailable(info.mustBeUpdated);
 		v.setNewReleaseNote(info.recommendedReleaseNote);
 		v.setNewReleaseTime(TimeConverter.toLocalDateTime(info.recommendedReleaseTime));
 		return v;
@@ -95,6 +97,7 @@ public class PackageInstaller {
 	}
 
 	public void install(Path path) {
+		log.info("Installing {}", path);
 		// find this running instance location
 		// cp this instance to demofx_old
 		// mv newVersion to demofx

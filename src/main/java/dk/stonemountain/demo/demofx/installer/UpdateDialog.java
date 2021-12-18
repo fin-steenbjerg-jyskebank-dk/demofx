@@ -5,9 +5,8 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import dk.stonemountain.demo.demofx.util.gui.ClientRuntime;
+import dk.stonemountain.demo.demofx.ApplicationContainer;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,15 +14,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.web.WebView;
 import javafx.stage.Window;
 
 public class UpdateDialog extends Dialog<Boolean> {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateDialog.class);
 
-    @FXML WebView releaseNote;
+    @FXML TextArea releaseNote;
     @FXML TextField releaseTime;
     @FXML TextField version;
 
@@ -60,17 +59,12 @@ public class UpdateDialog extends Dialog<Boolean> {
 		
 		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? Boolean.TRUE : null);
 
-		version.setText(ClientRuntime.getApplicationLog());
-		releaseTime.setText(ClientRuntime.getApplicationVersion());
-		// releaseNote.setcon(ClientRuntime.getApplicationGitSha());
+		version.setText(ApplicationContainer.getInstance().getVersion().getNewVersion());
+		releaseTime.setText(ApplicationContainer.getInstance().getVersion().getNewSha());
+		releaseNote.setText(ApplicationContainer.getInstance().getVersion().getNewReleaseNote());
 
 		// IconHelper.patchIconPath(viewLogButton);
 		 
 		Platform.runLater(() -> okButton.requestFocus());
-	}
-	
-	@FXML
-    void installVersion(ActionEvent event) {
-
-    }
+	}	
 }
