@@ -27,7 +27,6 @@ jobs:
         file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: Check version output
       run: echo ${{ steps.version-imprint.outputs.version }}
-    - run: $GRAALVM_HOME/bin/gu --jvm install native-image    
     - name: Setup Gluon's GraalVM
       uses: gluonhq/setup-graalvm@master
       env:
@@ -38,6 +37,7 @@ jobs:
 #        graalvm: 21.3.0
 #        java: java17
 #        arch: amd64
+    # - run: $GRAALVM_HOME/bin/gu --jvm install native-image    
     - run: java -version
     - name: Update apt cache
       run: sudo apt update
