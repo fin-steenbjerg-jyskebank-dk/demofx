@@ -10,6 +10,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		log.info("Starting up: {}", List.of(args));
+		log.info("Code source: {}", Main.class.getProtectionDomain().getCodeSource());
 		DemoApplication.main(new String[0]);
 	}
 }

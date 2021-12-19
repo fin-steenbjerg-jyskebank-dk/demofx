@@ -9,6 +9,8 @@ import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -24,6 +26,9 @@ import javafx.application.Platform;
 
 public class PackageInstaller {
 	private static final Logger log = LoggerFactory.getLogger(PackageInstaller.class);
+	private static final Duration DURATION_BETWEEN_CHECKS = Duration.ofSeconds(30);
+
+	private LocalDateTime lastSuccessfullCheck = null;
 
 	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1, r -> {
 		Thread t = Executors.defaultThreadFactory().newThread(r);
@@ -33,11 +38,14 @@ public class PackageInstaller {
 	private Optional<String> versionDownloaded = Optional.empty();
 
   	public void startInstaller() {
-		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 10, 300, TimeUnit.SECONDS);
+		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 10, 60, TimeUnit.SECONDS);
 		log.info("Installer has started");
 	}
 	
 	public void checkInstalledVersion() {
+		if (lastSuccessfullCheck != null && Duration.between(lastSuccessfullCheck, LocalDateTime.now()).compareTo(DURATION_BETWEEN_CHECKS) <= 0) {
+			return;
+		};
 		Backend backend = ApplicationContainer.getInstance().getCurrentBackend();
 		Downloader downloader = new Downloader(backend.getInstallationPackagesUrl());
 
