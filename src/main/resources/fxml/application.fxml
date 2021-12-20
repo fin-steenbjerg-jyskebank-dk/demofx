@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -10,6 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="applicationPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
    <top>
@@ -30,18 +32,27 @@
       </MenuBar>
    </top>
    <bottom>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" style="-fx-background-color: #e4dede; -fx-border-color: gray;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="time" text="time" HBox.hgrow="ALWAYS" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#installNewVersion" text="Update Ready To Be Installed" textFill="#e11313" />
+            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#installNewVersion" text="Update" textFill="#9a2727">
+               <font>
+                  <Font size="11.0" />
+               </font></Button>
          </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+         </padding>
       </HBox>
    </bottom>
    <center>
       <ImageView fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../icons/java_4096.png" />
+            <Image url="@../../../../../demo.git/demofx/src/main/resources/icons/java_4096.png" />
          </image>
       </ImageView>
    </center>

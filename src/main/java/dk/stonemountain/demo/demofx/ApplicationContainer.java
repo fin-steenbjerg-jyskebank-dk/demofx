@@ -11,8 +11,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 
 public class ApplicationContainer {	
 	private static final Logger log = LoggerFactory.getLogger(ApplicationContainer.class);	
@@ -60,14 +58,14 @@ public class ApplicationContainer {
 	}
 
 	public void updatedVersionReady(VersionInformation info, Path file) {
-		version.setMustBeUpdated(info.getMustBeUpdated());
-		version.setNewSha(info.getNewSha());
-		version.setNewVersion(info.getNewVersion());
-		version.setNewerVersionAvailable(info.getNewerVersionAvailable());
-		version.setNewReleaseNote(info.getNewReleaseNote());
-		version.setNewReleaseTime(info.getNewReleaseTime());
-
 		updatedVersionReady.set(true);
 		newSwVersion.set(file);
+
+		version.setNewSha(info.getNewSha());
+		version.setNewVersion(info.getNewVersion());
+		version.setNewReleaseNote(info.getNewReleaseNote());
+		version.setNewerVersionAvailable(info.getNewerVersionAvailable());
+		version.setNewReleaseTime(info.getNewReleaseTime());
+		version.setMustBeUpdated(info.getMustBeUpdated());
 	}
 }

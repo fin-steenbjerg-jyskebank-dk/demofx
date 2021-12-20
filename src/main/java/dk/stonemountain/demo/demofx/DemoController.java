@@ -71,10 +71,10 @@ public class DemoController {
 		
 		// Installer stuff
 		updateButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue(), ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty()));
-		updateButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue() ? "New Update Available" : "Newest Version Installed", ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty()));
+		updateButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue() ? "Update to " + ApplicationContainer.getInstance().getVersion().getNewVersion() : "No Updates", ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty(), ApplicationContainer.getInstance().getVersion().newVersionProperty()));
 		ApplicationContainer.getInstance().getVersion().mustBeUpdatedProperty().addListener((observable, oldValue, newValue) -> {
 			if (newValue != null && newValue.booleanValue()) {
-				// Show dialog
+				installNewVersion(null);
 			}
 		});
 
