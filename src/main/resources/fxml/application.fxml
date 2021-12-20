@@ -32,20 +32,20 @@
       </MenuBar>
    </top>
    <bottom>
-      <HBox alignment="CENTER" style="-fx-background-color: #e4dede; -fx-border-color: gray;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" style="-fx-background-color: gainsboro; -fx-border-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="time" text="time" HBox.hgrow="ALWAYS" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button fx:id="updateButton" mnemonicParsing="false" onAction="#installNewVersion" text="Update" textFill="#9a2727">
                <font>
-                  <Font size="11.0" />
+                  <Font size="10.0" />
                </font></Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <padding>
-            <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </padding>
       </HBox>
    </bottom>
