@@ -28,13 +28,12 @@ public class PackageInstaller {
 	private static final Logger log = LoggerFactory.getLogger(PackageInstaller.class);
 	private static final Duration DURATION_BETWEEN_CHECKS = Duration.ofSeconds(30);
 
-	private LocalDateTime lastSuccessfullCheck = null;
-
 	private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1, r -> {
 		Thread t = Executors.defaultThreadFactory().newThread(r);
 		t.setDaemon(true);
 		return t;
 	});
+	private LocalDateTime lastSuccessfullCheck = null;
 	private Optional<String> versionDownloaded = Optional.empty();
 
   	public void startInstaller() {
@@ -46,6 +45,7 @@ public class PackageInstaller {
 		if (lastSuccessfullCheck != null && Duration.between(lastSuccessfullCheck, LocalDateTime.now()).compareTo(DURATION_BETWEEN_CHECKS) <= 0) {
 			return;
 		};
+
 		Backend backend = ApplicationContainer.getInstance().getCurrentBackend();
 		Downloader downloader = new Downloader(backend.getInstallationPackagesUrl());
 
