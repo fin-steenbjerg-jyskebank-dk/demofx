@@ -102,8 +102,6 @@ gluonfx {
 		"javafx.scene.layout.RowConstraints",
 		"javafx.scene.paint.Color",
 		"javafx.scene.text.Font",
-		
-		"javafx.scene.web.WebView",
 
         "dk.stonemountain.demo.demofx.DemoApplication",
         "dk.stonemountain.demo.demofx.DemoController",

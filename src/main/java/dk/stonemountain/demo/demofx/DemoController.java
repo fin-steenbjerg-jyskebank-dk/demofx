@@ -2,14 +2,12 @@ package dk.stonemountain.demo.demofx;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.about.AboutDialog;
 import dk.stonemountain.demo.demofx.about.IssueDialog;
-import dk.stonemountain.demo.demofx.installer.PackageInstaller;
 import dk.stonemountain.demo.demofx.installer.UpdateDialog;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
 import dk.stonemountain.demo.demofx.util.gui.IconHelper;
