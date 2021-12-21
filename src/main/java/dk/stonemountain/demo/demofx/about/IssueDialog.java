@@ -89,6 +89,7 @@ public class IssueDialog extends Dialog<Void> {
 
 //		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? authenticationData : null);
 		
+		user.setText(ProcessHandle.current().info().user().orElseGet(() -> "unknown"));
 		log.setText(ClientRuntime.getApplicationLog());
 		version.setText(ClientRuntime.getApplicationVersion());
 		gitSha.setText(ClientRuntime.getApplicationGitSha());
