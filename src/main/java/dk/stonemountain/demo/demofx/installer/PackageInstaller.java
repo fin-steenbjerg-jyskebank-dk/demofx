@@ -8,6 +8,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -36,15 +37,17 @@ public class PackageInstaller {
 	private LocalDateTime lastSuccessfullCheck = null;
 	private Optional<String> versionDownloaded = Optional.empty();
 
-  	public void startInstaller() {
+	public void startInstaller() {
 		scheduler.scheduleAtFixedRate(this::checkInstalledVersion, 10, 60, TimeUnit.SECONDS);
 		log.info("Installer has started");
 	}
-	
+
 	public void checkInstalledVersion() {
-		if (lastSuccessfullCheck != null && Duration.between(lastSuccessfullCheck, LocalDateTime.now()).compareTo(DURATION_BETWEEN_CHECKS) <= 0) {
+		if (lastSuccessfullCheck != null && Duration.between(lastSuccessfullCheck, LocalDateTime.now())
+				.compareTo(DURATION_BETWEEN_CHECKS) <= 0) {
 			return;
-		};
+		}
+		;
 
 		Backend backend = ApplicationContainer.getInstance().getCurrentBackend();
 		Downloader downloader = new Downloader(backend.getInstallationPackagesUrl());
@@ -52,11 +55,12 @@ public class PackageInstaller {
 		downloader.checkInstalledVersion().ifPresent(info -> {
 			log.trace("New version info fetched:{}", info);
 			VersionInformation swInfo = map(info);
-				
-			if (info.mustBeUpdated && (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
+
+			if (info.mustBeUpdated && (versionDownloaded.isEmpty()
+					|| !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
 				downloader.getNewVersion(info.recommendedSha).ifPresent(sw -> {
 					log.trace("New software ready for download");
-					try(InputStream is = sw) {
+					try (InputStream is = sw) {
 						Path file = Files.createTempFile("demofx-", "");
 						Files.copy(is, file, StandardCopyOption.REPLACE_EXISTING);
 						log.debug("File {} ready for installation", file);
@@ -86,10 +90,10 @@ public class PackageInstaller {
 		Backend backend = ApplicationContainer.getInstance().getCurrentBackend();
 
 		HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(backend.getBffServiceUrl()))
-                .GET()
-                .build();
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(backend.getBffServiceUrl()))
+				.GET()
+				.build();
 
 		try {
 			HttpResponse<InputStream> response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
@@ -104,11 +108,24 @@ public class PackageInstaller {
 		}
 	}
 
-	public void install(Path path) {
-		log.info("Installing {}", path);
-		// find this running instance location
-		// cp this instance to demofx_old
-		// mv newVersion to demofx
-		// restarts
+	public void install(Path newCommand) {
+		ProcessHandle.current().info().command().ifPresent(cmd -> {
+			try {
+				Path existingCmd = Paths.get(cmd);
+				Path copiedCmd = Paths.get(cmd + "_old");
+				log.info("Installing {} to {} via {}", newCommand, existingCmd, copiedCmd);
+
+				Files.move(existingCmd, copiedCmd, StandardCopyOption.REPLACE_EXISTING);
+				Files.move(newCommand, existingCmd, StandardCopyOption.REPLACE_EXISTING);
+				existingCmd.toFile().setExecutable(true, true);
+				copiedCmd.toFile().delete();
+				newCommand.toFile().delete();
+
+				new ProcessBuilder(existingCmd.toFile().getAbsolutePath()).start();
+  				System.exit(0);
+			} catch (Exception e) {
+				log.error("Failed to install and restart process", e);
+			}
+		});
 	}
 }
