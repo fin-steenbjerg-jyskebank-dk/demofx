@@ -8,23 +8,36 @@ on:
 
 env:
   APP_NAME: demofx
-
+  
 jobs:
   build:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+
+    - name: create build time info
+      id: buildinfo
+      shell: bash
+      run: | 
+        echo "##[set-output name=sha;]$(echo ${GITHUB_SHA})"
+        echo "##[set-output name=version;]$(echo $GITHUB_REF | cut -d / -f 3)"
+        echo "##[set-output name=time;]$(echo $(date))"
+    - name: print buildinfo
+      run: |
+        echo "sha: ${{ steps.buildinfo.outputs.sha }}"
+        echo "version: ${{ steps.buildinfo.outputs.version }}"
+        echo "time: ${{ steps.buildinfo.outputs.time }}"
+    - name: imprint buildinfo
+      run: |
+        sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/jyskebank/ocp/cluster/configurator/Version.java'
+        sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/jyskebank/ocp/cluster/configurator/Version.java'
+        sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/jyskebank/ocp/cluster/configurator/Version.java'
+    - name: print buildinfo in file
+      run: cat 'src/main/java/dk/jyskebank/ocp/cluster/configurator/Version.java'
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
-    - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.6
-      id: version-imprint
-      with:
-        file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
-    - name: Check version output
-      run: echo ${{ steps.version-imprint.outputs.version }}
     - name: Setup Gluon's GraalVM
       uses: gluonhq/setup-graalvm@master
       env:
