@@ -1,0 +1,46 @@
+name: Windows Native
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - '*'
+
+env:
+  APP_NAME: demofx
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Visual Studio shell
+      uses: egor-tensin/vs-shell@v1
+    - name: create version
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.6
+      id: version-imprint
+      with:
+        file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+    - name: Check version output
+      run: echo ${{ steps.version-imprint.outputs.version }}
+    - name: Setup Gluon's GraalVM
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Make dist directory
+      run: mkdir dist
+    - name: Build native with Gradle
+      run: ./gradlew.bat -s build nativeCompile nativeLink
+      env:
+        GRAALVM_HOME: ${{ env.JAVA_HOME }}
+    - run: ls -l build/client/x86_64-windows
+    - name: Copy native client to dist
+      run: cp -r build/client/x86_64-windows/*.exe dist
+    - name: Upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.APP_NAME }}.exe
+        path: dist
+
