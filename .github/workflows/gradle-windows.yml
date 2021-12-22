@@ -29,11 +29,11 @@ jobs:
         echo "time: ${{ steps.buildinfo.outputs.time }}"
     - name: imprint buildinfo
       run: |
-        sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/stonemountain/demo/demofx/configurator/Version.java'
-        sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/stonemountain/demo/demofx/configurator/Version.java'
-        sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/demo/demofx/configurator/Version.java'
+        sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: print buildinfo in file
-      run: cat 'src/main/java/dk/stonemountain/demo/demofx/configurator/Version.java'
+      run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Visual Studio shell
