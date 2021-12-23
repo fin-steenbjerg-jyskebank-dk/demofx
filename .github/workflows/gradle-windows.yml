@@ -34,20 +34,25 @@ jobs:
         sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
+
     - name: Setup Gluon's GraalVM
       uses: gluonhq/setup-graalvm@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Make dist directory
       run: mkdir dist
+
     - name: Build native with Gradle
       run: ./gradlew.bat -s build nativeCompile nativeLink
       env:
         GRAALVM_HOME: ${{ env.JAVA_HOME }}
+        
     - run: ls -l build/client/x86_64-windows
     - name: Copy native client to dist
       run: cp -r build/client/x86_64-windows/*.exe dist
