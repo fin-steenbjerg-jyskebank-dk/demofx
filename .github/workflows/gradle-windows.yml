@@ -40,10 +40,17 @@ jobs:
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
 
-    - name: Setup Gluon's GraalVM
-      uses: gluonhq/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Setup GraalVM environment
+      uses: DeLaGuardo/setup-graalvm@master
+      with:
+        graalvm: nightly
+        personal-token: ${{ secrets.GITHUB_TOKEN }}
+        java: java11
+        arch: amd64
+    # - name: Setup Gluon's GraalVM
+    #   uses: gluonhq/setup-graalvm@master
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Make dist directory
       run: mkdir dist
