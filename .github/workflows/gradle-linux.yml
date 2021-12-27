@@ -39,7 +39,7 @@ jobs:
       with:
         graalvm: nightly
         personal-token: ${{ secrets.GITHUB_TOKEN }}
-        java: java17
+        java: java11
         arch: amd64
     # - run: $GRAALVM_HOME/bin/gu --jvm install native-image    
     - run: java -version
