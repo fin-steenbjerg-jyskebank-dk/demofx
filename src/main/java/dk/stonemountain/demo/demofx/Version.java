@@ -9,5 +9,6 @@ public class Version {
 	public static final String APP_BUILD_TIME = "##BUILD_TIME##";
 	public static final String APP_GIT_SHA = "##SHA##";
 	public static final String APP_PACKAGE = "demofx";
+	public static final String APP_OS = "##OS##";
 }
 

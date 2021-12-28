@@ -32,6 +32,7 @@ jobs:
         sed -i "s/##VERSION##/${{ steps.buildinfo.outputs.version }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
         sed -i "s/##BUILD_TIME##/${{ steps.buildinfo.outputs.time }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
         sed -i "s/##SHA##/${{ steps.buildinfo.outputs.sha }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i "s/##OS##/Windows/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
 

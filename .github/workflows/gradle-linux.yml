@@ -22,10 +22,11 @@ jobs:
       run: echo "Content of secret - $UPLOAD_SECRET"
     - uses: actions/checkout@v2
     - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@v1.6
+      uses: fin-steenbjerg-jyskebank-dk/create-version-action@master
       id: version-imprint
       with:
         file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        os: 'Linux'
     - name: Check version output
       run: echo ${{ steps.version-imprint.outputs.version }}
     # - name: Setup Gluon's GraalVM
