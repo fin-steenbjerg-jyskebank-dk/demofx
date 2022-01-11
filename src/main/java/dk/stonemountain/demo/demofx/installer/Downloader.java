@@ -27,7 +27,7 @@ public class Downloader {
     public Optional<VersionInformation> checkInstalledVersion() {
         Optional<VersionInformation> result = Optional.empty();
 
-        String url = backendUrl + "/" + Version.APP_PACKAGE + "/" + Version.APP_OS + "/" + Version.APP_GIT_SHA.replace("##SHA##", "unknown") + "/version-information";
+        String url = backendUrl + "/" + Version.APP_PACKAGE + "/" + Version.APP_OS.replace("##OS##", "Linux") + "/" + Version.APP_GIT_SHA.replace("##SHA##", "unknown") + "/version-information";
 		log.info("checking for new version from url {}", url);
 		
 		try {

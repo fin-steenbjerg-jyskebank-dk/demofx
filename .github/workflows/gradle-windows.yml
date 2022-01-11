@@ -40,14 +40,20 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
-
-    - name: Setup GraalVM environment
-      uses: DeLaGuardo/setup-graalvm@master
+    - name: Setup Gluon's GraalVM
+      uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        graalvm: nightly
-        personal-token: ${{ secrets.GITHUB_TOKEN }}
-        java: java11
-        arch: amd64
+        graalvm: '22.1.0-dev-20220111_0235'
+    # - name: Setup GraalVM environment
+    #   uses: DeLaGuardo/setup-graalvm@master
+    #   with:
+    #     graalvm: nightly
+    #     personal-token: ${{ secrets.GITHUB_TOKEN }}
+    #     java: java11
+    #     arch: amd64
+    
     # - name: Setup Gluon's GraalVM
     #   uses: gluonhq/setup-graalvm@master
     #   env:

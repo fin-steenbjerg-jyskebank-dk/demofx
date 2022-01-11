@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.ApplicationContainer;
 import dk.stonemountain.demo.demofx.Backend;
+import dk.stonemountain.demo.demofx.Version;
 import dk.stonemountain.demo.demofx.util.time.TimeConverter;
 import javafx.application.Platform;
 
@@ -55,9 +56,9 @@ public class PackageInstaller {
 		downloader.checkInstalledVersion().ifPresent(info -> {
 			log.trace("New version info fetched:{}", info);
 			VersionInformation swInfo = map(info);
+			if (!Version.APP_VERSION.equalsIgnoreCase(info.recommendedVersion) && info.mustBeUpdated 
+				&& (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
 
-			if (info.mustBeUpdated && (versionDownloaded.isEmpty()
-					|| !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
 				downloader.getNewVersion(info.recommendedSha).ifPresent(sw -> {
 					log.trace("New software ready for download");
 					try (InputStream is = sw) {
