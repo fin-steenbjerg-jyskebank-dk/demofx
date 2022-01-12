@@ -29,7 +29,7 @@ jobs:
         os: 'Linux'
     - name: Check version output
       run: echo ${{ steps.version-imprint.outputs.version }}
-    - uses: graalvm/setup-graalvm@master
+    - uses: graalvm/setup-graalvm@main
       with:
         version: 'dev'
         java-version: '11'

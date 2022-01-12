@@ -40,7 +40,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
     - name: Visual Studio shell
       uses: egor-tensin/vs-shell@v1
-    - uses: graalvm/setup-graalvm@master
+    - uses: graalvm/setup-graalvm@main
       with:
         version: 'dev'
         java-version: '11'
