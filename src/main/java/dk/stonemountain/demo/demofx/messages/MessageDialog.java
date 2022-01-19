@@ -61,9 +61,9 @@ public class MessageDialog extends Dialog<Message> {
 		
 		setResultConverter(dialogButton -> dialogButton == ButtonType.OK ? msg : null);
 
-		msgTitle.textProperty().bind(msg.titleProperty());
-		msgAuthor.textProperty().bind(msg.authorProperty());
-		msgContent.textProperty().bind(msg.textProperty());
+		msg.titleProperty().bind(msgTitle.textProperty());
+		msg.authorProperty().bind(msgAuthor.textProperty());
+		msg.textProperty().bind(msgContent.textProperty());
 
 		// IconHelper.patchIconPath(viewLogButton);
 		 
