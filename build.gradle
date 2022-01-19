@@ -3,7 +3,6 @@ plugins {
   id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
   id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.11'
-//  id 'com.gluonhq.client-gradle-plugin' version '1.0.9'
 }
 
 ext {
@@ -110,6 +109,7 @@ gluonfx {
         "dk.stonemountain.demo.demofx.about.ShowDataDialog",
         "dk.stonemountain.demo.demofx.about.ShowDataDialog",
 		"dk.stonemountain.demo.demofx.installer.UpdateDialog",
+		"dk.stonemountain.demo.demofx.messages.MessageDialog",
 
 		// --- JSON DTOs
 		"dk.stonemountain.demo.demofx.installer.backend.VersionInformation",

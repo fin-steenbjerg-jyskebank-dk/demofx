@@ -3,23 +3,23 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="applicationPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
+<BorderPane fx:id="applicationPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#doQuit" text="Close" />
+                  <MenuItem onAction="#doCreateMessage" text="_Create Message" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -50,10 +50,6 @@
       </HBox>
    </bottom>
    <center>
-      <ImageView fitWidth="300.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../../../../../demo.git/demofx/src/main/resources/icons/java_4096.png" />
-         </image>
-      </ImageView>
+      <ListView fx:id="messagesList" focusTraversable="false" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

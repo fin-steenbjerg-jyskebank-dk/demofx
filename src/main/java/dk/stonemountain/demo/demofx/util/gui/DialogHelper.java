@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class DialogHelper {
-	private static final String DEMO_ICON = "/icons/demo.png";
+	private static final String DEMO_ICON = "/icons/message_64.png";
 	private static final Logger logger = LoggerFactory.getLogger(DialogHelper.class);
 	private static final String SYSTEM_FAILURE_MESSAGE = "System Failure. Exception message: ";
 

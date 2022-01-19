@@ -40,7 +40,7 @@ public class DemoApplication extends Application {
         Parent rootNode = loader.load();
 
         log.trace("Showing JFX scene");
-        Scene scene = new Scene(rootNode, 600, 400);
+        Scene scene = new Scene(rootNode, 800, 400);
         
         // DEBUG - start
         Screen.getScreens().stream()

@@ -9,18 +9,22 @@ import org.slf4j.LoggerFactory;
 import dk.stonemountain.demo.demofx.about.AboutDialog;
 import dk.stonemountain.demo.demofx.about.IssueDialog;
 import dk.stonemountain.demo.demofx.installer.UpdateDialog;
+import dk.stonemountain.demo.demofx.messages.Message;
+import dk.stonemountain.demo.demofx.messages.MessageCell;
+import dk.stonemountain.demo.demofx.messages.MessageDialog;
 import dk.stonemountain.demo.demofx.util.gui.DialogHelper;
-import dk.stonemountain.demo.demofx.util.gui.IconHelper;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
@@ -32,8 +36,16 @@ public class DemoController {
 	@FXML private Label time;
 	@FXML private BorderPane applicationPane;
 	@FXML private Button updateButton;
-
+	@FXML private ListView<Message> messagesList;
+	
 	final Timeline timeline = new Timeline();
+	final ObservableList<Message> messages = FXCollections.observableArrayList();
+
+	public DemoController() {
+		messages.add(new Message("Welcome", "Fin Steenbjerg", "You have now entered the era of JavaFX demo world. Feel free to test it out. It is a simple application base on JavaFX, GraalVM and Gluon technology. Test it and send me your opinion."));
+		messages.add(new Message("Welcome Part 2", "Fin Steenbjerg", "The DemoFX application shows minor facilities of JavaFX. Mainly it shows how to build a native GUI application. Within a few hours, you can develope applications. Fast and easy." ));
+		messages.add(new Message("Welcome Part 3", "Fin Steenbjerg", "If there is something you want to talk with me about, just send me an email. My address is fin.steenbjerg@gmail.com" ));
+	}
 
 	@FXML 
 	void doQuit(ActionEvent event) {
@@ -66,8 +78,8 @@ public class DemoController {
 		
 		log.trace("Application Pane: {}", applicationPane);
 		log.trace("Application Pane center content: {}", applicationPane.getCenter());
-		ImageView imgView = (ImageView) applicationPane.getCenter();
-		applicationPane.setCenter(IconHelper.patchIconPath(imgView));
+		// ImageView imgView = (ImageView) applicationPane.getCenter();
+		// applicationPane.setCenter(IconHelper.patchIconPath(imgView));
 		
 		// Installer stuff
 		updateButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().getVersion().getNewerVersionAvailable().booleanValue(), ApplicationContainer.getInstance().getVersion().newerVersionAvailableProperty()));
@@ -78,12 +90,31 @@ public class DemoController {
 			}
 		});
 
+		// Content
+		messagesList.setItems(messages);
+		messagesList.setCellFactory(p -> new MessageCell(this::deleteMessage));
+
 		// Start the update of the time field
 		setTime();
 		timeline.setCycleCount(Animation.INDEFINITE);
 //		timeline.setAutoReverse(true);
 		timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(5), e -> setTime()));
 		timeline.play();
+	}
+
+	@FXML 
+	void doCreateMessage(ActionEvent event) {
+		Message msg = new Message();
+		msg.setPublishingTime(LocalDateTime.now());
+		msg.setUpdatingTime(LocalDateTime.now());
+		msg.setAuthor("Fin Steenbjerg");
+		new MessageDialog(applicationPane.getScene().getWindow(), msg).showAndWait().ifPresent(m -> messages.add(m));
+	}
+
+	private void deleteMessage(Message m) {
+		log.info("Deleting Message {}", m);
+		boolean removed = messages.remove(m);
+		log.info("Message {} deleted {}", m, removed);
 	}
 
 	private void setTime() {
