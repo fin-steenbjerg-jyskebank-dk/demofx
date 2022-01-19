@@ -23,6 +23,7 @@ public class MessageCell extends ListCell<Message> {
     @FXML private TextArea content;
     @FXML private Label title;
     @FXML private Label updated;
+
     private final Node node;
     private Optional<Message> item = Optional.empty();
     private final Consumer<Message> messageDeleteConsumer;
@@ -61,7 +62,7 @@ public class MessageCell extends ListCell<Message> {
     }
 
     @FXML
-    void doDelete(ActionEvent event) {
+    public void doDelete(ActionEvent event) {
         logger.info("Deleting message {}", item);
         DialogHelper.showConfirmationDialog(this.getScene().getWindow(), "Do you really want to delete message with title '" + item.get().getTitle() + "'?", "Could not delete message", () -> deleteMessage(item.get()));
     }
@@ -71,7 +72,7 @@ public class MessageCell extends ListCell<Message> {
     }
 
     @FXML
-    void doView(ActionEvent event) {
+    public void doView(ActionEvent event) {
         logger.info("Viewing message {}", item);
     }
 }

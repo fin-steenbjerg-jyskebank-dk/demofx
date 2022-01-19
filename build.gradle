@@ -110,6 +110,7 @@ gluonfx {
         "dk.stonemountain.demo.demofx.about.ShowDataDialog",
 		"dk.stonemountain.demo.demofx.installer.UpdateDialog",
 		"dk.stonemountain.demo.demofx.messages.MessageDialog",
+		"dk.stonemountain.demo.demofx.messages.MessageCell",
 
 		// --- JSON DTOs
 		"dk.stonemountain.demo.demofx.installer.backend.VersionInformation",
