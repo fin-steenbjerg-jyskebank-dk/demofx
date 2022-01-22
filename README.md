@@ -10,19 +10,19 @@ The code in this repository demonstrates how to build a JavaFX application. I us
 * GraalVM
 * Github workflows and actions
 
-The code is tries to reduce the number of external dependencies to make it simpler to native compile the application. The only dependencies are:
+The code reduces the number of external dependencies to make it simpler to native compile the application. The only dependencies are:
 
 * logback and slf4j for logging -- could be replaced with Java logging but I really like these tools
 * johnzon-jsonb for handling Json serialization
 
-I would have liked to include tooling for CDI but the implementations seems to be too huge (using millions of third party dependencies making native compilation difficult).
+I would have liked to use CDI, but the CDI implementations seem to be too huge (using millions of third party dependencies making native compilation difficult).
 
 ## What is demonstrated
 
 * Use of Java, JavaFX, FXML to create a native application
-* How to automatically update when new versions are released
+* How to automatically update the application when new versions are released
 * Some JavaFx facilities such as panes inside lists
-* Use of Java 11 http client and JsonB for backend communication.
+* Use of Java 11 http client and JsonB for backend communication
 * How to report issues from a client to be backend. An issue reports various information about the native client application such as version information, system properties/environment variables, screenshots, log files, etc.
 
 ## To come
