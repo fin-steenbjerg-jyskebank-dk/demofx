@@ -29,28 +29,18 @@ jobs:
         os: 'Linux'
     - name: Check version output
       run: echo ${{ steps.version-imprint.outputs.version }}
-    - uses: graalvm/setup-graalvm@main
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        version: 'dev'
-        java-version: '11'
-        components: 'native-image'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-    # - name: Setup Gluon's GraalVM
-    #   uses: gluonhq/setup-graalvm@master
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        graalvm: '22.0.0.3-Final'
+        jdk: 'java17'
+    # - uses: graalvm/setup-graalvm@main
     #   with:
-    #     graalvm: '22.1.0-dev-20220111_0235'
-    # - name: Setup GraalVM environment
-    #   uses: DeLaGuardo/setup-graalvm@master
-    #   with:
-    #     graalvm: nightly
-    #     personal-token: ${{ secrets.GITHUB_TOKEN }}
-    #     java: java11
-    #     arch: amd64
-
-
-    # - run: $GRAALVM_HOME/bin/gu --jvm install native-image    
+    #     version: 'dev'
+    #     java-version: '11'
+    #     components: 'native-image'
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
     - run: java -version
     - name: Update apt cache
       run: sudo apt update
