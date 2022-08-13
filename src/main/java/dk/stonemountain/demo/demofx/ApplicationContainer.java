@@ -92,11 +92,11 @@ public class ApplicationContainer {
 		if("message".equals(event.event)) {
 			var m = JsonbHelper.fromJson(event.data, MessageDTO.class);
 			var msg = new Message();
-			msg.setAuthor(m.author);
-			msg.setPublishingTime(m.publishingTime.toLocalDateTime());
-			msg.setUpdatingTime(m.publishingTime.toLocalDateTime());
-			msg.setTitle(m.title);
-			msg.setText(m.content);
+			msg.setAuthor(m.author());
+			msg.setPublishingTime(m.publishingTime().toLocalDateTime());
+			msg.setUpdatingTime(m.publishingTime().toLocalDateTime());
+			msg.setTitle(m.title());
+			msg.setText(m.content());
 			messages.add(msg);
 		}
 	}

@@ -1,10 +1,13 @@
 package dk.stonemountain.demo.demofx.messages;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dk.stonemountain.demo.demofx.events.dto.MessageDTO;
+import dk.stonemountain.demo.demofx.util.jaxrs.JsonbHelper;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,6 +70,9 @@ public class MessageDialog extends Dialog<Message> {
 
 		// IconHelper.patchIconPath(viewLogButton);
 		 
+		var newMsg = new MessageDTO("Fin Steenbjerg", "This is a title", "This is a content", ZonedDateTime.now());
+		logger.info("Test: {}", JsonbHelper.toJson(newMsg));
+
 		Platform.runLater(() -> okButton.requestFocus());
 	}	
 }

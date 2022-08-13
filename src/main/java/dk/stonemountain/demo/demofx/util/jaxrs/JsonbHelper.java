@@ -3,12 +3,12 @@ package dk.stonemountain.demo.demofx.util.jaxrs;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
-import javax.json.bind.JsonbConfig;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
+import jakarta.json.bind.JsonbConfig;
 
 public class JsonbHelper {
 	private static final Logger logger = LoggerFactory.getLogger(JsonbHelper.class);

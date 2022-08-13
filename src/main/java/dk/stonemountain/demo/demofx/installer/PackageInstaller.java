@@ -56,16 +56,16 @@ public class PackageInstaller {
 		downloader.checkInstalledVersion().ifPresent(info -> {
 			log.trace("New version info fetched:{}", info);
 			VersionInformation swInfo = map(info);
-			if (!Version.APP_VERSION.equalsIgnoreCase(info.recommendedVersion) && info.mustBeUpdated 
-				&& (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion))) {
+			if (!Version.APP_VERSION.equalsIgnoreCase(info.recommendedVersion()) && info.mustBeUpdated() 
+				&& (versionDownloaded.isEmpty() || !versionDownloaded.get().equalsIgnoreCase(info.recommendedVersion()))) {
 
-				downloader.getNewVersion(info.recommendedSha).ifPresent(sw -> {
+				downloader.getNewVersion(info.recommendedSha()).ifPresent(sw -> {
 					log.trace("New software ready for download");
 					try (InputStream is = sw) {
 						Path file = Files.createTempFile("demofx-", "");
 						Files.copy(is, file, StandardCopyOption.REPLACE_EXISTING);
 						log.debug("File {} ready for installation", file);
-						versionDownloaded = Optional.of(info.recommendedVersion);
+						versionDownloaded = Optional.of(info.recommendedVersion());
 						log.trace("New software downloaded: {}", file);
 						Platform.runLater(() -> ApplicationContainer.getInstance().updatedVersionReady(swInfo, file));
 					} catch (IOException e) {
@@ -78,12 +78,12 @@ public class PackageInstaller {
 
 	private VersionInformation map(dk.stonemountain.demo.demofx.installer.backend.VersionInformation info) {
 		VersionInformation v = new VersionInformation();
-		v.setMustBeUpdated(!info.currentIsWorking);
-		v.setNewerVersionAvailable(info.mustBeUpdated);
-		v.setNewSha(info.recommendedSha);
-		v.setNewVersion(info.recommendedVersion);
-		v.setNewReleaseNote(info.recommendedReleaseNote);
-		v.setNewReleaseTime(TimeConverter.toLocalDateTime(info.recommendedReleaseTime));
+		v.setMustBeUpdated(!info.currentIsWorking());
+		v.setNewerVersionAvailable(info.mustBeUpdated());
+		v.setNewSha(info.recommendedSha());
+		v.setNewVersion(info.recommendedVersion());
+		v.setNewReleaseNote(info.recommendedReleaseNote());
+		v.setNewReleaseTime(TimeConverter.toLocalDateTime(info.recommendedReleaseTime()));
 		return v;
 	}
 

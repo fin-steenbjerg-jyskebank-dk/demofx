@@ -1,6 +1,5 @@
 plugins {
   id 'application'
-  id 'eclipse'
   id 'org.openjfx.javafxplugin' version '0.0.10'
   id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.12'
 }
@@ -40,10 +39,7 @@ dependencies {
 	implementation "ch.qos.logback:logback-core:${libraryVersions.logback}"
 	implementation "ch.qos.logback:logback-classic:${libraryVersions.logback}"
 
-	implementation "javax.json:javax.json-api:1.1.4"
-	implementation "javax.json.bind:javax.json.bind-api:1.0"
-	implementation "org.apache.geronimo.specs:geronimo-json_1.1_spec:1.4"
-	implementation "org.apache.johnzon:johnzon-jsonb:1.2.9"
+	implementation "org.eclipse:yasson:2.0.4"
 	
 	implementation "org.openjfx:javafx-base:{javafx.version}"
 	implementation "org.openjfx:javafx-controls:{javafx.version}"
@@ -54,8 +50,6 @@ mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
 gluonfx {
 	enableSwRendering = true
-	// javaStaticSdkVersion = "11.0.9"
-	// javafxStaticSdkVersion = "15.0.1"
     
 	bundlesList = [] //"hellofx.hello"]
 

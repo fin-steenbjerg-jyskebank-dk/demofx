@@ -2,12 +2,13 @@ package dk.stonemountain.demo.demofx.events.dto;
 
 import java.time.ZonedDateTime;
 
-import javax.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 
-public class MessageDTO {
-    public String author;
-    public String title;
-    public String content;
-    @JsonbProperty("publishing-time")
-    public ZonedDateTime publishingTime = ZonedDateTime.now();
+public record MessageDTO(String author, String title, String content, @JsonbProperty("publishing-time") ZonedDateTime publishingTime) {
+    @JsonbCreator
+    public static MessageDTO create(String author, String title, String content, @JsonbProperty("publishing-time") ZonedDateTime publishingTime) {
+        return new MessageDTO(author, title, content, publishingTime);
+    }
+
 }

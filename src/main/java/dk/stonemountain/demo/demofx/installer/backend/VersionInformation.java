@@ -2,29 +2,19 @@ package dk.stonemountain.demo.demofx.installer.backend;
 
 import java.time.ZonedDateTime;
 
-import javax.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbCreator;
+import jakarta.json.bind.annotation.JsonbProperty;
 
-public class VersionInformation {
-    @JsonbProperty("current-version-must-be-updated")
-    public Boolean mustBeUpdated;
-    @JsonbProperty("current-version-is-working")
-    public Boolean currentIsWorking;
-    @JsonbProperty("recommended-version")
-    public String recommendedVersion;
-    @JsonbProperty("recommended-sha")
-    public String recommendedSha;
-    @JsonbProperty("recommended-release-note")
-    public String recommendedReleaseNote;
-    @JsonbProperty("recommended-release-time")
-    public ZonedDateTime recommendedReleaseTime;
+public record VersionInformation(Boolean mustBeUpdated, Boolean currentIsWorking, String recommendedVersion, String recommendedSha, String recommendedReleaseNote, ZonedDateTime recommendedReleaseTime) {
 
-    @Override
-    public String toString() {
-        return "VersionInformation [currentIsWorking=" + currentIsWorking + ", mustBeUpdated=" + mustBeUpdated
-                + ", recommendedReleaseNote=" + recommendedReleaseNote + ", recommendedReleaseTime="
-                + recommendedReleaseTime + ", recommendedSha=" + recommendedSha + ", recommendedVersion="
-                + recommendedVersion + "]";
-    }
-
-
+    @JsonbCreator
+    public static VersionInformation create(
+        @JsonbProperty("current-version-must-be-updated") Boolean mustBeUpdated, 
+        @JsonbProperty("current-version-is-working") Boolean currentIsWorking, 
+        @JsonbProperty("recommended-version") String recommendedVersion, 
+        @JsonbProperty("recommended-sha") String recommendedSha, 
+        @JsonbProperty("recommended-release-note") String recommendedReleaseNote, 
+        @JsonbProperty("recommended-release-time") ZonedDateTime recommendedReleaseTime) {
+            return new VersionInformation(mustBeUpdated, currentIsWorking, recommendedVersion, recommendedSha, recommendedReleaseNote, recommendedReleaseTime);
+        }
 }
