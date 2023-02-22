@@ -1,7 +1,17 @@
 package dk.stonemountain.demo.demofx;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import java.net.URI;
+import java.time.LocalDateTime;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpContext;
+import com.sun.net.httpserver.HttpExchange;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -55,5 +65,18 @@ public class DemoApplication extends Application {
         stage.setTitle("Stonemountain Demo FX applications");
         stage.setScene(scene);
         stage.show();
+
+        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 9000), 0);
+        HttpContext context = server.createContext("/authenticate");
+        context.setHandler(DemoApplication::handleRequest);
+        server.start();
+    }
+
+    private static void handleRequest(HttpExchange exchange) throws IOException {
+        String response = "Response created at " + LocalDateTime.now();
+        exchange.sendResponseHeaders(200, response.getBytes().length);
+        try (OutputStream os = exchange.getResponseBody()) {
+            os.write(response.getBytes());
+        }
     }
 }
