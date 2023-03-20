@@ -8,6 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.about.AboutDialog;
 import dk.stonemountain.demo.demofx.about.IssueDialog;
+import dk.stonemountain.demo.demofx.authentication.AccessTokenResponse;
+import dk.stonemountain.demo.demofx.authentication.IdToken;
+import dk.stonemountain.demo.demofx.authentication.TokenExtractor;
+import dk.stonemountain.demo.demofx.authentication.UserDialog;
 import dk.stonemountain.demo.demofx.installer.UpdateDialog;
 import dk.stonemountain.demo.demofx.messages.Message;
 import dk.stonemountain.demo.demofx.messages.MessageCell;
@@ -23,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
@@ -34,12 +39,12 @@ public class DemoController {
 	@FXML private Label time;
 	@FXML private BorderPane applicationPane;
 	@FXML private Button updateButton;
+	@FXML private Button userInfoButton;
 	@FXML private ListView<Message> messagesList;
+	@FXML private MenuItem loginMenuItem;
+	@FXML private MenuItem logoutMenuItem;
 	
 	final Timeline timeline = new Timeline();
-
-	public DemoController() {
-	}
 
 	@FXML
 	void doQuit(ActionEvent event) {
@@ -84,6 +89,11 @@ public class DemoController {
 			}
 		});
 
+		// User
+		userInfoButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue(), ApplicationContainer.getInstance().getUser().getLoggedInProperty()));
+		userInfoButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue() ? ApplicationContainer.getInstance().getUser().getUserId() + "/" + ApplicationContainer.getInstance().getUser().getUserName() : "Not Signed In", ApplicationContainer.getInstance().getUser().getLoggedInProperty(), ApplicationContainer.getInstance().getUser().getUserIdProperty(), ApplicationContainer.getInstance().getUser().getUserNameProperty()));
+
+
 		// Content
 		messagesList.setItems(ApplicationContainer.getInstance().getMessages());
 		messagesList.setCellFactory(p -> new MessageCell(this::deleteMessage));
@@ -119,5 +129,55 @@ public class DemoController {
 		log.error(SYSTEM_FAILURE_TITLE, e);
 		DialogHelper.showErrorDialog(time.getScene().getWindow(), SYSTEM_FAILURE_TITLE, "Failed to fetch clusters", e.getMessage(), "Could not show error dialog");
 		Platform.exit();
+	}
+
+	@FXML
+	void doLogin(ActionEvent event) {
+		try {
+			var container = ApplicationContainer.getInstance();
+			var authUrl = container.getAuthManager().initiateAuthenticationFlow(container.getCurrentBackend(), this::authenticated);
+			DemoApplication.getApplication().getHostServices().showDocument(authUrl);
+		} catch (Exception e) {
+			log.error("Failure showing link", e);
+			DialogHelper.showErrorDialog(updateButton.getScene().getWindow(), "System Failure", "Failure when lauching link", e.getMessage(), "Could not show error dialog");
+		}
+	}
+
+	@FXML
+	void doLogout(ActionEvent event) {
+		var user = ApplicationContainer.getInstance().getUser();
+		user.setAccessToken("");
+		user.setRefreshToken("");
+		user.setUserId("Not Signed In");
+		user.setUserName("Unauthenticated");
+		user.setEmail("Unknown");
+		user.setLoggedIn(false);
+
+		log.debug("Adding user : {}", user);		
+	}
+
+	private void authenticated(AccessTokenResponse response) {
+		log.info("Authenticated: {}", response);
+
+		LocalDateTime accessTokenExpiration = LocalDateTime.now().plusSeconds(response.expiresIn);
+		LocalDateTime refreshTokenExpiration = LocalDateTime.now().plusSeconds(response.refreshExpiresIn);
+		IdToken extract = new TokenExtractor().extract(response.idToken);
+
+		var user = ApplicationContainer.getInstance().getUser();
+		user.setAccessToken(response.token);
+		user.setRefreshToken(response.refreshToken);
+		user.setAccessTokenExpiration(accessTokenExpiration);
+		user.setRefreshTokenExpiration(refreshTokenExpiration);
+		user.setUserId(extract.userId);
+		user.setUserName(extract.userName);
+		user.setEmail(extract.email);
+		user.setLoggedIn(true);
+
+		log.debug("Adding user : {}", user);
+	}
+
+	@FXML
+	void doShowUser(ActionEvent event) {
+		new UserDialog(userInfoButton.getScene().getWindow()).showAndWait();			
 	}
 }

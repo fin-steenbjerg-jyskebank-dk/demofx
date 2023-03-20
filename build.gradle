@@ -111,9 +111,12 @@ gluonfx {
 		"dk.stonemountain.demo.demofx.installer.UpdateDialog",
 		"dk.stonemountain.demo.demofx.messages.MessageDialog",
 		"dk.stonemountain.demo.demofx.messages.MessageCell",
+		"dk.stonemountain.demo.demofx.authentication.UserDialog",
 
 		// --- JSON DTOs
 		"dk.stonemountain.demo.demofx.installer.backend.VersionInformation",
+		"dk.stonemountain.demo.demofx.authentication.IdToken",
+		"dk.stonemountain.demo.demofx.authentication.AccessTokenResponse",
 
         // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
         // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'

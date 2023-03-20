@@ -40,4 +40,13 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 
 * https://github.com/javieraviles/quarkus-github-flow demonstrates how to call an action when tagged.
 * https://github.com/quarkiverse/quarkus-github-app demonstrations github app
+* https://thrysoee.dk/keycloak-authorization-code-login/ nice description of pkce authorization flow
+* https://auth0.com/docs/get-started/authentication-and-authorization-flow/call-your-api-using-the-authorization-code-flow-with-pkce#parameters also nice description of pkce authorization flow
+* https://docs.oracle.com/en/java/javase/17/docs/api/jdk.httpserver/com/sun/net/httpserver/HttpHandler.html the http webserver being used
+* https://auth.stonemountain.dk/realms/demo/.well-known/openid-configuration look up urls on keycloak
+* keycloak referneces:
+** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/common/src/main/java/org/keycloak/common/util/Base64Url.java (special base64 encoding)
+** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/core/src/main/java/org/keycloak/representations/AccessTokenResponse.java access token response
+** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/adapters/oidc/installed/src/main/java/org/keycloak/adapters/installed/KeycloakInstalled.java keycloak adapter pkce handling
+
 

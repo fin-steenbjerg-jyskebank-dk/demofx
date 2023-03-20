@@ -12,16 +12,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="applicationPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
+<BorderPane fx:id="applicationPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#doQuit" text="Close" />
-                  <MenuItem onAction="#doCreateMessage" text="_Create Message" />
+                  <MenuItem onAction="#doCreateMessage" text="_New Message" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="_Authentication">
+              <items>
+                <MenuItem fx:id="loginMenuItem" mnemonicParsing="false" onAction="#doLogin" text="Login" />
+                  <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" onAction="#doLogout" text="Logout" />
+              </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
                   <MenuItem mnemonicParsing="false" onAction="#doReportIssue" text="Report Issue" />
@@ -35,6 +41,12 @@
       <HBox alignment="CENTER" style="-fx-background-color: gainsboro; -fx-border-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="time" text="time" HBox.hgrow="ALWAYS" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button fx:id="userInfoButton" mnemonicParsing="false" onAction="#doShowUser" text="Not Signed In">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
             <Pane HBox.hgrow="ALWAYS" />
             <Button fx:id="updateButton" mnemonicParsing="false" onAction="#installNewVersion" text="Update" textFill="#9a2727">
                <font>

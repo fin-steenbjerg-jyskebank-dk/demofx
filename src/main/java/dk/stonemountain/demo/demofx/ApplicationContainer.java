@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import dk.stonemountain.demo.demofx.authentication.AuthenticationManager;
+import dk.stonemountain.demo.demofx.authentication.User;
 import dk.stonemountain.demo.demofx.events.EventsReceiverService;
 import dk.stonemountain.demo.demofx.events.HttpSseClient;
 import dk.stonemountain.demo.demofx.events.dto.MessageDTO;
@@ -32,6 +34,8 @@ public class ApplicationContainer {
 	private final Backend currentBackend = Backend.PRODUCTION;
 	private final EventsReceiverService eventsReceiver = new EventsReceiverService(this::dispatchEvent, this::handleLostConnection);
 	private final ObservableList<Message> messages = FXCollections.observableArrayList();
+	private final AuthenticationManager authManager = new AuthenticationManager();
+	private final User user = new User();
 
 	public static ApplicationContainer getInstance() {
 		return instance;
@@ -69,6 +73,14 @@ public class ApplicationContainer {
 	
 	public BooleanProperty updatedVersionReadyProperty() {
 		return updatedVersionReady;
+	}
+
+	public AuthenticationManager getAuthManager() {
+		return authManager;
+	}
+
+	public User getUser() {
+		return user;
 	}
 
 	public void updatedVersionReady(VersionInformation info, Path file) {

@@ -65,18 +65,5 @@ public class DemoApplication extends Application {
         stage.setTitle("Stonemountain Demo FX applications");
         stage.setScene(scene);
         stage.show();
-
-        HttpServer server = HttpServer.create(new InetSocketAddress("localhost", 9000), 0);
-        HttpContext context = server.createContext("/authenticate");
-        context.setHandler(DemoApplication::handleRequest);
-        server.start();
-    }
-
-    private static void handleRequest(HttpExchange exchange) throws IOException {
-        String response = "Response created at " + LocalDateTime.now();
-        exchange.sendResponseHeaders(200, response.getBytes().length);
-        try (OutputStream os = exchange.getResponseBody()) {
-            os.write(response.getBytes());
-        }
     }
 }
