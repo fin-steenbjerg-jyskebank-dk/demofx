@@ -159,13 +159,13 @@ public class DemoController {
 	private void authenticated(AccessTokenResponse response) {
 		log.info("Authenticated: {}", response);
 
-		LocalDateTime accessTokenExpiration = LocalDateTime.now().plusSeconds(response.expiresIn);
-		LocalDateTime refreshTokenExpiration = LocalDateTime.now().plusSeconds(response.refreshExpiresIn);
-		IdToken extract = new TokenExtractor().extract(response.idToken);
+		LocalDateTime accessTokenExpiration = LocalDateTime.now().plusSeconds(response.expiresIn());
+		LocalDateTime refreshTokenExpiration = LocalDateTime.now().plusSeconds(response.refreshExpiresIn());
+		IdToken extract = new TokenExtractor().extract(response.idToken());
 
 		var user = ApplicationContainer.getInstance().getUser();
-		user.setAccessToken(response.token);
-		user.setRefreshToken(response.refreshToken);
+		user.setAccessToken(response.token());
+		user.setRefreshToken(response.refreshToken());
 		user.setAccessTokenExpiration(accessTokenExpiration);
 		user.setRefreshTokenExpiration(refreshTokenExpiration);
 		user.setUserId(extract.userId);
