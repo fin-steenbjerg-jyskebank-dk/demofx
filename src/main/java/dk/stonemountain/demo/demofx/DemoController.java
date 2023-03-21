@@ -161,16 +161,17 @@ public class DemoController {
 
 		LocalDateTime accessTokenExpiration = LocalDateTime.now().plusSeconds(response.expiresIn());
 		LocalDateTime refreshTokenExpiration = LocalDateTime.now().plusSeconds(response.refreshExpiresIn());
-		IdToken extract = new TokenExtractor().extract(response.idToken());
+		IdToken idToken = new TokenExtractor().extract(response.idToken());
+		log.info("Id token: {}", idToken);
 
 		var user = ApplicationContainer.getInstance().getUser();
 		user.setAccessToken(response.token());
 		user.setRefreshToken(response.refreshToken());
 		user.setAccessTokenExpiration(accessTokenExpiration);
 		user.setRefreshTokenExpiration(refreshTokenExpiration);
-		user.setUserId(extract.userId);
-		user.setUserName(extract.userName);
-		user.setEmail(extract.email);
+		user.setUserId(idToken.userId());
+		user.setUserName(idToken.userName());
+		user.setEmail(idToken.email());
 		user.setLoggedIn(true);
 
 		log.debug("Adding user : {}", user);

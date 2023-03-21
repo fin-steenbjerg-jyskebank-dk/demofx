@@ -13,11 +13,10 @@ public class TokenExtractor {
     private static Jsonb jsonb;
    
     static {
-        JsonbConfig config = new JsonbConfig()
-            .withPropertyVisibilityStrategy(new PrivateVisibilityStrategy());
-        jsonb = JsonbBuilder.newBuilder().
-            withConfig(config).
-            build();
+        JsonbConfig config = new JsonbConfig();
+        jsonb = JsonbBuilder.newBuilder()
+            .withConfig(config)
+            .build();
     }
    
     public IdToken extract(String tokenValue) {
