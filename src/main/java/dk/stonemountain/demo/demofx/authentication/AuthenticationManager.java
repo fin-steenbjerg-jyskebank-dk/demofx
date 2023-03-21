@@ -88,7 +88,13 @@ public class AuthenticationManager {
 
         webserver.callResponse(exchange, "User authenticated", 200);
 
-        Platform.runLater(() -> loginHandler.accept(token.get()));
+        Platform.runLater(() -> {
+            try {
+                loginHandler.accept(token.get());
+            } catch (Exception e) {
+                logger.error("Failed invoking login handler", e);
+            }
+        });
         stopProcess(authenticationFlowData);
     }
 
