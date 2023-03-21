@@ -20,7 +20,8 @@ public class JsonbHelper {
 	public static String toJson(Object data) {
 		try {
 			String content = "";
-			JsonbConfig config = new JsonbConfig().withPropertyVisibilityStrategy(new PrivateVisibilityStrategy());
+//			JsonbConfig config = new JsonbConfig().withPropertyVisibilityStrategy(new PrivateVisibilityStrategy());
+			JsonbConfig config = new JsonbConfig();
 			try (Jsonb jsonb = JsonbBuilder.create(config)) {
 				content = jsonb.toJson(data);
 			}

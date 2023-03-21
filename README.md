@@ -1,11 +1,12 @@
 # demofx
 The code in this repository demonstrates how to build a JavaFX application. I use the application as a place for testing new facilities. The application is based on the following technologies:
 
-* Java 11
+* Java 17
 * JsonB
-* Server Sent Events
-* JavaFX 17
+* Server Sent Events (not yet)
+* JavaFX 19
 * FXML
+* OIDC by using Keycloak
 * Gluon Gradle plugins
 * GraalVM
 * Github workflows and actions
@@ -15,7 +16,7 @@ The code reduces the number of external dependencies to make it simpler to nativ
 * logback and slf4j for logging -- could be replaced with Java logging but I really like these tools
 * johnzon-jsonb for handling Json serialization
 
-I would have liked to use CDI, but the CDI implementations seem to be too huge (using millions of third party dependencies making native compilation difficult).
+I would have liked to use CDI, but the CDI implementations seem to be too huge (using millions of third party dependencies making native compilation difficult). In general, I am trying to reduce the number of third party libraries in use like java-built-in httpclient (instead of other libraries). I simply need to be in controll of the source in use. 
 
 ## What is demonstrated
 
