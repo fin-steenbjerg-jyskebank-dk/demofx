@@ -181,4 +181,19 @@ public class DemoController {
 	void doShowUser(ActionEvent event) {
 		new UserDialog(userInfoButton.getScene().getWindow()).showAndWait();			
 	}
+
+	@FXML
+	void doSelectDefaultCss(ActionEvent event) {
+		var scene = applicationPane.getScene();
+		log.info("Current stylesheet: {}", scene.getStylesheets());
+		scene.getStylesheets().clear();
+	}
+
+	@FXML
+	void doSelectDarkCss(ActionEvent event) {
+		var scene = applicationPane.getScene();
+		log.info("Current stylesheet: {}", scene.getStylesheets());
+		scene.getStylesheets().clear();
+		scene.getStylesheets().add("dark.css");
+	}
 }

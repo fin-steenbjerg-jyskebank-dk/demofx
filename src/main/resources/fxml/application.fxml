@@ -20,6 +20,12 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#doQuit" text="Close" />
                   <MenuItem onAction="#doCreateMessage" text="_New Message" />
+                  <Menu mnemonicParsing="false" text="CSS">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#doSelectDarkCss" text="Dark" />
+                        <MenuItem mnemonicParsing="false" onAction="#doSelectDefaultCss" text="Default" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="_Authentication">
@@ -38,9 +44,12 @@
       </MenuBar>
    </top>
    <bottom>
-      <HBox alignment="CENTER" style="-fx-background-color: gainsboro; -fx-border-color: lightgrey;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="time" text="time" HBox.hgrow="ALWAYS" />
+            <Label fx:id="time" text="time" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
             <Pane HBox.hgrow="ALWAYS" />
             <Button fx:id="userInfoButton" mnemonicParsing="false" onAction="#doShowUser" text="Not Signed In">
                <font>

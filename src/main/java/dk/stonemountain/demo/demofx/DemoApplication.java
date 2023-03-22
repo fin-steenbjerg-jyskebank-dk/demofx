@@ -1,17 +1,7 @@
 package dk.stonemountain.demo.demofx;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.URI;
-import java.time.LocalDateTime;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpContext;
-import com.sun.net.httpserver.HttpExchange;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -51,6 +41,7 @@ public class DemoApplication extends Application {
 
         log.trace("Showing JFX scene");
         Scene scene = new Scene(rootNode, 800, 400);
+        scene.getStylesheets().add("dark.css");
         
         // DEBUG - start
         Screen.getScreens().stream()
