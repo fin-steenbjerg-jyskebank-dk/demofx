@@ -153,7 +153,7 @@ public class DemoController {
 		user.setEmail("Unknown");
 		user.setLoggedIn(false);
 
-		log.debug("Adding user : {}", user);		
+		log.debug("Adding user : {}", user);
 	}
 
 	private void authenticated(AccessTokenResponse response) {

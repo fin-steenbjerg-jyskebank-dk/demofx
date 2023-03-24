@@ -17,7 +17,7 @@ import javafx.application.Platform;
 
 public class AuthenticationManager {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationManager.class);
-    private static final String CLIENT = "demo";
+    public static final String CLIENT = "demo";
     private static final String REDIRECT_URL_FORMAT = "http://localhost:%d/authenticate";
 
     private final Map<String, AuthenticationFlowData> flowData = new HashMap<>();

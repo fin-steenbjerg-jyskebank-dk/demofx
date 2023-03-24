@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import dk.stonemountain.demo.demofx.authentication.AuthenticationManager;
+import dk.stonemountain.demo.demofx.authentication.TokenRenewer;
 import dk.stonemountain.demo.demofx.authentication.User;
 import dk.stonemountain.demo.demofx.events.EventsReceiverService;
 import dk.stonemountain.demo.demofx.events.HttpSseClient;
@@ -36,6 +37,7 @@ public class ApplicationContainer {
 	private final ObservableList<Message> messages = FXCollections.observableArrayList();
 	private final AuthenticationManager authManager = new AuthenticationManager();
 	private final User user = new User();
+	private final TokenRenewer tokenRenewer = new TokenRenewer();
 
 	public static ApplicationContainer getInstance() {
 		return instance;
@@ -48,6 +50,7 @@ public class ApplicationContainer {
 	public void start() {
 		log.info("Starting application container");
 		installer.startInstaller();
+		tokenRenewer.startReneval();
 		eventsReceiver.start();
 	}
 

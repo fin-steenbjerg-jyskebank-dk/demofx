@@ -28,7 +28,7 @@ public class Downloader {
         Optional<VersionInformation> result = Optional.empty();
 
         String url = backendUrl + "/" + Version.APP_PACKAGE + "/" + Version.APP_OS.replace("##OS##", "Linux") + "/" + Version.APP_GIT_SHA.replace("##SHA##", "unknown") + "/version-information";
-		log.info("checking for new version from url {}", url);
+		log.debug("checking for new version from url {}", url);
 		
 		try {
 			HttpClient client = HttpClient.newBuilder()

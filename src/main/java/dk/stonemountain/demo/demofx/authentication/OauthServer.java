@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 import dk.stonemountain.demo.demofx.util.jaxrs.JsonbHelper;
 
 public class OauthServer {
-    private static final Logger log = LoggerFactory.getLogger(Webserver.class);
+    private static final Logger log = LoggerFactory.getLogger(OauthServer.class);
 	public static final String OIDC_AUTH_URL = "https://auth.stonemountain.dk/realms/demo/protocol/openid-connect/auth";
 	public static final String OAUTH_URL = "https://auth.stonemountain.dk/realms/demo/protocol/openid-connect/token";
 
