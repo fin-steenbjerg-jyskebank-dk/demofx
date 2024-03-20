@@ -52,6 +52,8 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 
 
 ## Graalvm (no gluon stuff)
+see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
+
 ```{script}
 ./gradlew -Pagent run
 ./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image

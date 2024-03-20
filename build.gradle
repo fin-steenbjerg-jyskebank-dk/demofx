@@ -31,7 +31,7 @@ sourceSets {
 group "dk.stonemountain.demo"
 
 javafx {
-    version = "19.0.2.1"
+    version = "21.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.web']
 }
 
