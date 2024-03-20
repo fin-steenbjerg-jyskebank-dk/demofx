@@ -51,3 +51,10 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 ** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/adapters/oidc/installed/src/main/java/org/keycloak/adapters/installed/KeycloakInstalled.java keycloak adapter pkce handling
 
 
+## Graalvm (no gluon stuff)
+```{script}
+./gradlew -Pagent run
+./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
+./gradlew nativeCompile
+build/native/nativeCompile/demofx
+```
