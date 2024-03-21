@@ -51,8 +51,6 @@ jobs:
     - name: Show content of build/native/nativeCompile folder
       run: ls -la build/native/nativeCompile
 
-    - name: Show content of dist folder
-      run: ls -la dist
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
       with:
