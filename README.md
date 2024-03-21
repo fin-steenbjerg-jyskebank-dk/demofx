@@ -1,14 +1,14 @@
 # demofx
 The code in this repository demonstrates how to build a JavaFX application. I use the application as a place for testing new facilities. The application is based on the following technologies:
 
-* Java 17
+* Java 21
 * JsonB
 * Server Sent Events (not yet)
-* JavaFX 19
+* JavaFX 21
 * FXML
 * OIDC by using Keycloak
-* Gluon Gradle plugins
 * GraalVM
+* GraalVM Gradle plugins
 * Github workflows and actions
 
 The code reduces the number of external dependencies to make it simpler to native compile the application. The only dependencies are:
@@ -23,7 +23,7 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 * Use of Java, JavaFX, FXML to create a native application
 * How to automatically update the application when new versions are released
 * Some JavaFx facilities such as panes inside lists
-* Use of Java 11 http client and JsonB for backend communication
+* Use of Java http client and JsonB for backend communication
 * How to report issues from a client to be backend. An issue reports various information about the native client application such as version information, system properties/environment variables, screenshots, log files, etc.
 
 ## To come
@@ -32,6 +32,16 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 * The backend services are implemented in Quarkus (lovely framework). I have not yet published these services but they will be made public.
 * Use of OAuth/OIDC for authentication and authorization. This will come soon with Keycloak as OAuth server.
 * Report exceptions back to the backend services.
+
+## Graalvm for Native Client
+see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
+
+```{script}
+./gradlew -Pagent run
+./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
+./gradlew nativeCompile
+build/native/nativeCompile/demofx
+```
 
 ## Contact
 
@@ -51,12 +61,3 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 ** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/adapters/oidc/installed/src/main/java/org/keycloak/adapters/installed/KeycloakInstalled.java keycloak adapter pkce handling
 
 
-## Graalvm (no gluon stuff)
-see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
-
-```{script}
-./gradlew -Pagent run
-./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
-./gradlew nativeCompile
-build/native/nativeCompile/demofx
-```

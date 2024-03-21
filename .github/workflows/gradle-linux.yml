@@ -1,6 +1,3 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
 name: Linux
 
 on:
@@ -16,57 +13,50 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Access secrets
-      env:
-        UPLOAD_SECRET: ${{ secrets.HOME_UPLOADING_SECRET }}
-      run: echo "Content of secret - $UPLOAD_SECRET"
-    - uses: actions/checkout@v2
-    - name: create version
-      uses: fin-steenbjerg-jyskebank-dk/create-version-action@master
-      id: version-imprint
+    - uses: actions/checkout@v4.1.2
+
+    - name: create build time info
+      id: buildinfo
+      shell: bash
+      run: | 
+        echo "JB_SHA=$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
+        echo "JB_VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
+        echo "JB_TIME=$(echo $(date))" >> $GITHUB_ENV
+    - name: imprint buildinfo
+      run: |
+        sed -i "s/##VERSION##/${{ env.JB_VERSION }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i "s/##BUILD_TIME##/${{ env.JB_TIME }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i "s/##SHA##/${{ env.JB_SHA }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+    - name: print buildinfo in file
+      run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+
+    - uses: graalvm/setup-graalvm@v1
       with:
-        file: 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
-        os: 'Linux'
-    - name: Check version output
-      run: echo ${{ steps.version-imprint.outputs.version }}
-    - uses: gluonhq/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        graalvm: '22.1.0.1-Final'
-        jdk: 'java17'
-    # - uses: graalvm/setup-graalvm@main
-    #   with:
-    #     version: 'dev'
-    #     java-version: '11'
-    #     components: 'native-image'
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: java -version
-    - name: Update apt cache
-      run: sudo apt update
-    - name: Install libraries
-      run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
-    - name: Make dist directory
-      run: mkdir dist
-    - name: Build native with Gradle
-      run: ./gradlew -s build nativeCompile nativeLink
-      env:
-        GRAALVM_HOME: ${{ env.JAVA_HOME }} 
+        java-version: '21'      # See 'Options' section below for all supported versions
+        distribution: 'graalvm' # See 'Options' section below for all available distributions
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Printing GRAALVM Versions
+      run: |
+        echo "GRAALVM_HOME: $GRAALVM_HOME"
+        echo "JAVA_HOME: $JAVA_HOME"
+        java --version
+        native-image --version
+    - name: Build native client
+      run: gradlew nativeCompile
+
+    - name: Show content of build folder
+      run: ls -la build
+    - name: Show content of build/native folder
+      run: ls -la build/native
+    - name: Show content of build/native/nativeCompile folder
+      run: ls -la build/native/nativeCompile
+
     - name: Copy native client to dist
-      run: cp build/gluonfx/x86_64-linux/${{ env.APP_NAME }} dist
+      run: cp build/native/nativeCompile/${{ env.APP_NAME }} dist
     - name: Show content of dist folder
       run: ls -la dist
-    - name: Transfer file
-      uses: fin-steenbjerg-jyskebank-dk/transfer-file-action@v1.19
-      id: transfer
-      with:
-        name: ${{ env.APP_NAME }}
-        file-path: dist/${{ env.APP_NAME }}
-        version: "${{ steps.version-imprint.outputs.version }}"
-        client: ${{ secrets.ARTIFACT_CLIENT }}
-        client-secret: ${{ secrets.ARTIFACT_CLIENT_SECRET }}
     - name: Upload
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4.3.1
       with:
         name: ${{ env.APP_NAME }} 
         path: dist
