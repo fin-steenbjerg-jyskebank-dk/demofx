@@ -36,9 +36,16 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 ## Graalvm for Native Client
 see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
 
+Run this to collect information about classes accessed via reflections and resources needed.  
+
 ```{script}
 ./gradlew -Pagent run
 ./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
+```
+
+Run this for doing the actual native compilation:
+
+```{script}
 ./gradlew nativeCompile
 build/native/nativeCompile/demofx
 ```

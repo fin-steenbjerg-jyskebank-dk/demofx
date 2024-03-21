@@ -71,7 +71,11 @@
   }, {
     "pattern":"\\Qjndi.properties\\E"
   }, {
+    "pattern":"\\Qlogback-test.scmo\\E"
+  }, {
     "pattern":"\\Qlogback-test.xml\\E"
+  }, {
+    "pattern":"\\Qlogback.scmo\\E"
   }, {
     "pattern":"\\Qlogback.xml\\E"
   }, {
@@ -96,6 +100,8 @@
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillPgram_Color.frag\\E"
   }, {
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillPgram_LinearGradient_PAD.frag\\E"
+  }, {
+    "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_Color.frag\\E"
   }, {
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureFirstPassLCD.frag\\E"
   }, {

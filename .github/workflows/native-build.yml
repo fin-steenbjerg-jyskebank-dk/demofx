@@ -46,16 +46,6 @@ jobs:
     - name: Build native client
       run: ./gradlew nativeCompile
 
-    - name: Show content of build folder
-      if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-      run: ls -la build
-    - name: Show content of build/native folder
-      if: matrix.os == 'ubuntu-latest' || matrix.os == 'macos-latest'
-      run: ls -la build/native
-    - name: Show content of build/native/nativeCompile folder
-      shell: bash
-      run: ls -la build/native/nativeCompile
-
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
       with:

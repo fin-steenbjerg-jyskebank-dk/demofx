@@ -22,6 +22,10 @@
   "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"setLevel","parameterTypes":["java.lang.String"] }]
 },
 {
+  "name":"ch.qos.logback.classic.joran.SerializedModelConfigurator",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"ch.qos.logback.classic.pattern.DateConverter",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
@@ -43,6 +47,10 @@
 },
 {
   "name":"ch.qos.logback.classic.pattern.ThreadConverter",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"ch.qos.logback.classic.util.DefaultJoranConfigurator",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -220,6 +228,10 @@
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
 {
+  "name":"com.sun.prism.shader.Solid_Color_Loader",
+  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
+},
+{
   "name":"com.sun.prism.shader.Solid_TextureFirstPassLCD_Loader",
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
@@ -267,13 +279,13 @@
   "name":"dk.stonemountain.demo.demofx.DemoController",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"doAbout","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doCreateMessage","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doLogin","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doReportIssue","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doSelectDefaultCss","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doShowUser","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"initialize","parameterTypes":[] }]
+  "methods":[{"name":"<init>","parameterTypes":[] }, {"name":"doAbout","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doCreateMessage","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doLogin","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doReportIssue","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doShowUser","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"initialize","parameterTypes":[] }]
 },
 {
   "name":"dk.stonemountain.demo.demofx.about.AboutDialog",
   "allDeclaredFields":true,
   "queryAllDeclaredMethods":true,
-  "methods":[{"name":"doReportIssue","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"doShowLogFolder","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"initialize","parameterTypes":[] }]
+  "methods":[{"name":"doShowLogFolder","parameterTypes":["javafx.event.ActionEvent"] }, {"name":"initialize","parameterTypes":[] }]
 },
 {
   "name":"dk.stonemountain.demo.demofx.about.IssueDialog",
@@ -725,9 +737,6 @@
 },
 {
   "name":"jdk.internal.misc.Unsafe"
-},
-{
-  "name":"org.eclipse.swt.internal.gtk.OS"
 },
 {
   "name":"sun.misc.Unsafe",
