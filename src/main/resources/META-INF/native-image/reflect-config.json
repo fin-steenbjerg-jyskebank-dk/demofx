@@ -164,7 +164,11 @@
   "queryAllDeclaredMethods" : true,
   "queryAllPublicMethods" : true,
   "allDeclaredClasses" : true,
-  "allPublicClasses" : true
+  "allPublicClasses" : true,
+  "allPublicFields" : true,
+  "allDeclaredFields" : true,
+  "allDeclaredMethods" : true,
+  "allPublicMethods" : true
 },
 {
   "name":"com.sun.glass.ui.gtk.GtkPlatformFactory",
