@@ -162,6 +162,10 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.glass.ui.win.WinPlatformFactory",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.sun.javafx.font.freetype.FTFactory",
   "methods":[{"name":"getFactory","parameterTypes":[] }]
 },
