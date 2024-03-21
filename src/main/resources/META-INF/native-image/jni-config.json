@@ -6,23 +6,12 @@
   "name":"[Lcom.sun.javafx.font.FontConfigManager$FontConfigFont;"
 },
 {
-  "name":"[Ljava.lang.String;"
-},
-{
   "name":"com.sun.glass.ui.Application",
   "methods":[{"name":"GetApplication","parameterTypes":[] }, {"name":"getName","parameterTypes":[] }, {"name":"reportException","parameterTypes":["java.lang.Throwable"] }]
 },
 {
   "name":"com.sun.glass.ui.Clipboard",
   "methods":[{"name":"contentChanged","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.glass.ui.CommonDialogs",
-  "methods":[{"name":"createFileChooserResult","parameterTypes":["java.lang.String[]","com.sun.glass.ui.CommonDialogs$ExtensionFilter[]","int"] }]
-},
-{
-  "name":"com.sun.glass.ui.CommonDialogs$ExtensionFilter",
-  "methods":[{"name":"extensionsToArray","parameterTypes":[] }, {"name":"getDescription","parameterTypes":[] }]
 },
 {
   "name":"com.sun.glass.ui.Cursor",

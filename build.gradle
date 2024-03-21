@@ -30,7 +30,7 @@ group "dk.stonemountain.demo"
 
 javafx {
     version = "21.0.2"
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.web']
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
 }
 
 
@@ -58,6 +58,10 @@ graalvmNative {
             imageName = "demofx"
             mainClass = "dk.stonemountain.demo.demofx.Main"
             buildArgs.add("-O4")
+            javaLauncher = javaToolchains.launcherFor {
+                languageVersion = JavaLanguageVersion.of(21)
+                vendor = JvmVendorSpec.matching("Oracle Corporation")
+            }
         }
         test {
             buildArgs.add("-O0")

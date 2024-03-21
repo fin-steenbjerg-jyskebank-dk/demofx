@@ -17,19 +17,11 @@
   }, {
     "pattern":"\\QMETA-INF/services/java.nio.channels.spi.SelectorProvider\\E"
   }, {
-    "pattern":"\\QMETA-INF/services/java.nio.charset.spi.CharsetProvider\\E"
-  }, {
     "pattern":"\\QMETA-INF/services/java.time.zone.ZoneRulesProvider\\E"
-  }, {
-    "pattern":"\\QMETA-INF/services/java.util.prefs.PreferencesFactory\\E"
-  }, {
-    "pattern":"\\QMETA-INF/services/javax.xml.parsers.DocumentBuilderFactory\\E"
   }, {
     "pattern":"\\QMETA-INF/services/javax.xml.parsers.SAXParserFactory\\E"
   }, {
     "pattern":"\\QMETA-INF/services/javax.xml.stream.XMLInputFactory\\E"
-  }, {
-    "pattern":"\\QMETA-INF/services/javax.xml.transform.TransformerFactory\\E"
   }, {
     "pattern":"\\QMETA-INF/services/org.eclipse.yasson.spi.JsonbComponentInstanceCreator\\E"
   }, {
@@ -48,8 +40,6 @@
     "pattern":"\\Qfxml/message-cell.fxml\\E"
   }, {
     "pattern":"\\Qfxml/message-dialog.fxml\\E"
-  }, {
-    "pattern":"\\Qfxml/show-map-dialog.fxml\\E"
   }, {
     "pattern":"\\Qfxml/user-dialog.fxml\\E"
   }, {
@@ -87,8 +77,6 @@
   }, {
     "pattern":"java.base:\\Qsun/net/idn/uidna.spp\\E"
   }, {
-    "pattern":"java.xml:\\Qcom/sun/org/apache/xml/internal/serializer/Encodings.properties\\E"
-  }, {
     "pattern":"javafx.base:\\Qcom/sun/javafx/reflect/Trampoline.class\\E"
   }, {
     "pattern":"javafx.controls:\\Qcom/sun/javafx/scene/control/skin/modena/modena.bss\\E"
@@ -101,8 +89,6 @@
   }, {
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/FillPgram_LinearGradient_PAD.frag\\E"
   }, {
-    "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_Color.frag\\E"
-  }, {
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureFirstPassLCD.frag\\E"
   }, {
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Solid_TextureRGB.frag\\E"
@@ -114,8 +100,6 @@
     "pattern":"javafx.graphics:\\Qcom/sun/prism/es2/glsl/Texture_LinearGradient_PAD.frag\\E"
   }, {
     "pattern":"javafx.graphics:\\Qcom/sun/scenario/effect/impl/es2/glsl/LinearConvolveShadow_28.frag\\E"
-  }, {
-    "pattern":"javafx.graphics:\\Qcom/sun/scenario/effect/impl/es2/glsl/LinearConvolveShadow_4.frag\\E"
   }, {
     "pattern":"javafx.graphics:\\Qlibglass.so\\E"
   }, {
@@ -131,9 +115,6 @@
   }]},
   "bundles":[{
     "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle",
-    "locales":["und"]
-  }, {
-    "name":"com.sun.org.apache.xml.internal.serializer.XMLEntities",
     "locales":["und"]
   }, {
     "name":"com/sun/javafx/scene/control/skin/resources/controls",
