@@ -51,12 +51,10 @@ jobs:
     - name: Show content of build/native/nativeCompile folder
       run: ls -la build/native/nativeCompile
 
-    - name: Copy native client to dist
-      run: cp build/native/nativeCompile/${{ env.APP_NAME }} dist
     - name: Show content of dist folder
       run: ls -la dist
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
       with:
-        name: ${{ env.APP_NAME }} 
-        path: dist
+        name: ${{ env.APP_NAME }}
+        path: build/native/nativeCompile
