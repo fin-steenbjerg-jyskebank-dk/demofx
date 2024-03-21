@@ -42,7 +42,7 @@ jobs:
         java --version
         native-image --version
     - name: Build native client
-      run: gradlew nativeCompile
+      run: ./gradlew nativeCompile
 
     - name: Show content of build folder
       run: ls -la build
