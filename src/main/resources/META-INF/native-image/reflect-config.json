@@ -158,6 +158,9 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.glass.ui.win.WinApplication"
+},
+{
   "name":"com.sun.glass.ui.gtk.GtkPlatformFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
