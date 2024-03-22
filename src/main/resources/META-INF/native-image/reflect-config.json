@@ -221,6 +221,14 @@
   "methods":[{"name":"getInstance","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.prism.es2.ES2Pipeline",
+  "methods":[{"name":"getInstance","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.prism.sw.SWPipeline",
+  "methods":[{"name":"getInstance","parameterTypes":[] }]
+},
+{
   "name":"com.sun.prism.es2.X11GLFactory",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
