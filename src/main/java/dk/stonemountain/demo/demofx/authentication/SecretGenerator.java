@@ -1,16 +1,9 @@
 package dk.stonemountain.demo.demofx.authentication;
 
 import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class SecretGenerator {
-    private static final Logger logger = LoggerFactory.getLogger(SecretGenerator.class);
-
     public static final int SECRET_LENGTH_256_BITS = 32;
     public static final int SECRET_LENGTH_384_BITS = 48;
     public static final int SECRET_LENGTH_512_BITS = 64;

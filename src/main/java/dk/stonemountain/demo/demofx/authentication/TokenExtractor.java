@@ -4,7 +4,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.regex.Pattern;
 
-import dk.stonemountain.demo.demofx.util.jaxrs.PrivateVisibilityStrategy;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbConfig;

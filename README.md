@@ -24,13 +24,13 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 * How to automatically update the application when new versions are released
 * Some JavaFx facilities such as panes inside lists
 * Use of Java 11 http client and JsonB for backend communication
+* Use of OAuth/OIDC for authentication and authorization. Keycloak as OAuth server.
 * How to report issues from a client to be backend. An issue reports various information about the native client application such as version information, system properties/environment variables, screenshots, log files, etc.
 
 ## To come
 
 * Server Sent Events for pushing events to the native application
 * The backend services are implemented in Quarkus (lovely framework). I have not yet published these services but they will be made public.
-* Use of OAuth/OIDC for authentication and authorization. This will come soon with Keycloak as OAuth server.
 * Report exceptions back to the backend services.
 
 ## Contact
@@ -52,6 +52,7 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 
 
 ## Graalvm (no gluon stuff)
+
 see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
 
 ```{script}

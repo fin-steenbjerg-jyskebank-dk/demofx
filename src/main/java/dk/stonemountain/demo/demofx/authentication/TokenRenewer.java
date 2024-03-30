@@ -1,6 +1,5 @@
 package dk.stonemountain.demo.demofx.authentication;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.Executors;

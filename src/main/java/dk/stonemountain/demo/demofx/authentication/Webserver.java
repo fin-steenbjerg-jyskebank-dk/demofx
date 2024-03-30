@@ -3,7 +3,6 @@ package dk.stonemountain.demo.demofx.authentication;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
