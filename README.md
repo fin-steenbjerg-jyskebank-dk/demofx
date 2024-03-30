@@ -1,14 +1,14 @@
 # demofx
 The code in this repository demonstrates how to build a JavaFX application. I use the application as a place for testing new facilities. The application is based on the following technologies:
 
-* Java 17
+* Java 21
 * JsonB
 * Server Sent Events (not yet)
-* JavaFX 19
+* JavaFX 21
 * FXML
 * OIDC by using Keycloak
-* Gluon Gradle plugins
 * GraalVM
+* GraalVM Gradle plugins
 * Github workflows and actions
 
 The code reduces the number of external dependencies to make it simpler to native compile the application. The only dependencies are:
@@ -32,6 +32,23 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 * Server Sent Events for pushing events to the native application
 * The backend services are implemented in Quarkus (lovely framework). I have not yet published these services but they will be made public.
 * Report exceptions back to the backend services.
+
+## Graalvm for Native Client
+see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
+
+Run this to collect information about classes accessed via reflections and resources needed.  
+
+```{script}
+./gradlew -Pagent run
+./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
+```
+
+Run this for doing the actual native compilation:
+
+```{script}
+./gradlew nativeCompile
+build/native/nativeCompile/demofx
+```
 
 ## Contact
 

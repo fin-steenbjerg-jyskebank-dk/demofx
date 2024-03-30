@@ -1,0 +1,53 @@
+name: Linux
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - '*'
+
+env:
+  APP_NAME: demofx
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+    - uses: actions/checkout@v4.1.2
+
+    - name: create build time info
+      shell: bash
+      run: | 
+        echo "JB_SHA=$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
+        echo "JB_VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
+        echo "JB_TIME=$(echo $(date))" >> $GITHUB_ENV
+    - name: imprint buildinfo
+      run: |
+        sed -i'' -e "s/##VERSION##/${{ env.JB_VERSION }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i'' -e "s/##BUILD_TIME##/${{ env.JB_TIME }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+        sed -i'' -e "s/##SHA##/${{ env.JB_SHA }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+    - name: print buildinfo in file
+      run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+
+    - uses: graalvm/setup-graalvm@v1
+      with:
+        java-version: '21'
+        distribution: 'graalvm'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Printing GRAALVM Versions
+      run: |
+        echo "GRAALVM_HOME: $GRAALVM_HOME"
+        echo "JAVA_HOME: $JAVA_HOME"
+        java --version
+        native-image --version
+    - name: Build native client
+      run: ./gradlew nativeCompile
+
+    - name: Upload
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: ${{ env.APP_NAME }}-${{ matrix.os }}
+        path: build/native/nativeCompile
