@@ -90,9 +90,7 @@ public class DemoController {
 		});
 
 		// User
-		userInfoButton.disableProperty().bind(Bindings.createBooleanBinding(() -> !ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue(), ApplicationContainer.getInstance().getUser().getLoggedInProperty()));
-		userInfoButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue() ? ApplicationContainer.getInstance().getUser().getUserId() + "/" + ApplicationContainer.getInstance().getUser().getUserName() : "Not Signed In", ApplicationContainer.getInstance().getUser().getLoggedInProperty(), ApplicationContainer.getInstance().getUser().getUserIdProperty(), ApplicationContainer.getInstance().getUser().getUserNameProperty()));
-
+		userInfoButton.textProperty().bind(Bindings.createStringBinding(() -> ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue() ? ApplicationContainer.getInstance().getUser().getUserId() + "/" + ApplicationContainer.getInstance().getUser().getUserName() : "Sign In", ApplicationContainer.getInstance().getUser().getLoggedInProperty(), ApplicationContainer.getInstance().getUser().getUserIdProperty(), ApplicationContainer.getInstance().getUser().getUserNameProperty()));
 
 		// Content
 		messagesList.setItems(ApplicationContainer.getInstance().getMessages());
@@ -179,7 +177,13 @@ public class DemoController {
 
 	@FXML
 	void doShowUser(ActionEvent event) {
-		new UserDialog(userInfoButton.getScene().getWindow()).showAndWait();			
+		if (!ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue()) {
+			doLogin(event);
+		}
+
+		if (ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue()) {
+			new UserDialog(userInfoButton.getScene().getWindow()).showAndWait();
+		}
 	}
 
 	@FXML

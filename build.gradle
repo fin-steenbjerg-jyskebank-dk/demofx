@@ -45,9 +45,6 @@ dependencies {
 	implementation "org.openjfx:javafx-base:{javafx.version}"
 	implementation "org.openjfx:javafx-controls:{javafx.version}"
 	implementation "org.openjfx:javafx-fxml:{javafx.version}"
-
-	compileOnly 'com.sun.net.httpserver:http:20070405'
-	// implementation "com.sun.net:httpserver:"
 }
 
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
