@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="applicationPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
+<BorderPane fx:id="applicationPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.stonemountain.demo.demofx.DemoController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -51,7 +51,7 @@
                   <Font size="10.0" />
                </font></Label>
             <Pane HBox.hgrow="ALWAYS" />
-            <Button fx:id="userInfoButton" mnemonicParsing="false" onAction="#doShowUser" text="Not Signed In">
+            <Button fx:id="userInfoButton" mnemonicParsing="false" onAction="#doShowUser" text="Sign In">
                <font>
                   <Font size="10.0" />
                </font>
