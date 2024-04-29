@@ -15,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -68,6 +69,7 @@ public class DialogHelper {
 			alert.getDialogPane().setMinWidth(900);
 			alert.getDialogPane().setMinHeight(300);
 			alert.initOwner(owner);
+			alert.initModality(Modality.APPLICATION_MODAL);
 			
 			((Stage) alert.getDialogPane().getScene().getWindow()).getIcons().add(new Image(DialogHelper.class.getResource(DEMO_ICON).toString()));
 			alert.showAndWait();

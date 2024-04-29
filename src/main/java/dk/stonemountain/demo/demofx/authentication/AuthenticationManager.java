@@ -1,6 +1,7 @@
 package dk.stonemountain.demo.demofx.authentication;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -68,13 +69,13 @@ public class AuthenticationManager {
         var code = parser.getQueryParameter(OauthConstants.CODE);
         var state = parser.getQueryParameter(OauthConstants.STATE);
         if (!code.isPresent() || !state.isPresent()) {
-            webserver.callResponse(exchange, "Bad request received", 400);
+            webserver.callResponse(exchange, "text/plain", "Bad request received", 400);
             return;
         }
 
         var data = getFlowData(state.get());
         if (!data.isPresent()) {
-            webserver.callResponse(exchange, "Authentication process not found", 404);
+            webserver.callResponse(exchange, "text/plain", "Authentication process not found", 404);
             return;
         }
 
@@ -82,11 +83,19 @@ public class AuthenticationManager {
         authenticationFlowData.code = code.get();
         var token = oauthServer.getTokenFromCode(authenticationFlowData);
         if (!token.isPresent()) {
-            webserver.callResponse(exchange, "Token was not granted", 412);
+            webserver.callResponse(exchange, "text/plain", "Token was not granted", 412);
             return;
         }
 
-        webserver.callResponse(exchange, "User authenticated", 200);
+        StringBuilder sb = new StringBuilder()
+            .append("<html>")
+            .append("<body>")
+            .append("<h1>Authentication successful at " + LocalDateTime.now() + "</h1>")
+            .append("<a href=\"demo://test-from-auth-page\">Go to application</a>")
+            .append("</body>")
+            .append("</html>");
+
+        webserver.callResponse(exchange, "text/html", sb.toString(), 200);
 
         Platform.runLater(() -> {
             try {

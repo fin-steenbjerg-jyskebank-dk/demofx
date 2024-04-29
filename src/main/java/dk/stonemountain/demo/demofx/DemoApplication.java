@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 public class DemoApplication extends Application {
     private static final Logger log = LoggerFactory.getLogger(DemoApplication.class);
     private static DemoApplication mainApp = null;
+    private static Stage mainStage = null;
     
     public static DemoApplication getApplication() {
     	return mainApp;
@@ -34,7 +35,8 @@ public class DemoApplication extends Application {
     	log.info("Application is starting up");
     	DemoApplication.mainApp = this; // NOSONAR
     	log.trace("JFX start");
-        
+        mainStage = stage;
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/application.fxml"));
         Parent rootNode = loader.load();
@@ -47,6 +49,7 @@ public class DemoApplication extends Application {
         Screen.getScreens().stream()
         	.forEach(s -> log.debug("screen: {}", s.getVisualBounds()));
         log.debug("Primary screen: {}", Screen.getPrimary());
+
         // DEBUG - end
 
         ApplicationContainer.getInstance().start();
@@ -56,5 +59,6 @@ public class DemoApplication extends Application {
         stage.setTitle("Stonemountain Demo FX applications");
         stage.setScene(scene);
         stage.show();
+
     }
 }

@@ -173,8 +173,10 @@ public class DemoController {
 		user.setLoggedIn(true);
 
 		log.debug("Adding user : {}", user);
-	}
 
+		DialogHelper.showInformationDialog(userInfoButton.getScene().getWindow(), "Authenticated", "Authentication successful", "You have successfully authenticated. You can now use the application", "Failed");
+	}
+	
 	@FXML
 	void doShowUser(ActionEvent event) {
 		if (!ApplicationContainer.getInstance().getUser().getLoggedIn().booleanValue()) {

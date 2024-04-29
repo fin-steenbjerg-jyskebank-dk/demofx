@@ -50,6 +50,11 @@ dependencies {
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
 graalvmNative {
+    metadataCopy {
+            inputTaskNames.add("run")
+            outputDirectories.add("src/main/resources/META-INF/native-image")
+            mergeWithExisting = true
+        }
     binaries {
         main {
             imageName = "demofx"

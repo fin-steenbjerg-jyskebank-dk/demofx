@@ -3,6 +3,9 @@
   "name":"[Lcom.sun.glass.ui.Screen;"
 },
 {
+  "name":"[Lcom.sun.javafx.font.FontConfigManager$FontConfigFont;"
+},
+{
   "name":"[Ljava.lang.String;"
 },
 {
@@ -46,7 +49,7 @@
 },
 {
   "name":"com.sun.glass.ui.Window",
-  "fields":[{"name":"ptr"}],  
+  "fields":[{"name":"ptr"}],
   "methods":[{"name":"isEnabled","parameterTypes":[] }, {"name":"notifyClose","parameterTypes":[] }, {"name":"notifyDelegatePtr","parameterTypes":["long"] }, {"name":"notifyDestroy","parameterTypes":[] }, {"name":"notifyFocus","parameterTypes":["int"] }, {"name":"notifyFocusDisabled","parameterTypes":[] }, {"name":"notifyFocusUngrab","parameterTypes":[] }, {"name":"notifyLevelChanged","parameterTypes":["int"] }, {"name":"notifyMove","parameterTypes":["int","int"] }, {"name":"notifyMoveToAnotherScreen","parameterTypes":["com.sun.glass.ui.Screen"] }, {"name":"notifyResize","parameterTypes":["int","int","int"] }, {"name":"notifyScaleChanged","parameterTypes":["float","float","float","float"] }]
 },
 {
@@ -66,12 +69,54 @@
   "methods":[{"name":"notifyStateChanged","parameterTypes":["int"] }]
 },
 {
+  "name":"com.sun.glass.ui.win.WinApplication"
+},
+{
+  "name":"com.sun.glass.ui.win.WinDnDClipboard",
+  "methods":[{"name":"getInstance","parameterTypes":[] }, {"name":"setDragButton","parameterTypes":["int"] }]
+},
+{
+  "name":"com.sun.glass.ui.win.WinGestureSupport",
+  "methods":[{"name":"gesturePerformed","parameterTypes":["com.sun.glass.ui.View","int","boolean","boolean","int","int","int","int","float","float","float","float","float","float","float"] }, {"name":"inertiaGestureFinished","parameterTypes":["com.sun.glass.ui.View"] }, {"name":"notifyBeginTouchEvent","parameterTypes":["com.sun.glass.ui.View","int","boolean","int"] }, {"name":"notifyEndTouchEvent","parameterTypes":["com.sun.glass.ui.View"] }, {"name":"notifyNextTouchEvent","parameterTypes":["com.sun.glass.ui.View","int","long","int","int","int","int"] }]
+},
+{
+  "name":"com.sun.glass.ui.win.WinPixels"
+},
+{
+  "name":"com.sun.glass.ui.win.WinSystemClipboard",
+  "fields":[{"name":"ptr"}],
+  "methods":[{"name":"fosSerialize","parameterTypes":["java.lang.String","long"] }]
+},
+{
+  "name":"com.sun.glass.ui.win.WinView",
+  "methods":[{"name":"notifyResize","parameterTypes":["int","int"] }]
+},
+{
+  "name":"com.sun.glass.ui.win.WinWindow",
+  "methods":[{"name":"notifyMoving","parameterTypes":["int","int","int","int","float","float","int","int","int","int","int","int","int"] }, {"name":"notifyResize","parameterTypes":["int","int","int"] }]
+},
+{
   "name":"com.sun.javafx.font.FontConfigManager$FcCompFont",
   "fields":[{"name":"allFonts"}, {"name":"fcName"}, {"name":"firstFont"}]
 },
 {
   "name":"com.sun.javafx.font.FontConfigManager$FontConfigFont",
   "fields":[{"name":"familyName"}, {"name":"fontFile"}, {"name":"fullName"}, {"name":"styleStr"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_METRICS",
+  "fields":[{"name":"advanceHeight"}, {"name":"advanceWidth"}, {"name":"bottomSideBearing"}, {"name":"leftSideBearing"}, {"name":"rightSideBearing"}, {"name":"topSideBearing"}, {"name":"verticalOriginY"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_RUN",
+  "fields":[{"name":"advanceOffset"}, {"name":"ascenderOffset"}, {"name":"bidiLevel"}, {"name":"fontEmSize"}, {"name":"fontFace"}, {"name":"glyphAdvances"}, {"name":"glyphIndices"}, {"name":"isSideways"}],
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.javafx.font.directwrite.RECT",
+  "fields":[{"name":"bottom"}, {"name":"left"}, {"name":"right"}, {"name":"top"}],
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -88,12 +133,20 @@
   "fields":[{"name":"height"}, {"name":"horiAdvance"}, {"name":"horiBearingX"}, {"name":"horiBearingY"}, {"name":"vertAdvance"}, {"name":"vertBearingX"}, {"name":"vertBearingY"}, {"name":"width"}]
 },
 {
+  "name":"com.sun.prism.impl.PrismSettings",
+  "fields":[{"name":"disableD3D9Ex"}, {"name":"forceGPU"}, {"name":"isVsyncEnabled"}, {"name":"verbose"}]
+},
+{
   "name":"dk.stonemountain.demo.demofx.Main",
   "methods":[{"name":"main","parameterTypes":["java.lang.String[]"] }]
 },
 {
   "name":"java.lang.Boolean",
   "methods":[{"name":"getBoolean","parameterTypes":["java.lang.String"] }]
+},
+{
+  "name":"java.lang.Class",
+  "methods":[{"name":"forName","parameterTypes":["java.lang.String","boolean","java.lang.ClassLoader"] }]
 },
 {
   "name":"java.lang.Iterable",
@@ -134,62 +187,5 @@
 {
   "name":"java.util.Set",
   "methods":[{"name":"add","parameterTypes":["java.lang.Object"] }, {"name":"size","parameterTypes":[] }, {"name":"toArray","parameterTypes":["java.lang.Object[]"] }]
-},
-{
-  "name":"com.sun.glass.ui.win.WinApplication"
-},
-{
-  "name":"com.sun.glass.ui.win.WinDnDClipboard",
-  "methods":[{"name":"getInstance","parameterTypes":[] }, {"name":"setDragButton","parameterTypes":["int"] }]
-},
-{
-  "name":"com.sun.glass.ui.win.WinGestureSupport",
-  "methods":[{"name":"gesturePerformed","parameterTypes":["com.sun.glass.ui.View","int","boolean","boolean","int","int","int","int","float","float","float","float","float","float","float"] }, {"name":"inertiaGestureFinished","parameterTypes":["com.sun.glass.ui.View"] }, {"name":"notifyBeginTouchEvent","parameterTypes":["com.sun.glass.ui.View","int","boolean","int"] }, {"name":"notifyEndTouchEvent","parameterTypes":["com.sun.glass.ui.View"] }, {"name":"notifyNextTouchEvent","parameterTypes":["com.sun.glass.ui.View","int","long","int","int","int","int"] }]
-},
-{
-  "name":"com.sun.glass.ui.win.WinPixels"
-},
-{
-  "name":"com.sun.glass.ui.win.WinSystemClipboard",
-  "fields":[{"name":"ptr"}],
-  "methods":[{"name":"fosSerialize","parameterTypes":["java.lang.String","long"] }]
-},
-{
-  "name":"com.sun.glass.ui.win.WinView",
-  "methods":[{"name":"notifyResize","parameterTypes":["int","int"] }]
-},
-{
-  "name":"com.sun.glass.ui.win.WinWindow",
-  "methods":[{"name":"notifyMoving","parameterTypes":["int","int","int","int","float","float","int","int","int","int","int","int","int"] }, {"name":"notifyResize","parameterTypes":["int","int","int"] }]
-},
-{
-  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_METRICS",
-  "fields":[{"name":"advanceHeight"}, {"name":"advanceWidth"}, {"name":"bottomSideBearing"}, {"name":"leftSideBearing"}, {"name":"rightSideBearing"}, {"name":"topSideBearing"}, {"name":"verticalOriginY"}],
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.javafx.font.directwrite.DWRITE_GLYPH_RUN",
-  "fields":[{"name":"advanceOffset"}, {"name":"ascenderOffset"}, {"name":"bidiLevel"}, {"name":"fontEmSize"}, {"name":"fontFace"}, {"name":"glyphAdvances"}, {"name":"glyphIndices"}, {"name":"isSideways"}],
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.javafx.font.directwrite.RECT",
-  "fields":[{"name":"bottom"}, {"name":"left"}, {"name":"right"}, {"name":"top"}],
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.prism.impl.PrismSettings",
-  "fields":[{"name":"disableD3D9Ex"}, {"name":"forceGPU"}, {"name":"isVsyncEnabled"}, {"name":"verbose"}]
-},
-{
-  "name":"java.lang.Class",
-  "methods":[{"name":"forName","parameterTypes":["java.lang.String","boolean","java.lang.ClassLoader"] }]
-},
-{
-  "name":"java.lang.Runnable",
-  "methods":[{"name":"run","parameterTypes":[] }]
-},
-{
-  "name":"java.lang.String"
 }
 ]

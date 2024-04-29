@@ -58,11 +58,11 @@ public class Webserver {
         }
     }
 
-    public void callResponse(HttpExchange exchange, String message, int statusCode) {
-        String response = "Authentication request handled at " + LocalDateTime.now() + "\n\n" + message;
+    public void callResponse(HttpExchange exchange, String contentType, String message, int statusCode) {
+        exchange.getResponseHeaders().add("Content-Type", contentType);
         try (OutputStream os = exchange.getResponseBody()) {
-            exchange.sendResponseHeaders(statusCode, response.getBytes().length);
-            os.write(response.getBytes());
+            exchange.sendResponseHeaders(statusCode, message.getBytes().length);
+            os.write(message.getBytes());
         } catch (IOException e) {
             log.error("Failed to response callback", e);
         }
