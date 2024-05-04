@@ -6,8 +6,9 @@ plugins {
 
 ext {
 	libraryVersions = [
-		slf4j: "2.0.12",
-		logback: "1.5.3",
+		slf4j: "2.0.13",
+		logback: "1.5.6",
+        yasson: "3.0.3",
 	]
 }
 
@@ -29,7 +30,7 @@ sourceSets {
 group "dk.stonemountain.demo"
 
 javafx {
-    version = "21.0.2"
+    version = "22.0.1"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
 }
 
@@ -40,7 +41,7 @@ dependencies {
 	implementation "ch.qos.logback:logback-core:${libraryVersions.logback}"
 	implementation "ch.qos.logback:logback-classic:${libraryVersions.logback}"
 
-	implementation "org.eclipse:yasson:3.0.3"
+	implementation "org.eclipse:yasson:${libraryVersions.yasson}"
 	
 	implementation "org.openjfx:javafx-base:{javafx.version}"
 	implementation "org.openjfx:javafx-controls:{javafx.version}"
@@ -61,7 +62,7 @@ graalvmNative {
             mainClass = "dk.stonemountain.demo.demofx.Main"
             buildArgs.add("-O4")
             javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(21)
+                languageVersion = JavaLanguageVersion.of(22)
                 vendor = JvmVendorSpec.matching("Oracle Corporation")
             }
         }

@@ -34,7 +34,7 @@ jobs:
 
     - uses: graalvm/setup-graalvm@v1
       with:
-        java-version: '21'
+        java-version: '22'
         distribution: 'graalvm'
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Printing GRAALVM Versions
