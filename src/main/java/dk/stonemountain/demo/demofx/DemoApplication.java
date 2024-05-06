@@ -12,10 +12,9 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class DemoApplication extends Application {
+public class DemoApplication extends Application { // NOSONAR
     private static final Logger log = LoggerFactory.getLogger(DemoApplication.class);
     private static DemoApplication mainApp = null;
-    private static Stage mainStage = null;
     
     public static DemoApplication getApplication() {
     	return mainApp;
@@ -35,7 +34,6 @@ public class DemoApplication extends Application {
     	log.info("Application is starting up");
     	DemoApplication.mainApp = this; // NOSONAR
     	log.trace("JFX start");
-        mainStage = stage;
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/fxml/application.fxml"));
