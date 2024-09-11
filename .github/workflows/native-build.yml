@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # os: [ubuntu-latest, windows-latest, macos-latest]
-        os: [macos-latest]
+        os: [macos-13]
         include:
           # - os: ubuntu-24.04
           #   architecture: x86_64-linux
@@ -23,12 +23,12 @@ jobs:
           # - os: windows-latest          
           #   architecture: x86_64-windows
           #   executeable-extension: .exe
-          - os: macos-latest
-            architecture: aarch64-darwin
+          # - os: macos-latest
+          #   architecture: aarch64-darwin
+          #   executeable-extension: 
+          - os: macos-13
+            architecture: x86_64-darwin
             executeable-extension: 
-          # - os: macos-13
-            # architecture: x86_64-darwin
-            # executeable-extension: 
 
     steps:
     - uses: actions/checkout@v4.1.2
@@ -60,7 +60,8 @@ jobs:
       with:
         graalvm: 'latest'
         jdk: 'java23'
-        arch: 'aarch64'
+        # arch: 'aarch64'
+        arch: 'x86_64'
 
     - if: matrix.os == 'ubuntu-24.04'
       name: Install libraries
