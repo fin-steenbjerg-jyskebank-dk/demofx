@@ -26,9 +26,12 @@ jobs:
           # - os: macos-latest
           #   architecture: aarch64-darwin
           #   executeable-extension: 
-          - os: macos-13
-            architecture: x86_64-darwin
+          - os: macos-13-arm64
+            architecture: aarch64-darwin
             executeable-extension: 
+          # - os: macos-13
+          #   architecture: x86_64-darwin
+          #   executeable-extension: 
 
     steps:
     - uses: actions/checkout@v4.1.2
