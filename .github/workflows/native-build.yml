@@ -58,7 +58,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        graalvm: '22.1.0.1-Final'
+        graalvm: 'latest'
         jdk: 'java23'
 
     - if: matrix.os == 'ubuntu-24.04'
