@@ -48,7 +48,7 @@ jobs:
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
 
-    - uses: graalvm/setup-graalvm@v1
+    - uses: graalvm/setup-graalvm@2f25c0caae5b220866f732832d5e3e29ff493338
       with:
         java-version: '22'
         distribution: 'graalvm'
