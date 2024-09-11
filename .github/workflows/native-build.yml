@@ -48,11 +48,18 @@ jobs:
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
 
-    - uses: graalvm/setup-graalvm@2f25c0caae5b220866f732832d5e3e29ff493338
+    # - uses: graalvm/setup-graalvm@2f25c0caae5b220866f732832d5e3e29ff493338
+    #   with:
+    #     java-version: '22'
+    #     distribution: 'graalvm'
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: gluonhq/setup-graalvm@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        java-version: '22'
-        distribution: 'graalvm'
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        graalvm: '22.1.0.1-Final'
+        jdk: 'java23'
 
     - if: matrix.os == 'ubuntu-24.04'
       name: Install libraries
