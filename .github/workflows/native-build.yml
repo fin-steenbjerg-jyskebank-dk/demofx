@@ -17,12 +17,12 @@ jobs:
         # os: [ubuntu-latest, windows-latest, macos-latest]
         os: [macos-13]
         include:
-          # - os: ubuntu-24.04
-          #   architecture: x86_64-linux
-          #   executeable-extension: 
-          # - os: windows-latest          
-          #   architecture: x86_64-windows
-          #   executeable-extension: .exe
+          - os: ubuntu-24.04
+            architecture: x86_64-linux
+            executeable-extension: 
+          - os: windows-latest          
+            architecture: x86_64-windows
+            executeable-extension: .exe
           # - os: macos-latest
           #   architecture: aarch64-darwin
           #   executeable-extension: 
