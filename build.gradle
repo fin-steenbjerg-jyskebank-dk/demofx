@@ -30,10 +30,20 @@ sourceSets {
 
 group "dk.stonemountain.demo"
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 javafx {
-    version = "22.0.1"
+    version = "21.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
 }
+
+// javafx {
+//     version = "22.0.1"
+//     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
+// }
 
 
 dependencies {
@@ -51,33 +61,40 @@ dependencies {
 
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
-graalvmNative {
-    metadataCopy {
-            inputTaskNames.add("run")
-            outputDirectories.add("src/main/resources/META-INF/native-image")
-            mergeWithExisting = true
-        }
-    binaries {
-        main {
-            imageName = "demofx"
-            mainClass = "dk.stonemountain.demo.demofx.Main"
-            buildArgs.add("-O4")
-            javaLauncher = javaToolchains.launcherFor {
-                languageVersion = JavaLanguageVersion.of(22)
-                vendor = JvmVendorSpec.matching("Oracle Corporation")
-            }
-        }
-        test {
-            buildArgs.add("-O0")
-        }
-    }
-    binaries.all {
-        buildArgs.add("--verbose")
-        resources {
-            autodetection {
-                enabled.set(true)
-                restrictToProjectDependencies.set(false)
-            }
-        }
-    }
+// graalvmNative {
+//     metadataCopy {
+//             inputTaskNames.add("run")
+//             outputDirectories.add("src/main/resources/META-INF/native-image")
+//             mergeWithExisting = true
+//         }
+//     binaries {
+//         main {
+//             imageName = "demofx"
+//             mainClass = "dk.stonemountain.demo.demofx.Main"
+//             buildArgs.add("-O4")
+//             javaLauncher = javaToolchains.launcherFor {
+//                 languageVersion = JavaLanguageVersion.of(22)
+//                 vendor = JvmVendorSpec.matching("Oracle Corporation")
+//             }
+//         }
+//         test {
+//             buildArgs.add("-O0")
+//         }
+//     }
+//     binaries.all {
+//         buildArgs.add("--verbose")
+//         resources {
+//             autodetection {
+//                 enabled.set(true)
+//                 restrictToProjectDependencies.set(false)
+//             }
+//         }
+//     }
+// }
+
+gluonfx {
+    bundlesList = []
+    reflectionList = []
+    resourcesList = []
+    compilerArgs = ["-H:+UnlockExperimentalVMOptions", "--report-unsupported-elements-at-runtime"]
 }
