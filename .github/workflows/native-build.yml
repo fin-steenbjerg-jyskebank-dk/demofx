@@ -14,7 +14,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        # os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [macos-13]
         include:
           # - os: ubuntu-24.04
           #   architecture: x86_64-linux
@@ -22,12 +23,12 @@ jobs:
           # - os: windows-latest          
           #   architecture: x86_64-windows
           #   executeable-extension: .exe
-          - os: macos-latest
-            architecture: aarch64-darwin
-            executeable-extension: 
-          # - os: macos-13
-          #   architecture: x86_64-darwin
+          # - os: macos-latest
+          #   architecture: aarch64-darwin
           #   executeable-extension: 
+          - os: macos-13
+            architecture: x86_64-darwin
+            executeable-extension: 
 
     steps:
     - uses: actions/checkout@v4.1.2
@@ -58,10 +59,10 @@ jobs:
       run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
     - if: matrix.os == 'windows-latest'
       name: Add msbuild to PATH
-      uses: jyskebank-actions/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.0.2
     - if: matrix.os == 'windows-latest'
       name: Visual Studio shell
-      uses: jyskebank-actions/vs-shell@v1
+      uses: egor-tensin/vs-shell@v1
   
     - name: Printing GRAALVM Versions
       run: |
@@ -93,7 +94,7 @@ jobs:
     - name: Copy native client to dist
       run: cp -r build/gluonfx/${{ matrix.architecture }}/${{ env.APP_NAME }}${{ matrix.executeable-extension }} dist
     - name: Upload
-      uses: jyskebank-actions/upload-artifact@v4.3.1
+      uses: actions/upload-artifact@v4.3.1
       with:
         name: ${{ env.APP_NAME }}-${{ matrix.os }}
         path: dist
