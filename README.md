@@ -57,6 +57,8 @@ build/native/nativeCompile/demofx
 
 ## Links
 
+* https://github.com/actions/runner-images?tab=readme-ov-file
+
 * https://gluonhq.com/developers/samples/
 * https://github.com/gluonhq/hello-gluon-ci/blob/master/.github/workflows/linux.yml
 * https://github.com/gluonhq/graal/releases
@@ -73,15 +75,3 @@ build/native/nativeCompile/demofx
 ** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/common/src/main/java/org/keycloak/common/util/Base64Url.java (special base64 encoding)
 ** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/core/src/main/java/org/keycloak/representations/AccessTokenResponse.java access token response
 ** https://github.com/keycloak/keycloak/blob/923a321a55747d401d87b7958fe0dee81fabe010/adapters/oidc/installed/src/main/java/org/keycloak/adapters/installed/KeycloakInstalled.java keycloak adapter pkce handling
-
-
-## Graalvm (no gluon stuff)
-
-see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
-
-```{script}
-./gradlew -Pagent run
-./gradlew metadataCopy --task run --dir src/main/resources/META-INF/native-image
-./gradlew nativeCompile
-build/native/nativeCompile/demofx
-```
