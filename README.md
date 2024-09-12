@@ -50,11 +50,18 @@ Run this for doing the actual native compilation:
 build/native/nativeCompile/demofx
 ```
 
+
 ## Contact
 
 * Feel free to contact me.
 
 ## Links
+
+* https://gluonhq.com/developers/samples/
+* https://github.com/gluonhq/hello-gluon-ci/blob/master/.github/workflows/linux.yml
+* https://github.com/gluonhq/graal/releases
+* https://oss.sonatype.org/#view-repositories;snapshots~browsestorage~gluonfx-gradle-plugin (snapshot gradle plugin repository)
+* https://oss.sonatype.org/#view-repositories;snapshots~browsestorage~gluonfx-gradle-plugin (snapshot gradle plugin repository)
 
 * https://github.com/javieraviles/quarkus-github-flow demonstrates how to call an action when tagged.
 * https://github.com/quarkiverse/quarkus-github-app demonstrations github app

@@ -1,7 +1,6 @@
 plugins {
   id 'application'
   id 'org.openjfx.javafxplugin' version '0.1.0'
-//   id 'org.graalvm.buildtools.native' version '0.10.1'  
   id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.24-SNAPSHOT'
 }
 
@@ -31,20 +30,14 @@ sourceSets {
 group "dk.stonemountain.demo"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_23
+    targetCompatibility = JavaVersion.VERSION_23
 }
 
 javafx {
     version = "21.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
 }
-
-// javafx {
-//     version = "22.0.1"
-//     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
-// }
-
 
 dependencies {
 	implementation "org.slf4j:slf4j-api:${libraryVersions.slf4j}"
@@ -60,37 +53,6 @@ dependencies {
 }
 
 mainClassName =  "dk.stonemountain.demo.demofx.Main"
-
-// graalvmNative {
-//     metadataCopy {
-//             inputTaskNames.add("run")
-//             outputDirectories.add("src/main/resources/META-INF/native-image")
-//             mergeWithExisting = true
-//         }
-//     binaries {
-//         main {
-//             imageName = "demofx"
-//             mainClass = "dk.stonemountain.demo.demofx.Main"
-//             buildArgs.add("-O4")
-//             javaLauncher = javaToolchains.launcherFor {
-//                 languageVersion = JavaLanguageVersion.of(22)
-//                 vendor = JvmVendorSpec.matching("Oracle Corporation")
-//             }
-//         }
-//         test {
-//             buildArgs.add("-O0")
-//         }
-//     }
-//     binaries.all {
-//         buildArgs.add("--verbose")
-//         resources {
-//             autodetection {
-//                 enabled.set(true)
-//                 restrictToProjectDependencies.set(false)
-//             }
-//         }
-//     }
-// }
 
 gluonfx {
     bundlesList = []
