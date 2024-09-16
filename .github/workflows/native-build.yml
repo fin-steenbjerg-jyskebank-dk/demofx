@@ -30,8 +30,8 @@ jobs:
           #   executeable-extension: 
 
     steps:
-    - name: Get architecture
-      run: uname -m
+    - name: Get OS info
+      run: uname -a
     - uses: actions/checkout@v4.1.2
     - name: create build time info
       shell: bash
