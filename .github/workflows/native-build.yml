@@ -14,9 +14,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-24.04]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             architecture: x86_64-linux
             executeable-extension: 
           # - os: windows-latest          
