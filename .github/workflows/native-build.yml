@@ -19,9 +19,9 @@ jobs:
           - os: ubuntu-latest
             architecture: x86_64-linux
             executeable-extension: 
-          - os: windows-latest          
-            architecture: x86_64-windows
-            executeable-extension: .exe
+          # - os: windows-latest          
+          #   architecture: x86_64-windows
+          #   executeable-extension: .exe
           # - os: macos-latest
           #   architecture: aarch64-darwin
           #   executeable-extension: 
