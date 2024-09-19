@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=DemoFX
-Comment=Demonstrates JavaFX
-Exec=/usr/bin/demofx
-Icon=/usr/share/stonemountain/icons/demofx.png
-Terminal=false
-

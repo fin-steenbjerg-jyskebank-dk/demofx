@@ -1,7 +1,7 @@
 plugins {
   id 'application'
   id 'org.openjfx.javafxplugin' version '0.1.0'
-  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.24-SNAPSHOT'
+  id 'com.gluonhq.gluonfx-gradle-plugin' version '1.0.24'
 }
 
 ext {
@@ -56,7 +56,94 @@ mainClassName =  "dk.stonemountain.demo.demofx.Main"
 
 gluonfx {
     bundlesList = []
-    reflectionList = []
-    resourcesList = []
-    compilerArgs = ["-H:+UnlockExperimentalVMOptions", "--report-unsupported-elements-at-runtime"]
+	bundlesList = [] //"hellofx.hello"]
+
+    reflectionList = [
+    	// --- Types referenced from .fxml files
+        "javafx.geometry.Side",
+    	"javafx.fxml.FXMLLoader", 
+		"javafx.geometry.Insets",
+        "javafx.scene.control.Button",
+        "javafx.scene.control.CheckBox",
+        "javafx.scene.control.ChoiceBox",
+        "javafx.scene.control.DatePicker",
+        "javafx.scene.control.ContextMenu",
+		"javafx.scene.control.Hyperlink",
+        "javafx.scene.control.Label",
+        "javafx.scene.control.ListView",
+        "javafx.scene.control.Menu",
+        "javafx.scene.control.MenuBar",
+        "javafx.scene.control.MenuItem",
+		"javafx.scene.control.PasswordField",
+		"javafx.scene.control.RadioButton",
+		"javafx.scene.control.RadioMenuItem",
+		"javafx.scene.control.Separator",
+		"javafx.scene.control.SeparatorMenuItem",
+		"javafx.scene.control.SplitPane",
+		"javafx.scene.control.Tab",
+		"javafx.scene.control.TableColumn",
+		"javafx.scene.control.TableColumnBase",
+		"javafx.scene.control.TableView",
+		"javafx.scene.control.TabPane",
+		"javafx.scene.control.TextField",
+		"javafx.scene.control.TextArea",
+		"javafx.scene.control.TitledPane",
+		"javafx.scene.control.ToggleGroup",
+		"javafx.scene.layout.AnchorPane",
+		"javafx.scene.layout.BorderPane",
+		"javafx.scene.layout.ColumnConstraints",
+		"javafx.scene.layout.GridPane",
+		"javafx.scene.layout.HBox",
+		"javafx.scene.layout.VBox",
+		"javafx.scene.layout.Pane",
+		"javafx.scene.layout.Region",
+		"javafx.scene.layout.RowConstraints",
+		"javafx.scene.paint.Color",
+		"javafx.scene.text.Font",
+
+        "dk.stonemountain.demo.demofx.DemoApplication",
+        "dk.stonemountain.demo.demofx.DemoController",
+        "dk.stonemountain.demo.demofx.about.AboutDialog",
+        "dk.stonemountain.demo.demofx.about.IssueDialog",
+        "dk.stonemountain.demo.demofx.about.ShowDataDialog",
+        "dk.stonemountain.demo.demofx.about.ShowDataDialog",
+		"dk.stonemountain.demo.demofx.installer.UpdateDialog",
+		"dk.stonemountain.demo.demofx.messages.MessageDialog",
+		"dk.stonemountain.demo.demofx.messages.MessageCell",
+
+		// --- JSON DTOs
+		"dk.stonemountain.demo.demofx.installer.backend.VersionInformation",
+
+        // cd src/main/gen-src-wizard/bff/dk/jyskebank/outbound/bff/dto
+        // ls -1 | sed 's/.java/",/g;s/^/        "dk.jyskebank.outbound.bff.dto./g;'
+        
+        // From enums - by hand
+
+		// --- Logger classes (referenced in logback configuration, prolly)
+        "ch.qos.logback.classic.encoder.PatternLayoutEncoder",
+        "ch.qos.logback.classic.pattern.DateConverter",
+        "ch.qos.logback.classic.pattern.LevelConverter",
+        "ch.qos.logback.classic.pattern.LineSeparatorConverter",
+        "ch.qos.logback.classic.pattern.LoggerConverter",
+        "ch.qos.logback.classic.pattern.MessageConverter",
+        "ch.qos.logback.classic.pattern.ThreadConverter",
+        "ch.qos.logback.classic.filter.ThresholdFilter",
+        "ch.qos.logback.core.ConsoleAppender",
+        "ch.qos.logback.core.rolling.helper.DateTokenConverter",
+        "ch.qos.logback.core.rolling.helper.IntegerTokenConverter",
+        "ch.qos.logback.core.rolling.RollingFileAppender",
+        "ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy",
+        "ch.qos.logback.core.util.FileSize",
+        
+        "java.util.ArrayList",
+		"java.lang.String",
+		"com.sun.glass.ui.CommonDialogs",
+    ]
+
+    resourcesList = [
+    	"logback.xml",
+		"icons/.*",
+    	"fxml/.*",    	
+    ]
+    compilerArgs = ["--report-unsupported-elements-at-runtime", "--allow-incomplete-classpath" /*, "--no-fallback"*/ ]
 }
