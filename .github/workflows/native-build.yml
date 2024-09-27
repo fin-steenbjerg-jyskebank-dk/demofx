@@ -19,12 +19,12 @@ jobs:
           - os: ubuntu-latest
             architecture: x86_64-linux
             executeable-extension: 
-          # - os: windows-latest          
-          #   architecture: x86_64-windows
-          #   executeable-extension: .exe
-          # - os: macos-latest
-          #   architecture: aarch64-darwin
-          #   executeable-extension: 
+          - os: windows-latest          
+            architecture: x86_64-windows
+            executeable-extension: .exe
+          - os: macos-latest
+            architecture: aarch64-darwin
+            executeable-extension: 
           - os: macos-13
             architecture: x86_64-darwin
             executeable-extension: 
@@ -60,7 +60,7 @@ jobs:
         graalvm: 'latest'
         jdk: 'java23'
         # arch: 'aarch64'
-        arch: 'x86_64'
+        # arch: 'x86_64'
 
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
@@ -82,7 +82,7 @@ jobs:
         native-image --version
 
     - name: Build native client
-      run: ./gradlew -s build nativeCompile nativeLink nativePackage
+      run: ./gradlew -s build nativeCompile nativeLink
       env:
         GRAALVM_HOME: ${{ env.JAVA_HOME }}
   
