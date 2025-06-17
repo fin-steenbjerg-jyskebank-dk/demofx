@@ -2,7 +2,7 @@ name: Linux
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, newer-java ]
     tags:
       - '*'
 
