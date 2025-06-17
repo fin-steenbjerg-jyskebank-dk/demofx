@@ -58,7 +58,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         graalvm: 'latest'
-        jdk: 'java23'
+        jdk: 'java24'
         # arch: 'aarch64'
         # arch: 'x86_64'
 
