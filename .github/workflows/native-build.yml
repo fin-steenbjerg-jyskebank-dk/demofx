@@ -57,10 +57,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        graalvm: 'latest'
+        graalvm: '22.1.0.1-Final'
         jdk: 'java23'
         # arch: 'aarch64'
-        # arch: 'x86_64'
+        arch: 'x86_64'
 
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
