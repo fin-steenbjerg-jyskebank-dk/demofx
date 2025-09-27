@@ -1,5 +1,5 @@
 .root { 
-    -fx-accent: #161718;
+    -fx-accent: #1e74c6;
     -fx-focus-color: -fx-accent;
     -fx-base: #373e43;
     -fx-control-inner-background: derive(-fx-base, 35%);
@@ -20,7 +20,7 @@
 }
 
 .button{
-    -fx-focus-traversable: true;
+    -fx-focus-traversable: false;
 }
 
 .button:hover{
@@ -34,60 +34,50 @@
 }
 
 .scroll-bar{
-    -fx-background-color: derive(-fx-base,45%)  
+    -fx-background-color: derive(-fx-base,45%)
 }
 
 .button:default {
     -fx-base: -fx-accent ;
-}   
+} 
 
-.list-view:selected {
-    /*
+.table-view{
+    /*-fx-background-color: derive(-fx-base, 10%);*/
     -fx-selection-bar-non-focused: derive(-fx-base, 50%);
-    -fx-selection-bar-non-focused: brown;
-    -fx-background-color: brown;
-    */
 }
 
-#searchResultList {
-    /*
+.table-view .column-header .label .list-view {
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-weight: none;
+}
+
+.list-view{
     -fx-selection-bar-non-focused: derive(-fx-base, 50%);
-    -fx-selection-bar-non-focused: brown;
-    -fx-background-color: red;
-    */
-
-    -fx-border-color: derive(-fx-base, 50%);;
 }
 
-.list-cell::even {
-        -fx-control-inner-background: derive(-fx-base, 12%);
-        /*
-    -fx-control-inner-background: yellow;
-    -fx-background-color: yellow;
-    */
+.list-cell:even,
+.list-cell:odd,
+.table-row-cell:even,
+.table-row-cell:odd{    
+    -fx-control-inner-background: derive(-fx-base, 15%);
 }
 
-.list-cell:odd { 
-    -fx-control-inner-background: derive(-fx-base, 23%);
-    /*-fx-control-inner-background: red; */
-}
-
-.list-cell:empty {
+.list-cell:empty,
+.table-row-cell:empty {
     -fx-background-color: transparent;
 }
 
-.list-cell {
-    /*  
+.list-cell,
+.table-row-cell{
     -fx-border-color: transparent;
     -fx-table-cell-border-color:transparent;
-    */
 }
 
-.list-cell:selected { 
-    /* -fx-control-inner-background: derive(-fx-base, 12%); 
-     -fx-control-inner-background: violet;
-    -fx-background-color: violet; */
-    -fx-background-color: derive(-fx-base, 0%);
+.titled-pane{
+    -fx-text-fill: lightgray;
 }
 
-.hbo
+.hyperlink{
+    -fx-text-fill: lightgray;
+    -fx-visited-color: gray;
+}

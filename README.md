@@ -1,10 +1,10 @@
 # demofx
 The code in this repository demonstrates how to build a JavaFX application. I use the application as a place for testing new facilities. The application is based on the following technologies:
 
-* Java 21
+* Java 24
 * JsonB
 * Server Sent Events (not yet)
-* JavaFX 21
+* JavaFX 24
 * FXML
 * OIDC by using Keycloak
 * GraalVM
@@ -36,7 +36,13 @@ I would have liked to use CDI, but the CDI implementations seem to be too huge (
 ## Graalvm for Native Client
 see https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html
 
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24
+export PATH=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24/bin:$PATH
+
+
 Run this to collect information about classes accessed via reflections and resources needed.  
+
+java -agentlib:native-image-agent=config-output-dir=./agent-data -jar app.jar
 
 ```{script}
 ./gradlew -Pagent run
@@ -49,6 +55,20 @@ Run this for doing the actual native compilation:
 ./gradlew nativeCompile
 build/native/nativeCompile/demofx
 ```
+
+#### Bellsoft
+
+```{script}
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24
+export PATH=/opt/bellsoft/liberica-vm-full-24.2.2-openjdk24/bin:$PATH   
+
+export JAVA_HOME=/opt/bellsoft/liberica-vm-full-25.0.0-openjdk25
+export PATH=/opt/bellsoft/liberica-vm-full-25.0.0-openjdk25/bin:$PATH   
+```
+
+
+
+Github actions: https://bell-sw.com/blog/how-to-create-javafx-native-images/
 
 
 ## Contact

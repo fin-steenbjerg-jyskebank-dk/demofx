@@ -53,34 +53,28 @@ jobs:
     #     distribution: 'graalvm'
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - uses: gluonhq/setup-graalvm@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - uses: graalvm/setup-graalvm@v1
       with:
-        graalvm: '22.1.0.1-Final'
-        jdk: 'java23'
-        # arch: 'aarch64'
-        arch: 'x86_64'
+        distribution: 'liberica'
+        java-version: '25'
+        java-package: 'jdk+fx'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        cache: maven
 
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
       run: |
           sudo apt update
           sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
-    - if: matrix.os == 'windows-latest'
-      name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-    - if: matrix.os == 'windows-latest'
-      name: Visual Studio shell
-      uses: egor-tensin/vs-shell@v1
-  
     - name: Printing GRAALVM Versions
       run: |
         echo "GRAALVM_HOME: $GRAALVM_HOME"
         echo "JAVA_HOME: $JAVA_HOME"
         java --version
         native-image --version
-
     - name: Build native client
       run: ./gradlew -s build nativeCompile nativeLink
       env:
