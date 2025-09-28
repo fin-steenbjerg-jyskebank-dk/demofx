@@ -19,15 +19,15 @@ jobs:
           - os: ubuntu-latest
             architecture: x86_64-linux
             executeable-extension: 
-          - os: windows-latest          
-            architecture: x86_64-windows
-            executeable-extension: .exe
-          - os: macos-latest
-            architecture: aarch64-darwin
-            executeable-extension: 
-          - os: macos-13
-            architecture: x86_64-darwin
-            executeable-extension: 
+          # - os: windows-latest          
+          #   architecture: x86_64-windows
+          #   executeable-extension: .exe
+          # - os: macos-latest
+          #   architecture: aarch64-darwin
+          #   executeable-extension: 
+          # - os: macos-13
+          #   architecture: x86_64-darwin
+          #   executeable-extension: 
 
     steps:
     - name: Get OS info
@@ -56,11 +56,11 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
 
-    - uses: graalvm/setup-graalvm@v1.4.0
+    - uses: graalvm/setup-graalvm@v1.2
       with:
         distribution: 'liberica'
-        java-version: '21+fx'
-        java-package: 'jdk'
+        java-version: '21'
+        java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
         cache: maven
 
