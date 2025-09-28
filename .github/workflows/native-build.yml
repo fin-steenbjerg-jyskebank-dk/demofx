@@ -56,7 +56,7 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@v4
 
-    - uses: graalvm/setup-graalvm@v1.4
+    - uses: graalvm/setup-graalvm@v1.4.0
       with:
         distribution: 'liberica'
         java-version: '21'
