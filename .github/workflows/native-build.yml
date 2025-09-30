@@ -83,10 +83,10 @@ jobs:
   
     - name: See build output folders
       run: ls -l build
-    - name: See build gluonfx output folders
-      run: ls -l build/gluonfx
-    - name: See build output folders for architecture
-      run: ls -l build/gluonfx/${{ matrix.architecture }}
+    - name: See build native output folders
+      run: ls -l build/native/
+    - name: See build nativeCompilation folders for architecture
+      run: ls -l build/native/nativeCompile
   
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
@@ -97,7 +97,7 @@ jobs:
     - name: Make dist directory
       run: mkdir dist
     - name: Copy native client to dist
-      run: cp -r build/gluonfx/${{ matrix.architecture }}/${{ env.APP_NAME }}${{ matrix.executeable-extension }} dist
+      run: cp -r build/native/nativeCompile/${{ env.APP_NAME }}${{ matrix.executeable-extension }} dist
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
       with:
