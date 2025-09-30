@@ -62,7 +62,7 @@ jobs:
         java-version: '21'
         java-package: 'jdk+fx'
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        cache: maven
+        cache: gradle
 
     - if: matrix.os == 'ubuntu-latest'
       name: Install libraries
