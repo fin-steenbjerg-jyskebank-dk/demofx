@@ -87,12 +87,6 @@ jobs:
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
   
-    - name: Upload
-      uses: actions/upload-artifact@v4.3.1
-      with:
-        name: ${{ env.APP_NAME }}-${{ matrix.os }}
-        path: build/native/nativeCompile
-
     - name: Make dist directory
       run: mkdir dist
     - name: Copy native client to dist
