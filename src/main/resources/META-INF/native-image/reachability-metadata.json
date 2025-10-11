@@ -345,6 +345,331 @@
       ]
     },
     {
+      "type": "com.sun.glass.ui.Application",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "GetApplication",
+          "parameterTypes": []
+        },
+        {
+          "name": "getName",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyPreferencesChanged",
+          "parameterTypes": [
+            "java.util.Map"
+          ]
+        },
+        {
+          "name": "reportException",
+          "parameterTypes": [
+            "java.lang.Throwable"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Clipboard",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "contentChanged",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Cursor",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "ptr"
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Pixels",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "attachData",
+          "parameterTypes": [
+            "long"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Screen",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "long",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "float",
+            "float",
+            "float",
+            "float"
+          ]
+        },
+        {
+          "name": "notifySettingsChanged",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Screen[]"
+    },
+    {
+      "type": "com.sun.glass.ui.Size",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "int",
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.View",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "ptr"
+        }
+      ],
+      "methods": [
+        {
+          "name": "notifyDragDrop",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyDragEnter",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyDragLeave",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyDragOver",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyKey",
+          "parameterTypes": [
+            "int",
+            "int",
+            "char[]",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyMenu",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "boolean"
+          ]
+        },
+        {
+          "name": "notifyMouse",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "boolean",
+            "boolean"
+          ]
+        },
+        {
+          "name": "notifyRepaint",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyResize",
+          "parameterTypes": [
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyScroll",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "int",
+            "double",
+            "double",
+            "int",
+            "int",
+            "int",
+            "int",
+            "int",
+            "double",
+            "double"
+          ]
+        },
+        {
+          "name": "notifyView",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.Window",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "ptr"
+        }
+      ],
+      "methods": [
+        {
+          "name": "isEnabled",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyClose",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyDelegatePtr",
+          "parameterTypes": [
+            "long"
+          ]
+        },
+        {
+          "name": "notifyDestroy",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyFocus",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "notifyFocusDisabled",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyFocusUngrab",
+          "parameterTypes": []
+        },
+        {
+          "name": "notifyLevelChanged",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "notifyMove",
+          "parameterTypes": [
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyMoveToAnotherScreen",
+          "parameterTypes": [
+            "com.sun.glass.ui.Screen"
+          ]
+        },
+        {
+          "name": "notifyResize",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.gtk.GtkApplication",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "display"
+        },
+        {
+          "name": "screen"
+        },
+        {
+          "name": "visualID"
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.gtk.GtkPixels",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "int",
+            "int",
+            "java.nio.ByteBuffer"
+          ]
+        }
+      ]
+    },
+    {
       "type": "com.sun.glass.ui.gtk.GtkPlatformFactory",
       "methods": [
         {
@@ -354,7 +679,89 @@
       ]
     },
     {
-      "type": "com.sun.glass.ui.gtk.GtkView"
+      "type": "com.sun.glass.ui.gtk.GtkView",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "notifyInputMethodCandidateRelativePosRequest",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "notifyInputMethodLinux",
+          "parameterTypes": [
+            "java.lang.String",
+            "int",
+            "int",
+            "byte"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.glass.ui.gtk.GtkWindow",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "dragAreaHitTest",
+          "parameterTypes": [
+            "int",
+            "int"
+          ]
+        },
+        {
+          "name": "notifyStateChanged",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.PreviewFeature"
+    },
+    {
+      "type": "com.sun.javafx.font.FontConfigManager$FcCompFont",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "allFonts"
+        },
+        {
+          "name": "fcName"
+        },
+        {
+          "name": "firstFont"
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.FontConfigManager$FontConfigFont",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "familyName"
+        },
+        {
+          "name": "fontFile"
+        },
+        {
+          "name": "fullName"
+        },
+        {
+          "name": "styleStr"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.FontConfigManager$FontConfigFont[]"
     },
     {
       "type": "com.sun.javafx.font.freetype.FTFactory",
@@ -362,6 +769,105 @@
         {
           "name": "getFactory",
           "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.freetype.FT_Bitmap",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "buffer"
+        },
+        {
+          "name": "num_grays"
+        },
+        {
+          "name": "palette"
+        },
+        {
+          "name": "palette_mode"
+        },
+        {
+          "name": "pitch"
+        },
+        {
+          "name": "pixel_mode"
+        },
+        {
+          "name": "rows"
+        },
+        {
+          "name": "width"
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.freetype.FT_GlyphSlotRec",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "advance_x"
+        },
+        {
+          "name": "advance_y"
+        },
+        {
+          "name": "bitmap"
+        },
+        {
+          "name": "bitmap_left"
+        },
+        {
+          "name": "bitmap_top"
+        },
+        {
+          "name": "format"
+        },
+        {
+          "name": "linearHoriAdvance"
+        },
+        {
+          "name": "linearVertAdvance"
+        },
+        {
+          "name": "metrics"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.sun.javafx.font.freetype.FT_Glyph_Metrics",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "height"
+        },
+        {
+          "name": "horiAdvance"
+        },
+        {
+          "name": "horiBearingX"
+        },
+        {
+          "name": "horiBearingY"
+        },
+        {
+          "name": "vertAdvance"
+        },
+        {
+          "name": "vertBearingX"
+        },
+        {
+          "name": "vertBearingY"
+        },
+        {
+          "name": "width"
         }
       ]
     },
@@ -640,7 +1146,29 @@
     },
     {
       "type": "dk.stonemountain.demo.demofx.DemoController",
-      "allDeclaredFields": true,
+      "fields": [
+        {
+          "name": "applicationPane"
+        },
+        {
+          "name": "loginMenuItem"
+        },
+        {
+          "name": "logoutMenuItem"
+        },
+        {
+          "name": "messagesList"
+        },
+        {
+          "name": "time"
+        },
+        {
+          "name": "updateButton"
+        },
+        {
+          "name": "userInfoButton"
+        }
+      ],
       "methods": [
         {
           "name": "<init>",
@@ -665,6 +1193,18 @@
           ]
         },
         {
+          "name": "doReportIssue",
+          "parameterTypes": [
+            "javafx.event.ActionEvent"
+          ]
+        },
+        {
+          "name": "doSelectDarkCss",
+          "parameterTypes": [
+            "javafx.event.ActionEvent"
+          ]
+        },
+        {
           "name": "doSelectDefaultCss",
           "parameterTypes": [
             "javafx.event.ActionEvent"
@@ -678,14 +1218,24 @@
     },
     {
       "type": "dk.stonemountain.demo.demofx.about.AboutDialog",
-      "allDeclaredFields": true,
-      "methods": [
+      "fields": [
         {
-          "name": "doReportIssue",
-          "parameterTypes": [
-            "javafx.event.ActionEvent"
-          ]
+          "name": "buildTime"
         },
+        {
+          "name": "gitSha"
+        },
+        {
+          "name": "log"
+        },
+        {
+          "name": "version"
+        },
+        {
+          "name": "viewLogButton"
+        }
+      ],
+      "methods": [
         {
           "name": "initialize",
           "parameterTypes": []
@@ -694,7 +1244,50 @@
     },
     {
       "type": "dk.stonemountain.demo.demofx.about.IssueDialog",
-      "allDeclaredFields": true,
+      "fields": [
+        {
+          "name": "attachButton"
+        },
+        {
+          "name": "attachments"
+        },
+        {
+          "name": "buildTime"
+        },
+        {
+          "name": "details"
+        },
+        {
+          "name": "gitSha"
+        },
+        {
+          "name": "includeEnvironment"
+        },
+        {
+          "name": "includeLog"
+        },
+        {
+          "name": "includeSystemProperties"
+        },
+        {
+          "name": "log"
+        },
+        {
+          "name": "user"
+        },
+        {
+          "name": "version"
+        },
+        {
+          "name": "viewEnvironmentButton"
+        },
+        {
+          "name": "viewLogButton"
+        },
+        {
+          "name": "viewPropertiesButton"
+        }
+      ],
       "methods": [
         {
           "name": "initialize",
@@ -704,7 +1297,6 @@
     },
     {
       "type": "dk.stonemountain.demo.demofx.events.dto.MessageDTO",
-      "allDeclaredFields": true,
       "methods": [
         {
           "name": "author",
@@ -726,11 +1318,34 @@
     },
     {
       "type": "dk.stonemountain.demo.demofx.messages.MessageCell",
-      "allDeclaredFields": true
+      "fields": [
+        {
+          "name": "author"
+        },
+        {
+          "name": "content"
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "updated"
+        }
+      ]
     },
     {
       "type": "dk.stonemountain.demo.demofx.messages.MessageDialog",
-      "allDeclaredFields": true,
+      "fields": [
+        {
+          "name": "msgAuthor"
+        },
+        {
+          "name": "msgContent"
+        },
+        {
+          "name": "msgTitle"
+        }
+      ],
       "methods": [
         {
           "name": "initialize",
@@ -743,6 +1358,26 @@
     },
     {
       "type": "java.beans.ConstructorProperties"
+    },
+    {
+      "type": "java.lang.Boolean",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "FALSE"
+        },
+        {
+          "name": "TRUE"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
     },
     {
       "type": "java.lang.Character",
@@ -765,11 +1400,54 @@
       ]
     },
     {
+      "type": "java.lang.Iterable",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "iterator",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "java.lang.Module"
     },
     {
-      "type": "java.lang.Record",
-      "allDeclaredFields": true
+      "type": "java.lang.Object",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "equals",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Record"
+    },
+    {
+      "type": "java.lang.Runnable",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "run",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.String",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "toLowerCase",
+          "parameterTypes": [
+            "java.util.Locale"
+          ]
+        }
+      ]
     },
     {
       "type": "java.lang.System",
@@ -782,11 +1460,22 @@
     },
     {
       "type": "java.nio.ByteBuffer",
+      "jniAccessible": true,
       "methods": [
+        {
+          "name": "array",
+          "parameterTypes": []
+        },
         {
           "name": "order",
           "parameterTypes": [
             "java.nio.ByteOrder"
+          ]
+        },
+        {
+          "name": "wrap",
+          "parameterTypes": [
+            "byte[]"
           ]
         }
       ]
@@ -810,7 +1499,154 @@
       "type": "java.sql.Date"
     },
     {
+      "type": "java.util.ArrayList",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "int"
+          ]
+        },
+        {
+          "name": "add",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "get",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.util.Collections",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "unmodifiableMap",
+          "parameterTypes": [
+            "java.util.Map"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.util.HashMap",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "containsKey",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "get",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "put",
+          "parameterTypes": [
+            "java.lang.Object",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.util.HashSet",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.util.Iterator",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "hasNext",
+          "parameterTypes": []
+        },
+        {
+          "name": "next",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.util.Map",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "containsKey",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "get",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "keySet",
+          "parameterTypes": []
+        },
+        {
+          "name": "put",
+          "parameterTypes": [
+            "java.lang.Object",
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.util.Set",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "add",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        },
+        {
+          "name": "size",
+          "parameterTypes": []
+        },
+        {
+          "name": "toArray",
+          "parameterTypes": [
+            "java.lang.Object[]"
+          ]
+        }
+      ]
+    },
+    {
       "type": "javafx.animation.Interpolator"
+    },
+    {
+      "type": "javafx.css.Rule"
     },
     {
       "type": "javafx.fxml.FXMLLoader"
@@ -854,7 +1690,6 @@
     },
     {
       "type": "javafx.scene.Node",
-      "allDeclaredFields": true,
       "methods": [
         {
           "name": "getId",
@@ -914,8 +1749,7 @@
       "type": "javafx.scene.ParallelCamera"
     },
     {
-      "type": "javafx.scene.Parent",
-      "allDeclaredFields": true
+      "type": "javafx.scene.Parent"
     },
     {
       "type": "javafx.scene.Scene"
@@ -941,8 +1775,7 @@
       ]
     },
     {
-      "type": "javafx.scene.control.Cell",
-      "allDeclaredFields": true
+      "type": "javafx.scene.control.Cell"
     },
     {
       "type": "javafx.scene.control.CheckBox",
@@ -960,16 +1793,13 @@
       ]
     },
     {
-      "type": "javafx.scene.control.Control",
-      "allDeclaredFields": true
+      "type": "javafx.scene.control.Control"
     },
     {
-      "type": "javafx.scene.control.Dialog",
-      "allDeclaredFields": true
+      "type": "javafx.scene.control.Dialog"
     },
     {
-      "type": "javafx.scene.control.IndexedCell",
-      "allDeclaredFields": true
+      "type": "javafx.scene.control.IndexedCell"
     },
     {
       "type": "javafx.scene.control.Label",
@@ -982,7 +1812,6 @@
     },
     {
       "type": "javafx.scene.control.Labeled",
-      "allDeclaredFields": true,
       "methods": [
         {
           "name": "setFont",
@@ -1017,8 +1846,7 @@
       ]
     },
     {
-      "type": "javafx.scene.control.ListCell",
-      "allDeclaredFields": true
+      "type": "javafx.scene.control.ListCell"
     },
     {
       "type": "javafx.scene.control.ListView",
@@ -1390,7 +2218,6 @@
     },
     {
       "type": "javafx.scene.layout.Region",
-      "allDeclaredFields": true,
       "methods": [
         {
           "name": "setMaxHeight",
@@ -1465,6 +2292,21 @@
           "name": "setVgrow",
           "parameterTypes": [
             "javafx.scene.layout.Priority"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "javafx.scene.paint.Color",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "rgb",
+          "parameterTypes": [
+            "int",
+            "int",
+            "int",
+            "double"
           ]
         }
       ]
@@ -1548,14 +2390,6 @@
     },
     {
       "type": "org.eclipse.yasson.JsonBindingProvider"
-    },
-    {
-      "type": "sun.misc.Unsafe",
-      "fields": [
-        {
-          "name": "theUnsafe"
-        }
-      ]
     },
     {
       "type": "sun.security.pkcs12.PKCS12KeyStore",
@@ -1849,6 +2683,18 @@
           ]
         }
       ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
     }
   ],
   "resources": [
@@ -1860,9 +2706,6 @@
     },
     {
       "glob": "META-INF/services/jakarta.json.spi.JsonProvider"
-    },
-    {
-      "glob": "META-INF/services/java.lang.System$LoggerFinder"
     },
     {
       "glob": "META-INF/services/java.net.spi.InetAddressResolverProvider"
@@ -1982,10 +2825,6 @@
       "glob": "sun/net/idn/uidna.spp"
     },
     {
-      "module": "java.xml",
-      "glob": "jdk/xml/internal/jdkcatalog/JDKCatalog.xml"
-    },
-    {
       "module": "javafx.base",
       "glob": "com/sun/javafx/reflect/Trampoline.class"
     },
@@ -2060,735 +2899,15 @@
     {
       "module": "javafx.graphics",
       "glob": "com/sun/scenario/effect/impl/es2/glsl/LinearConvolveShadow_28.frag"
-    }
-  ],
-  "bundles": [
-    {
-      "name": "com.sun.javafx.tk.quantum.QuantumMessagesBundle",
-      "locales": [
-        "en-US"
-      ]
     },
     {
-      "name": "com/sun/javafx/scene/control/skin/resources/controls",
-      "locales": [
-        "en-US"
-      ]
+      "bundle": "com.sun.javafx.tk.quantum.QuantumMessagesBundle"
     },
     {
-      "name": "yasson-messages",
-      "locales": [
-        "en-US"
-      ]
-    }
-  ],
-  "jni": [
-    {
-      "type": "[Lcom.sun.glass.ui.Screen;"
+      "bundle": "com/sun/javafx/scene/control/skin/resources/controls"
     },
     {
-      "type": "[Lcom.sun.javafx.font.FontConfigManager$FontConfigFont;"
-    },
-    {
-      "type": "com.sun.glass.ui.Application",
-      "methods": [
-        {
-          "name": "GetApplication",
-          "parameterTypes": []
-        },
-        {
-          "name": "getName",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyPreferencesChanged",
-          "parameterTypes": [
-            "java.util.Map"
-          ]
-        },
-        {
-          "name": "reportException",
-          "parameterTypes": [
-            "java.lang.Throwable"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Clipboard",
-      "methods": [
-        {
-          "name": "contentChanged",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Cursor",
-      "fields": [
-        {
-          "name": "ptr"
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Pixels",
-      "methods": [
-        {
-          "name": "attachData",
-          "parameterTypes": [
-            "long"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Screen",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "long",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "float",
-            "float",
-            "float",
-            "float"
-          ]
-        },
-        {
-          "name": "notifySettingsChanged",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Size",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int",
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.View",
-      "fields": [
-        {
-          "name": "ptr"
-        }
-      ],
-      "methods": [
-        {
-          "name": "notifyDragDrop",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyDragEnter",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyDragLeave",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyDragOver",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyKey",
-          "parameterTypes": [
-            "int",
-            "int",
-            "char[]",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyMenu",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "boolean"
-          ]
-        },
-        {
-          "name": "notifyMouse",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "boolean",
-            "boolean"
-          ]
-        },
-        {
-          "name": "notifyRepaint",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyResize",
-          "parameterTypes": [
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyScroll",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "int",
-            "double",
-            "double",
-            "int",
-            "int",
-            "int",
-            "int",
-            "int",
-            "double",
-            "double"
-          ]
-        },
-        {
-          "name": "notifyView",
-          "parameterTypes": [
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.Window",
-      "fields": [
-        {
-          "name": "ptr"
-        }
-      ],
-      "methods": [
-        {
-          "name": "isEnabled",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyClose",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyDelegatePtr",
-          "parameterTypes": [
-            "long"
-          ]
-        },
-        {
-          "name": "notifyDestroy",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyFocus",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "notifyFocusDisabled",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyFocusUngrab",
-          "parameterTypes": []
-        },
-        {
-          "name": "notifyLevelChanged",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "notifyMove",
-          "parameterTypes": [
-            "int",
-            "int"
-          ]
-        },
-        {
-          "name": "notifyMoveToAnotherScreen",
-          "parameterTypes": [
-            "com.sun.glass.ui.Screen"
-          ]
-        },
-        {
-          "name": "notifyResize",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.gtk.GtkApplication",
-      "fields": [
-        {
-          "name": "display"
-        },
-        {
-          "name": "screen"
-        },
-        {
-          "name": "visualID"
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.gtk.GtkPixels",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int",
-            "int",
-            "java.nio.ByteBuffer"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.gtk.GtkView",
-      "methods": [
-        {
-          "name": "notifyInputMethodCandidateRelativePosRequest",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "notifyInputMethodLinux",
-          "parameterTypes": [
-            "java.lang.String",
-            "int",
-            "int",
-            "byte"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.glass.ui.gtk.GtkWindow",
-      "methods": [
-        {
-          "name": "notifyStateChanged",
-          "parameterTypes": [
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "com.sun.javafx.font.FontConfigManager$FcCompFont",
-      "fields": [
-        {
-          "name": "allFonts"
-        },
-        {
-          "name": "fcName"
-        },
-        {
-          "name": "firstFont"
-        }
-      ]
-    },
-    {
-      "type": "com.sun.javafx.font.FontConfigManager$FontConfigFont",
-      "fields": [
-        {
-          "name": "familyName"
-        },
-        {
-          "name": "fontFile"
-        },
-        {
-          "name": "fullName"
-        },
-        {
-          "name": "styleStr"
-        }
-      ],
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.sun.javafx.font.freetype.FT_Bitmap",
-      "fields": [
-        {
-          "name": "buffer"
-        },
-        {
-          "name": "num_grays"
-        },
-        {
-          "name": "palette"
-        },
-        {
-          "name": "palette_mode"
-        },
-        {
-          "name": "pitch"
-        },
-        {
-          "name": "pixel_mode"
-        },
-        {
-          "name": "rows"
-        },
-        {
-          "name": "width"
-        }
-      ]
-    },
-    {
-      "type": "com.sun.javafx.font.freetype.FT_GlyphSlotRec",
-      "fields": [
-        {
-          "name": "advance_x"
-        },
-        {
-          "name": "advance_y"
-        },
-        {
-          "name": "bitmap"
-        },
-        {
-          "name": "bitmap_left"
-        },
-        {
-          "name": "bitmap_top"
-        },
-        {
-          "name": "format"
-        },
-        {
-          "name": "linearHoriAdvance"
-        },
-        {
-          "name": "linearVertAdvance"
-        },
-        {
-          "name": "metrics"
-        }
-      ],
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "com.sun.javafx.font.freetype.FT_Glyph_Metrics",
-      "fields": [
-        {
-          "name": "height"
-        },
-        {
-          "name": "horiAdvance"
-        },
-        {
-          "name": "horiBearingX"
-        },
-        {
-          "name": "horiBearingY"
-        },
-        {
-          "name": "vertAdvance"
-        },
-        {
-          "name": "vertBearingX"
-        },
-        {
-          "name": "vertBearingY"
-        },
-        {
-          "name": "width"
-        }
-      ]
-    },
-    {
-      "type": "java.lang.Boolean",
-      "fields": [
-        {
-          "name": "FALSE"
-        },
-        {
-          "name": "TRUE"
-        }
-      ],
-      "methods": [
-        {
-          "name": "getBoolean",
-          "parameterTypes": [
-            "java.lang.String"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.lang.Iterable",
-      "methods": [
-        {
-          "name": "iterator",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.lang.Object",
-      "methods": [
-        {
-          "name": "equals",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.lang.Runnable",
-      "methods": [
-        {
-          "name": "run",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.lang.String",
-      "methods": [
-        {
-          "name": "toLowerCase",
-          "parameterTypes": [
-            "java.util.Locale"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.nio.ByteBuffer",
-      "methods": [
-        {
-          "name": "array",
-          "parameterTypes": []
-        },
-        {
-          "name": "wrap",
-          "parameterTypes": [
-            "byte[]"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.util.ArrayList",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        },
-        {
-          "name": "<init>",
-          "parameterTypes": [
-            "int"
-          ]
-        },
-        {
-          "name": "add",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "get",
-          "parameterTypes": [
-            "int"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.util.Collections",
-      "methods": [
-        {
-          "name": "unmodifiableMap",
-          "parameterTypes": [
-            "java.util.Map"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.util.HashMap",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        },
-        {
-          "name": "containsKey",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "get",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "put",
-          "parameterTypes": [
-            "java.lang.Object",
-            "java.lang.Object"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.util.HashSet",
-      "methods": [
-        {
-          "name": "<init>",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.util.Iterator",
-      "methods": [
-        {
-          "name": "hasNext",
-          "parameterTypes": []
-        },
-        {
-          "name": "next",
-          "parameterTypes": []
-        }
-      ]
-    },
-    {
-      "type": "java.util.Map",
-      "methods": [
-        {
-          "name": "containsKey",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "get",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "keySet",
-          "parameterTypes": []
-        },
-        {
-          "name": "put",
-          "parameterTypes": [
-            "java.lang.Object",
-            "java.lang.Object"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "java.util.Set",
-      "methods": [
-        {
-          "name": "add",
-          "parameterTypes": [
-            "java.lang.Object"
-          ]
-        },
-        {
-          "name": "size",
-          "parameterTypes": []
-        },
-        {
-          "name": "toArray",
-          "parameterTypes": [
-            "java.lang.Object[]"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "javafx.scene.paint.Color",
-      "methods": [
-        {
-          "name": "rgb",
-          "parameterTypes": [
-            "int",
-            "int",
-            "int",
-            "double"
-          ]
-        }
-      ]
+      "bundle": "yasson-messages"
     }
   ]
 }

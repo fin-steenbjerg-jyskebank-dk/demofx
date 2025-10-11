@@ -26,6 +26,7 @@ public class DemoApplication extends Application { // NOSONAR
 
     public void quit() {
     	log.info("Application is shut down");
+        log.info("Threads: {}", Thread.getAllStackTraces().keySet().stream().map(t -> t.getName()).toList());
     	Platform.exit();
     }
     

@@ -1,4 +1,4 @@
-name: Linux
+name: NativeBuild
 
 on:
   push:
@@ -32,18 +32,22 @@ jobs:
     steps:
     - name: Get OS info
       run: uname -a
+
     - uses: actions/checkout@v4.1.2
+    
     - name: create build time info
       shell: bash
       run: | 
         echo "JB_SHA=$(echo ${GITHUB_SHA})" >> $GITHUB_ENV
         echo "JB_VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
         echo "JB_TIME=$(echo $(date))" >> $GITHUB_ENV
+
     - name: imprint buildinfo
       run: |
         sed -i'' -e "s/##VERSION##/${{ env.JB_VERSION }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
         sed -i'' -e "s/##BUILD_TIME##/${{ env.JB_TIME }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
         sed -i'' -e "s/##SHA##/${{ env.JB_SHA }}/g" 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
+
     - name: print buildinfo in file
       run: cat 'src/main/java/dk/stonemountain/demo/demofx/Version.java'
 
@@ -53,10 +57,10 @@ jobs:
     #     distribution: 'graalvm'
     #     github-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Checkout the repository
-      uses: actions/checkout@v4
+    # - name: Checkout the repository
+      # uses: actions/checkout@v4
 
-    - uses: graalvm/setup-graalvm@v1.4.0
+    - uses: graalvm/setup-graalvm@v1.4.1
       with:
         distribution: 'liberica'
         java-version: '21'
@@ -69,12 +73,14 @@ jobs:
       run: |
           sudo apt update
           sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+
     - name: Printing GRAALVM Versions
       run: |
         echo "GRAALVM_HOME: $GRAALVM_HOME"
         echo "JAVA_HOME: $JAVA_HOME"
         java --version
         native-image --version
+
     - name: Build native client
       run: ./gradlew -s build nativeCompile
       env:
@@ -82,15 +88,19 @@ jobs:
   
     - name: See build output folders
       run: ls -l build
+
     - name: See build native output folders
       run: ls -l build/native/
+
     - name: See build nativeCompilation folders for architecture
       run: ls -l build/native/nativeCompile
   
     - name: Make dist directory
       run: mkdir dist
+
     - name: Copy native client to dist
       run: cp -r build/native/nativeCompile/${{ env.APP_NAME }}${{ matrix.executeable-extension }} dist
+      
     - name: Upload
       uses: actions/upload-artifact@v4.3.1
       with:

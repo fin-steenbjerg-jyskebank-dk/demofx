@@ -1,7 +1,7 @@
 plugins {
   id 'application'
   id 'org.openjfx.javafxplugin' version '0.1.0'
-  id 'org.graalvm.buildtools.native' version '0.11.0'
+  id 'org.graalvm.buildtools.native' version '0.11.1'
 }
 
 ext {
@@ -27,8 +27,8 @@ sourceSets {
 // group "dk.stonemountain.demo"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 javafx {
@@ -61,21 +61,22 @@ dependencies {
 
 graalvmNative {
     binaries.all {
-        // common options
 		resources.autodetect()
-		buildArgs.add("-Djava.awt.headless=false")
         verbose = true
     }
 
     binaries.main {
-        // options to configure the main binary
         imageName = 'demofx'
         mainClass = 'dk.stonemountain.demo.demofx.Main'
-        buildArgs.add('-O3') // enables additional compiler optimizations
     }
 
 	agent {
 		enabled = true
+		defaultMode = "standard"
+		modes {
+			standard {
+			}
+		}
 		metadataCopy {
 			inputTaskNames.add("run")
 			outputDirectories.add("src/main/resources/META-INF/native-image")
