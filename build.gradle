@@ -1,6 +1,6 @@
 plugins {
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.1.0'
+//   id 'org.openjfx.javafxplugin' version '0.1.0'
   id 'org.graalvm.buildtools.native' version '0.11.1'
 }
 
@@ -24,27 +24,27 @@ sourceSets {
 	}
 }
 
-// group "dk.stonemountain.demo"
+group "dk.stonemountain.demo"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-javafx {
-    version = "24.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
-}
+// javafx {
+//     version = "24.0.1"
+//     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.base', 'javafx.graphics', 'javafx.web']
+// }
 
 application {
     mainClass.set('dk.stonemountain.demo.demofx.Main')
 }
 
-jar {	
-    manifest {
-        attributes 'Main-Class': 'dk.stonemountain.demo.demofx.Main'
-    }
-}
+// jar {	
+//     manifest {
+//         attributes 'Main-Class': 'dk.stonemountain.demo.demofx.Main'
+//     }
+// }
 
 dependencies {
 	implementation "org.slf4j:slf4j-api:${libraryVersions.slf4j}"
